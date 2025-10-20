@@ -115,11 +115,74 @@
     "text": "Placeholder"
   },
   {
-    "objectID": "slides/04-how-r/index.html#placeholder",
-    "href": "slides/04-how-r/index.html#placeholder",
+    "objectID": "slides/04-how-r/index.html#the-whole-game",
+    "href": "slides/04-how-r/index.html#the-whole-game",
     "title": "How to in R",
-    "section": "Placeholder",
-    "text": "Placeholder"
+    "section": "The Whole Game",
+    "text": "The Whole Game\nLet’s see the complete workflow with real ADAM data:\n\nStart with ADAM datasets (RDS/Parquet + metadata)\nCombine data with metadata\nConvert to Dataset-JSON\nShare the standardized file\nRead it back anywhere"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#step-1-load-adam-data",
+    "href": "slides/04-how-r/index.html#step-1-load-adam-data",
+    "title": "How to in R",
+    "section": "Step 1: Load ADAM Data",
+    "text": "Step 1: Load ADAM Data\n\nlibrary(datasetjson)\nlibrary(arrow)  # or readRDS() - format doesn't matter!\n\n# Load data (RDS or Parquet - your choice)\nadsl &lt;- read_parquet(\"../../data/adam/adsl.parquet\")\nadae &lt;- read_parquet(\"../../data/adam/adae.parquet\")\n\n# Load metadata\nadsl_meta &lt;- read_parquet(\"../../data/adam/metadata/adsl_meta.parquet\")\nadae_meta &lt;- read_parquet(\"../../data/adam/metadata/adae_meta.parquet\")"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#step-2-examine-what-we-have",
+    "href": "slides/04-how-r/index.html#step-2-examine-what-we-have",
+    "title": "How to in R",
+    "section": "Step 2: Examine What We Have",
+    "text": "Step 2: Examine What We Have\n\n# Real clinical trial data with labels!\nhead(adsl[1:5])  # 306 subjects, 54 variables\nattr(adsl$USUBJID, \"label\")  # \"Unique Subject Identifier\"\n\n# Metadata follows Dataset-JSON spec\nhead(adsl_meta)\n#   dataType length itemOID  name                    label\n#   string   12     STUDYID  STUDYID \"Study Identifier\""
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#step-3-create-dataset-json",
+    "href": "slides/04-how-r/index.html#step-3-create-dataset-json",
+    "title": "How to in R",
+    "section": "Step 3: Create Dataset-JSON",
+    "text": "Step 3: Create Dataset-JSON\n\n# Convert ADSL to Dataset-JSON\nadsl_json &lt;- dataset_json(\n  adsl,\n  name = \"ADSL\", \n  dataset_label = \"Subject Level Analysis Dataset\",\n  columns = adsl_meta\n)\n\n# Same for ADAE\nadae_json &lt;- dataset_json(\n  adae,\n  name = \"ADAE\",\n  dataset_label = \"Adverse Events Analysis Dataset\", \n  columns = adae_meta\n)"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#step-4-share-standardized-files",
+    "href": "slides/04-how-r/index.html#step-4-share-standardized-files",
+    "title": "How to in R",
+    "section": "Step 4: Share Standardized Files",
+    "text": "Step 4: Share Standardized Files\n\n# Write to Dataset-JSON files\nwrite_dataset_json(adsl_json, \"output/ADSL.json\", pretty = TRUE)\nwrite_dataset_json(adae_json, \"output/ADAE.json\", pretty = TRUE)\n\n# Now anyone can read these files!\n# - Regulatory reviewers\n# - External collaborators  \n# - Different software (R, Python, SAS)"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#step-5-read-back-anywhere",
+    "href": "slides/04-how-r/index.html#step-5-read-back-anywhere",
+    "title": "How to in R",
+    "section": "Step 5: Read Back Anywhere",
+    "text": "Step 5: Read Back Anywhere\n\n# Read back - gets original data + metadata\nadsl_restored &lt;- read_dataset_json(\"output/ADSL.json\")\n\n# All metadata preserved!\nattr(adsl_restored$USUBJID, \"label\")\n# \"Unique Subject Identifier\"\n\n# Identical to original\ndiffdf::diffdf(adsl, adsl_restored)\nwaldo::compare(adsl, adsl_restored)"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#why-this-matters",
+    "href": "slides/04-how-r/index.html#why-this-matters",
+    "title": "How to in R",
+    "section": "Why This Matters",
+    "text": "Why This Matters\n\nFormat agnostic: Start with RDS, Parquet, CSV - doesn’t matter\nMetadata preserved: Labels, types, all CDISC information\nStandardized: One format for sharing across tools/organizations\nValidated: Built-in schema validation\nRound-trip safe: Almost Perfect data fidelity"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#your-turn-exercises",
+    "href": "slides/04-how-r/index.html#your-turn-exercises",
+    "title": "How to in R",
+    "section": "Your Turn: Exercises",
+    "text": "Your Turn: Exercises\nTime to practice! Open exercises/01-r.R and work through:\n\nBasic Operations - Read and write Dataset-JSON files\nData Exploration - Examine Dataset-JSON structure\n\nData Processing - Transform and export data\nError Handling - Handle common issues\nAdvanced Usage - Work with metadata and attributes"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#exercise-preview",
+    "href": "slides/04-how-r/index.html#exercise-preview",
+    "title": "How to in R",
+    "section": "Exercise Preview",
+    "text": "Exercise Preview\n\n# Exercise 1: Basic read/write operations\n# Exercise 2: Explore Dataset-JSON structure\n# Exercise 3: Data transformation pipeline\n# Exercise 4: Error handling scenarios\n# Exercise 5: Advanced metadata features\n\n# Let's get started!"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#questions",
+    "href": "slides/04-how-r/index.html#questions",
+    "title": "How to in R",
+    "section": "Questions?",
+    "text": "Questions?\n\nReady to dive into the exercises?\nOpen exercises/01-r.R and let’s explore the datasetjson package together!"
   },
   {
     "objectID": "slides/06-future/index.html#placeholder",
