@@ -1,0 +1,131 @@
+[
+  {
+    "objectID": "slides/07-wrapup/index.html#placeholder",
+    "href": "slides/07-wrapup/index.html#placeholder",
+    "title": "Wrap-up",
+    "section": "Placeholder",
+    "text": "Placeholder"
+  },
+  {
+    "objectID": "slides/05-how-py/index.html#placeholder",
+    "href": "slides/05-how-py/index.html#placeholder",
+    "title": "How to in python",
+    "section": "Placeholder",
+    "text": "Placeholder"
+  },
+  {
+    "objectID": "slides/03-what/index.html#placeholder",
+    "href": "slides/03-what/index.html#placeholder",
+    "title": "What is Dataset-JSON",
+    "section": "Placeholder",
+    "text": "Placeholder"
+  },
+  {
+    "objectID": "slides/01-intro/index.html#placeholder",
+    "href": "slides/01-intro/index.html#placeholder",
+    "title": "Welcome!",
+    "section": "Placeholder",
+    "text": "Placeholder"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python",
+    "section": "",
+    "text": "🗓 November 7, 2025 08:00 - 11:00 Eastern\n💻 Virtual\n📝 Workshop Registration",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#description",
+    "href": "index.html#description",
+    "title": "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python",
+    "section": "Description",
+    "text": "Description\nJoin us for an engaging workshop designed to introduce Dataset-JSON, a powerful format for sharing datasets. We’ll start with an environment setup and explore the motivation behind choosing Dataset-JSON over other formats like Parquet. The session will include a detailed walkthrough of the Dataset-JSON specification, followed by hands-on demonstrations and exercises in both R and Python.\nDiscover how to implement Dataset-JSON in your workflows, learn about upcoming adoption plans, and explore future roadmap and API integrations. This workshop is perfect for data professionals interested in improving dataset interoperability and sharing standards.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n08:00 - 08:15\nIntroduction + Overview\n\n\n08:15 - 08:45\nWhy Change / Why Dataset-JSON / Why not Parquet?\n\n\n08:45 - 09:15\nWhat is Dataset-JSON\n\n\n09:15 - 09:45\nCoffee Break\n\n\n09:45 - 10:15\nHow to in R\n\n\n10:15 - 10:45\nHow to in python\n\n\n10:45 - 11:00\nAdoption and Future\n\n\n11:00 - 11:05\nWrap-up",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#pre-work",
+    "href": "index.html#pre-work",
+    "title": "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python",
+    "section": "Pre-work",
+    "text": "Pre-work\n\nBookmark this site. You’ll reference it throughout the workshop. tbd\nSign up for a free Posit Cloud account.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#instructors",
+    "href": "index.html#instructors",
+    "title": "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python",
+    "section": "Instructors",
+    "text": "Instructors\n\nMichael Stackhouse is at the cutting edge of data technology within the pharmaceutical industry. He has extensive CDISC experience, working with both Study Data Tabulation Model (SDTM) and Analysis Data Model (ADaM) standards, and serving as a subject matter expert for Define.xml. He holds a bachelor’s degree from Arcadia University, where he studied business administration, economics, and statistics. He is a 2020 UC Berkeley School of Information Master of Information and Data Science (MIDS) program graduate, where he worked on projects involving computer vision, natural language processing, cluster computing, and deep learning. His special interests include automation, machine learning, big data technology, and mentoring rising programmers.\nRecently, Michael received the PharmaSUG 2018 Best Paper award for Applications Development, the PHUSE US Connect 2019 Best Paper award for Trends and Technology, and the PHUSE US Connect 2019 Best Poster award. Michael co-leads the PHUSE working group Open Source Technology in Clinical Research, focusing on bringing the benefits of languages like Python and R into the regulatory industry.\nPreviously, Michael was a senior manager of statistical programming at Covance, where he led U.S. innovation activities for the FSP department. Under his guidance, projects achieved data standardization according to SDTM standards on upwards of 75 studies, including database integration and data warehousing. He also managed programming activities through a multiagency submission for multiple studies across a single compound. In addition, he took on multiple automation projects, including the development of a tool capable of dynamically locating programming independence violations and automatically detecting protocol deviations, as well as the creation of data pipelines around tracking systems for programming deliverables.\n\nSam Hume co-leads the CDISC Data Exchange Standards team, advises CDISC leadership on strategy, and contributes technical leadership to 360i, COSA, CORE, and CDISC Library. Sam formerly served as the CDISC VP of Data Science. During his 30 years in the biopharmaceutical industry, he has held several senior-level technology positions. Sam is an active PHUSE contributor.\n \nNick Masel is the Open-Source Solutions Lead within Clinical & Statistical Programming at Johnson & Johnson. He is an active member and contributor to several external organizations, including R/Pharma, and enjoys collaborating with others on R package development specific to the pharmaceutical industry. \n\nEli Miller is a Senior Manager of Cloud Solutions at Atorus Research and is the technical lead for the professional services at Atorus. He works with organizations to create and improve their statistical systems and create modern processes. He also works with several industry groups aimed at furthering R in the pharma space.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "exercises/exercises.html#r.r-1",
+    "href": "exercises/exercises.html#r.r-1",
+    "title": "Exercises + Solutions",
+    "section": "01-r.R",
+    "text": "01-r.R\n\n\n# Placeholder for answers",
+    "crumbs": [
+      "Exercises + Solutions"
+    ]
+  },
+  {
+    "objectID": "exercises/exercises.html#python.py-1",
+    "href": "exercises/exercises.html#python.py-1",
+    "title": "Exercises + Solutions",
+    "section": "02-python.py",
+    "text": "02-python.py\n\n\n# Placeholder for answers",
+    "crumbs": [
+      "Exercises + Solutions"
+    ]
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License.",
+    "crumbs": [
+      "License"
+    ]
+  },
+  {
+    "objectID": "slides/02-why/index.html#placeholder",
+    "href": "slides/02-why/index.html#placeholder",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "Placeholder",
+    "text": "Placeholder"
+  },
+  {
+    "objectID": "slides/04-how-r/index.html#placeholder",
+    "href": "slides/04-how-r/index.html#placeholder",
+    "title": "How to in R",
+    "section": "Placeholder",
+    "text": "Placeholder"
+  },
+  {
+    "objectID": "slides/06-future/index.html#placeholder",
+    "href": "slides/06-future/index.html#placeholder",
+    "title": "Adoption and Future",
+    "section": "Placeholder",
+    "text": "Placeholder"
+  }
+]
