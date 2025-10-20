@@ -37,11 +37,11 @@ tibble::tribble(
   "08:00 - 08:15", "[Introduction + Overview](slides/01-intro/index.html)",
   "08:15 - 08:45", "[Why Change / Why Dataset-JSON / Why not Parquet?](slides/02-why/index.html)", 
   "08:45 - 09:15", "[What is Dataset-JSON](slides/03-what/index.html)",
-  "09:15 - 09:45", "*Coffee Break*",
-  "09:45 - 10:15", "[How to in R](slides/04-how-r/index.html)",
-  "10:15 - 10:45", "[How to in python](slides/05-how-py/index.html)",
-  "10:45 - 11:00", "[Adoption and Future](slides/06-future/index.html)",
-  "11:00 - 11:05", "[Wrap-up](slides/07-wrapup/index.html)"
+  "09:15 - 09:30", "*Coffee Break*",
+  "09:30 - 10:00", "[How to in R](slides/04-how-r/index.html)",
+  "10:00 - 10:30", "[How to in python](slides/05-how-py/index.html)",
+  "10:30 - 10:55", "[Adoption and Future](slides/06-future/index.html)",
+  "10:55 - 11:00", "[Wrap-up](slides/07-wrapup/index.html)"
 ) |> 
   gt::gt() |> 
   gt::cols_align(align = "left") |> 
