@@ -34,14 +34,14 @@ ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO COMPLETE PRI
 ```{r echo = FALSE, }
 tibble::tribble(
   ~time, ~desc,
-  "08:00 - 08:15", "[Introduction + Overview](slides/01-intro/index.html)",
-  "08:15 - 08:45", "[Why Change / Why Dataset-JSON / Why not Parquet?](slides/02-why/index.html)", 
-  "08:45 - 09:15", "[What is Dataset-JSON](slides/03-what/index.html)",
+  "08:00 - 08:15", "[Introduction + Overview](https://atorus-research.github.io/datasetjson_workshop/slides/01-intro/#/title-slide)",
+  "08:15 - 08:45", "[Why Change / Why Dataset-JSON / Why not Parquet?](https://atorus-research.github.io/datasetjson_workshop/slides/02-why/#/title-slide)", 
+  "08:45 - 09:15", "[What is Dataset-JSON](https://atorus-research.github.io/datasetjson_workshop/slides/03-what/#/title-slide)",
   "09:15 - 09:30", "*Coffee Break*",
-  "09:30 - 10:00", "[How to in R](slides/04-how-r/index.html)",
-  "10:00 - 10:30", "[How to in python](slides/05-how-py/index.html)",
-  "10:30 - 10:55", "[Adoption and Future](slides/06-future/index.html)",
-  "10:55 - 11:00", "[Wrap-up](slides/07-wrapup/index.html)"
+  "09:30 - 10:00", "[How to in R](https://atorus-research.github.io/datasetjson_workshop/slides/04-how-r/#/title-slide)",
+  "10:00 - 10:30", "[How to in python](https://atorus-research.github.io/datasetjson_workshop/slides/05-how-pyr/#/title-slide)",
+  "10:30 - 10:55", "[Adoption and Future](https://atorus-research.github.io/datasetjson_workshop/slides/06-future/#/title-slide)",
+  "10:55 - 11:00", "[Wrap-up](https://atorus-research.github.io/datasetjson_workshop/slides/07-wrapup/#/title-slide)"
 ) |> 
   gt::gt() |> 
   gt::cols_align(align = "left") |> 

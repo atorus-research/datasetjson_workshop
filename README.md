@@ -47,21 +47,21 @@ ACCOUNT, ETC.
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>08:00 - 08:15</span></td>
-<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="slides/01-intro/index.html">Introduction + Overview</a></span></td></tr>
+<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/01-intro/#/title-slide">Introduction + Overview</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>08:15 - 08:45</span></td>
-<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="slides/02-why/index.html">Why Change / Why Dataset-JSON / Why not Parquet?</a></span></td></tr>
+<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/02-why/#/title-slide">Why Change / Why Dataset-JSON / Why not Parquet?</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>08:45 - 09:15</span></td>
-<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="slides/03-what/index.html">What is Dataset-JSON</a></span></td></tr>
+<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/03-what/#/title-slide">What is Dataset-JSON</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>09:15 - 09:30</span></td>
 <td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><em>Coffee Break</em></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>09:30 - 10:00</span></td>
-<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="slides/04-how-r/index.html">How to in R</a></span></td></tr>
+<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/04-how-r/#/title-slide">How to in R</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>10:00 - 10:30</span></td>
-<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="slides/05-how-py/index.html">How to in python</a></span></td></tr>
+<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/05-how-pyr/#/title-slide">How to in python</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>10:30 - 10:55</span></td>
-<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="slides/06-future/index.html">Adoption and Future</a></span></td></tr>
+<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/06-future/#/title-slide">Adoption and Future</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>10:55 - 11:00</span></td>
-<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="slides/07-wrapup/index.html">Wrap-up</a></span></td></tr>
+<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/07-wrapup/#/title-slide">Wrap-up</a></span></td></tr>
   </tbody>
   &#10;  
 </table>
