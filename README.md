@@ -10,7 +10,8 @@ by Mike Stackhouse, Sam Hume, Nick Masel and Eli Miller
 :spiral_calendar: November 7, 2025  
 :alarm_clock: 09:00 - 11:00  
 :computer: Virtual  
-:writing_hand: [pos.it/conf](http://pos.it/conf)
+:writing_hand: [R/Pharma 2025
+Workshop](https://rinpharma.com/docs/RPH2025/)
 
 ------------------------------------------------------------------------
 
@@ -36,6 +37,7 @@ POSIT COMMUNITY, PACKAGE INSTALL INSTRUCTIONS, HOW TO GET AN POSIT CLOUD
 ACCOUNT, ETC.
 
 ## Schedule
+
 
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
@@ -64,7 +66,7 @@ ACCOUNT, ETC.
   </tbody>
   &#10;  
 </table>
-</div>
+
 
 ------------------------------------------------------------------------
 
