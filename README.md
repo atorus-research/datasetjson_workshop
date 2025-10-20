@@ -3,7 +3,7 @@
 
 ### R/Pharma 2025 Workshop
 
-by Mike Stackhouse, Same Hume, Nick Masel and Eli Miller
+by Mike Stackhouse, Sam Hume, Nick Masel and Eli Miller
 
 ------------------------------------------------------------------------
 
