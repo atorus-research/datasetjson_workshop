@@ -31,7 +31,7 @@ ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO COMPLETE PRI
 
 ## Schedule
 
-```{r echo = FALSE}
+```{r echo = FALSE, }
 tibble::tribble(
   ~time, ~desc,
   "08:00 - 08:15", "[Introduction + Overview](slides/01-intro/index.html)",

@@ -1,0 +1,81 @@
+---
+title: "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python"
+subtitle: "[R/Pharma 2025 Workshop](https://rinpharma.com/docs/RPH2025/)"
+engine: knitr
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+------------------------------------------------------------------------
+
+🗓 November 7, 2025  08:00 - 11:00 Eastern
+
+💻 Virtual
+
+📝 [Workshop Registration](https://events.zoom.us/ev/Ai-geyS63AOzr-Tskeu2jwsPAZkX9yQixTAJuQzNT-h_rw24wX-p~AnyGxi92zGyWPS_7xPj-Oax9RjoaU3pZS0DjeX45ML084eyqq4qo6O7BMg)
+
+------------------------------------------------------------------------
+
+## Description
+
+Join us for an engaging workshop designed to introduce Dataset-JSON, a powerful format for sharing datasets. We'll start with an environment setup and explore the motivation behind choosing Dataset-JSON over other formats like Parquet. The session will include a detailed walkthrough of the Dataset-JSON specification, followed by
+hands-on demonstrations and exercises in both R and Python.
+
+Discover how to implement Dataset-JSON in your workflows, learn about upcoming adoption plans, and explore future roadmap and API integrations. This workshop is perfect for data professionals interested in improving dataset interoperability and sharing standards.
+
+## Schedule
+
+```{r}
+#| echo: false
+tibble::tribble(
+  ~time, ~desc,
+  "08:00 - 08:15", "[Introduction + Overview](slides/01-intro/index.html)",
+  "08:15 - 08:45", "[Why Change / Why Dataset-JSON / Why not Parquet?](slides/02-why/index.html)", 
+  "08:45 - 09:15", "[What is Dataset-JSON](slides/03-what/index.html)",
+  "09:15 - 09:45", "*Coffee Break*",
+  "09:45 - 10:15", "[How to in R](slides/04-how-r/index.html)",
+  "10:15 - 10:45", "[How to in python](slides/05-how-py/index.html)",
+  "10:45 - 11:00", "[Adoption and Future](slides/06-future/index.html)",
+  "11:00 - 11:05", "[Wrap-up](slides/07-wrapup/index.html)"
+) |> 
+  gt::gt() |> 
+  gt::cols_align(align = "left") |> 
+  gt::tab_style(
+    style = "vertical-align:top",
+    locations = gt::cells_body(columns = gt::everything())
+  ) |> 
+  gt::cols_label(time = gt::md("**Time**"), desc = gt::md("**Activity**")) |> 
+  gt::fmt_markdown()
+```
+
+## Pre-work
+
+- [ ] Bookmark this site. You'll reference it throughout the workshop.   [tbd]()
+
+- [ ] Sign up for a *free* [Posit Cloud](https://posit.cloud/) account.
+
+
+## Instructors
+
+![](images/mike-stackhouse.jpg){style="float:left;padding: 0 10px 0 0;" fig-alt="Headshot of Mike Stackhouse" width="150"}
+
+**Michael Stackhouse** is at the cutting edge of data technology within the pharmaceutical industry. He has extensive CDISC experience, working with both Study Data Tabulation Model (SDTM) and Analysis Data Model (ADaM) standards, and serving as a subject matter expert for Define.xml. He holds a bachelor’s degree from Arcadia University, where he studied business administration, economics, and statistics. He is a 2020 UC Berkeley School of Information Master of Information and Data Science (MIDS) program graduate, where he worked on projects involving computer vision, natural language processing, cluster computing, and deep learning. His special interests include automation, machine learning, big data technology, and mentoring rising programmers.
+
+Recently, Michael received the PharmaSUG 2018 Best Paper award for Applications Development, the PHUSE US Connect 2019 Best Paper award for Trends and Technology, and the PHUSE US Connect 2019 Best Poster award. Michael co-leads the PHUSE working group Open Source Technology in Clinical Research, focusing on bringing the benefits of languages like Python and R into the regulatory industry.
+
+Previously, Michael was a senior manager of statistical programming at Covance, where he led U.S. innovation activities for the FSP department. Under his guidance, projects achieved data standardization according to SDTM standards on upwards of 75 studies, including database integration and data warehousing. He also managed programming activities through a multiagency submission for multiple studies across a single compound. In addition, he took on multiple automation projects, including the development of a tool capable of dynamically locating programming independence violations and automatically detecting protocol deviations, as well as the creation of data pipelines around tracking systems for programming deliverables.
+
+![](images/Sam Hume.jpg){style="float:left;padding: 0 20px 0 20px;" fig-alt="Headshot of Sam Hume" width="140"}
+
+**Sam Hume** co-leads the CDISC Data Exchange Standards team, advises CDISC leadership on strategy, and contributes technical leadership to 360i, COSA, CORE, and CDISC Library. Sam formerly served as the CDISC VP of Data Science. During his 30 years in the biopharmaceutical industry, he has held several senior-level technology positions. Sam is an active PHUSE contributor.
+
+<br>
+![](images/NickM.png){style="float:left;padding: 0 20px 0 20px;" fig-alt="Headshot of Nick Masel" width="140"}
+
+**Nick Masel** is the Open-Source Solutions Lead within Clinical & Statistical Programming at Johnson & Johnson. He is an active member and contributor to several external organizations, including R/Pharma, and enjoys collaborating with others on R package development specific to the pharmaceutical industry. 
+
+![](images/Eli_Miller.jpg){style="float:left;padding: 0 20px 0 20px;"
+fig-alt="Headshot of Eli Miller" width="140"}
+
+**Eli Miller** is a Senior Manager of Cloud Solutions at Atorus Research and is the technical lead for the professional services at Atorus. He works with organizations to create and improve their statistical systems and create modern processes. He also works with several industry groups aimed at furthering R in the pharma space.

@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!slides/**/[0-9]*.qmd"
+
+website:
+  page-navigation: true
+  title: "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python"
+  description: "R/Pharma 2025 Workshop"
+  favicon: "images/sticker.svg"
+
+  repo-url: https://github.com/atorus-research/datasetjson_workshop
+  repo-actions: [edit, issue]
+
+  page-footer:
+    left: "This page is built with ❤️ and [Quarto](https://quarto.org/). Inspired by the [Posit::conf(2025) pharmaverse workshop](https://github.com/posit-conf-2025/pharmaverse)."
+    background: "#E2E2E2"
+
+  sidebar:
+    background: "#E2E2E2"
+    logo: "images/sticker.svg"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/atorus-research/datasetjson_workshop
+        text: GitHub
+    style: docked
+    contents:
+     - href: index.qmd
+       text: Home
+     - href: exercises/exercises.qmd
+     - href: license.qmd
+
+format:
+  html:
+    theme: [cosmo, theme.scss]
+    toc: true
+    code-copy: true
+    code-overflow: scroll
+    mainfont: "Atkinson Hyperlegible"
+    highlight-style: a11y
+
+editor: source
+

@@ -1,0 +1,49 @@
+---
+title: "Exercises + Solutions"
+editor: source
+---
+
+# Exercises
+
+## `01-r.R`
+
+```{r}
+#| echo: false
+#| class-output: "sourceCode r"
+
+
+```
+
+## `02-python.py`
+
+```{r}
+#| echo: false
+#| class-output: "sourceCode py"
+
+
+```
+
+
+# Solutions
+
+## `01-r.R`
+
+```{r}
+#| echo: false
+#| class-output: "sourceCode r"
+
+"answers/01-r-answer.R" |> 
+  readLines() |> 
+  cat(sep = "\n")
+```
+
+## `02-python.py`
+
+```{r}
+#| echo: false
+#| class-output: "sourceCode py"
+
+"answers/02-python-answer.py" |> 
+  readLines() |> 
+  cat(sep = "\n")
+```

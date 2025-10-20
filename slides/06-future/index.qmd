@@ -1,0 +1,22 @@
+---
+title: "Adoption and Future"
+subtitle: "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python"
+author: <code>R/Pharma 2025 Workshop</code>
+date: 2025-11-07
+logo: "../../images/sticker.svg"
+footer: "[https://github.com/atorus-research/datasetjson_workshop](https://github.com/atorus-research/datasetjson_workshop)" 
+editor: source
+engine: knitr
+format: 
+  revealjs: 
+    theme: ../slides.scss
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: true
+  freeze: false
+cache: false
+---
+
+## Placeholder
