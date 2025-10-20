@@ -8,7 +8,7 @@ by Mike Stackhouse, Sam Hume, Nick Masel and Eli Miller
 ------------------------------------------------------------------------
 
 :spiral_calendar: November 7, 2025  
-:alarm_clock: 09:00 - 11:00  
+:alarm_clock: 08:00 - 11:00 Eastern  
 :computer: Virtual  
 :writing_hand: [R/Pharma 2025
 Workshop](https://rinpharma.com/docs/RPH2025/)
