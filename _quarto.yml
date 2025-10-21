@@ -4,8 +4,6 @@ project:
   render:
     - "*.qmd"
     - "!slides/**/[0-9]*.qmd"
-  resources: 
-    - "!data/adam/metadata/*.rds"
 
 website:
   page-navigation: true

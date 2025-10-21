@@ -1,2 +1,6 @@
 install.packages(c("datasetjson",
-                   "gt"))
+                   "gt",
+                   "pharmaverseadam",
+                   "arrow",
+                   "dplyr",
+                   "diffdf"))

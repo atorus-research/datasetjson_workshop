@@ -8,7 +8,7 @@ footer: "[https://github.com/atorus-research/datasetjson_workshop](https://githu
 editor: source
 engine: knitr
 format: 
-  revealjs: 
+  live-revealjs: 
     theme: ../slides.scss
     transition: fade
     slide-number: true
@@ -18,6 +18,8 @@ execute:
   freeze: false
 cache: false
 ---
+
+{{< include ../../_extensions/r-wasm/live/_knitr.qmd >}}
 
 ## The Whole Game
 
@@ -33,20 +35,31 @@ Let's see the complete workflow with real ADAM data:
 
 ---
 
-## Step 1: Load ADAM Data
+## Step 1: Load ADAM Data and Metadata
 
 ```{r}
-#| eval: false
+#| eval: true
 library(datasetjson)
-library(arrow)  # or readRDS() - format doesn't matter!
 
-# Load data (RDS or Parquet - your choice)
-adsl <- read_parquet("../../data/adam/adsl.parquet")
-adae <- read_parquet("../../data/adam/adae.parquet")
+# Load data (RDS, Parquet, ... - your choice)
+adsl <- readRDS("../../data/adam/adsl.rds")
+# adsl <- arrow::read_parquet("adsl.parquet")
 
 # Load metadata
-adsl_meta <- read_parquet("../../data/adam/metadata/adsl_meta.parquet")
-adae_meta <- read_parquet("../../data/adam/metadata/adae_meta.parquet")
+adsl_meta <- readRDS("../../data/adam/metadata/adsl_meta.rds")
+# adsl_meta <- arrow::read_parquet("adsl_meta.parquet")
+```
+---
+
+## Step 2: Examine What We Have
+
+```{r}
+#| eval: true
+# Clinical trial data
+knitr::kable(
+  head(adsl[1:6]),
+  format = "html",
+  table.attr = "style='font-size: 24px;'")
 ```
 
 ---
@@ -54,15 +67,62 @@ adae_meta <- read_parquet("../../data/adam/metadata/adae_meta.parquet")
 ## Step 2: Examine What We Have
 
 ```{r}
-#| eval: false
-# Real clinical trial data with labels!
-head(adsl[1:5])  # 306 subjects, 54 variables
-attr(adsl$USUBJID, "label")  # "Unique Subject Identifier"
-
+#| eval: true
 # Metadata follows Dataset-JSON spec
-head(adsl_meta)
-#   dataType length itemOID  name                    label
-#   string   12     STUDYID  STUDYID "Study Identifier"
+knitr::kable(
+  head(adsl_meta),
+  format = "html",
+  table.attr = "style='font-size: 24px;'")
+```
+
+---
+
+## Step 2: Examine What We Have
+#### Data Type: float
+
+```{r}
+#| eval: true
+# Clinical trial data
+floats <- adsl_meta |>
+  dplyr::filter(adsl_meta$dataType == "float")
+
+knitr::kable(
+  head(floats, 4),
+  format = "html",
+  table.attr = "style='font-size: 24px;'")
+```
+---
+
+## Step 2: Examine What We Have
+#### Data Type: datetime
+
+```{r}
+#| eval: true
+# Clinical trial data
+datetime <- adsl_meta |>
+  dplyr::filter(adsl_meta$dataType == "datetime")
+
+knitr::kable(
+  head(datetime, 4),
+  format = "html",
+  table.attr = "style='font-size: 24px;'")
+```
+
+---
+
+## Step 2: Examine What We Have
+#### Data Type: date
+
+```{r}
+#| eval: true
+# Clinical trial data
+dates <- adsl_meta |>
+  dplyr::filter(adsl_meta$dataType == "date")
+
+knitr::kable(
+  head(dates, 4),
+  format = "html",
+  table.attr = "style='font-size: 24px;'")
 ```
 
 ---
@@ -70,7 +130,7 @@ head(adsl_meta)
 ## Step 3: Create Dataset-JSON
 
 ```{r}
-#| eval: false
+#| eval: true
 # Convert ADSL to Dataset-JSON
 adsl_json <- dataset_json(
   adsl,
@@ -78,25 +138,37 @@ adsl_json <- dataset_json(
   dataset_label = "Subject Level Analysis Dataset",
   columns = adsl_meta
 )
-
-# Same for ADAE
-adae_json <- dataset_json(
-  adae,
-  name = "ADAE",
-  dataset_label = "Adverse Events Analysis Dataset", 
-  columns = adae_meta
-)
 ```
 
 ---
 
-## Step 4: Share Standardized Files
+## Step 4: Inspect Dataset-JSON Object
 
 ```{r}
-#| eval: false
+#| eval: true
+# Convert ADSL to Dataset-JSON
+head(adsl_json)
+```
+
+---
+
+## Step 4: Inspect Dataset-JSON Object
+#### Dataset-JSON Attributes
+
+```{r}
+#| eval: true
+str(attributes(adsl_json)[c("label", "name", "columns")])
+```
+
+---
+
+## Step 5: Share Standardized Files
+
+```{r}
+#| eval: true
 # Write to Dataset-JSON files
-write_dataset_json(adsl_json, "output/ADSL.json", pretty = TRUE)
-write_dataset_json(adae_json, "output/ADAE.json", pretty = TRUE)
+write_dataset_json(adsl_json, "output/ADSL.json")
+# write_dataset_json(adsl_json, "output/ADSL.json", pretty = TRUE) # use pretty when viewing
 
 # Now anyone can read these files!
 # - Regulatory reviewers
@@ -106,19 +178,43 @@ write_dataset_json(adae_json, "output/ADAE.json", pretty = TRUE)
 
 ---
 
-## Step 5: Read Back Anywhere
+## Step 6: Read Back Anywhere
 
 ```{r}
-#| eval: false
+#| eval: true
 # Read back - gets original data + metadata
 adsl_restored <- read_dataset_json("output/ADSL.json")
 
-# All metadata preserved!
-attr(adsl_restored$USUBJID, "label")
-# "Unique Subject Identifier"
+adsl_restored
+```
 
+---
+
+## Step 6: Read Back Anywhere
+
+```{r}
+#| eval: true
+# Read back - gets original data + metadata
+str(attributes(adsl_restored)[c("label", "name", "columns")])
+```
+
+---
+
+## Compare Original and Restored
+
+```{r}
+#| eval: true
 # Identical to original
 diffdf::diffdf(adsl, adsl_restored)
+```
+
+---
+
+## Compare Original and Restored
+
+```{r}
+#| eval: true
+# compare class and attributes
 waldo::compare(adsl, adsl_restored)
 ```
 
@@ -136,220 +232,28 @@ waldo::compare(adsl, adsl_restored)
 
 ---
 
-<!-- ## The datasetjson R Package -->
-
-<!-- ::: {.incremental} -->
-<!-- - CRAN package for reading and writing Dataset-JSON files -->
-<!-- - Simple, intuitive API -->
-<!-- - Seamless integration with R data.frame objects -->
-<!-- - Preserves CDISC metadata and structure -->
-<!-- - Built-in validation and error handling -->
-<!-- ::: -->
-
-<!-- ## Installation -->
-
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- # From CRAN -->
-<!-- install.packages("datasetjson") -->
-
-<!-- # Development version -->
-<!-- # remotes::install_github("atorus-research/datasetjson") -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- #| echo: false -->
-<!-- library(datasetjson) -->
-<!-- ``` -->
-
-<!-- ## Core Functions -->
-
-<!-- ::: {.incremental} -->
-<!-- - `dataset_json()` - Create datasetjson object from data.frame -->
-<!-- - `write_dataset_json()` - Write datasetjson object to file -->
-<!-- - `read_dataset_json()` - Read Dataset-JSON files to data.frame -->
-<!-- - Helper functions for metadata: `set_*()` functions -->
-<!-- ::: -->
-
-<!-- ## Reading Dataset-JSON Files -->
-
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- # Read from file -->
-<!-- df <- read_dataset_json("path/to/file.json") -->
-
-<!-- # Read from URL -->
-<!-- df <- read_dataset_json("https://example.com/data.json") -->
-
-<!-- # Returns a standard R data.frame -->
-<!-- class(df) -->
-<!-- head(df) -->
-<!-- ``` -->
-
-<!-- ## Writing Dataset-JSON Files -->
-
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- # Create sample data -->
-<!-- df <- data.frame( -->
-<!--   USUBJID = c("001", "002", "003"), -->
-<!--   AGE = c(25, 30, 35), -->
-<!--   SEX = c("M", "F", "M") -->
-<!-- ) -->
-
-<!-- # Create datasetjson object and write to file -->
-<!-- ds_json <- dataset_json(df, name = "DEMO", dataset_label = "Demographics") -->
-<!-- write_dataset_json(ds_json, "output.json") -->
-<!-- ``` -->
-
-<!-- ## Demo: Working with Built-in Data -->
-
-<!-- ```{r} -->
-<!-- # Load sample data -->
-<!-- data("iris") -->
-<!-- head(iris, 3) -->
-<!-- ``` -->
-
-<!-- ## Demo: Convert to Dataset-JSON -->
-
-<!-- ```{r} -->
-<!-- # Convert iris to Dataset-JSON format -->
-<!-- iris_json <- dataset_json(iris, name = "IRIS", dataset_label = "Iris Dataset") -->
-
-<!-- # Examine structure -->
-<!-- names(iris_json) -->
-<!-- ``` -->
-
-<!-- ## Demo: Dataset-JSON Structure -->
-
-<!-- ```{r} -->
-<!-- # View metadata -->
-<!-- iris_json$clinicalData$studyOID -->
-<!-- iris_json$clinicalData$metaDataVersionOID -->
-
-<!-- # View column information -->
-<!-- length(iris_json$clinicalData$itemGroupData$IG.IRIS$items) -->
-<!-- ``` -->
-
-<!-- ## Demo: Write and Read Back -->
-
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- # Create datasetjson object and write to file -->
-<!-- iris_ds <- dataset_json(iris, name = "IRIS", dataset_label = "Iris Dataset") -->
-<!-- write_dataset_json(iris_ds, "iris_dataset.json") -->
-
-<!-- # Read back -->
-<!-- iris_restored <- read_dataset_json("iris_dataset.json") -->
-
-<!-- # Verify identical -->
-<!-- identical(iris, iris_restored) -->
-<!-- ``` -->
-
-<!-- ## Metadata Handling -->
-
-<!-- ::: {.incremental} -->
-<!-- - Automatic data type detection -->
-<!-- - Preserves column labels and formats -->
-<!-- - Handles missing values appropriately -->
-<!-- - Maintains CDISC compliance -->
-<!-- ::: -->
-
-<!-- ## Data Type Mapping -->
-
-<!-- | R Type | Dataset-JSON Type | -->
-<!-- |--------|-------------------| -->
-<!-- | character | text | -->
-<!-- | numeric | float | -->
-<!-- | integer | integer | -->
-<!-- | logical | text | -->
-<!-- | Date | date | -->
-<!-- | POSIXct | datetime | -->
-
-<!-- ## Advanced Features -->
-
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- # Custom metadata with column definitions -->
-<!-- columns <- data.frame( -->
-<!--   itemOID = c("IT.X", "IT.Y"), -->
-<!--   name = c("x", "y"), -->
-<!--   label = c("Subject ID", "Treatment Group"), -->
-<!--   dataType = c("integer", "text") -->
-<!-- ) -->
-
-<!-- df <- data.frame(x = 1:3, y = letters[1:3]) -->
-<!-- json_data <- dataset_json(df, columns = columns) -->
-<!-- ``` -->
-
-<!-- ## Error Handling -->
-
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- # Invalid file handling -->
-<!-- tryCatch({ -->
-<!--   df <- read_dataset_json("nonexistent.json") -->
-<!-- }, error = function(e) { -->
-<!--   message("File not found: ", e$message) -->
-<!-- }) -->
-
-<!-- # Validation on write -->
-<!-- tryCatch({ -->
-<!--   write_dataset_json(invalid_data, "output.json") -->
-<!-- }, error = function(e) { -->
-<!--   message("Validation error: ", e$message) -->
-<!-- }) -->
-<!-- ``` -->
-
-<!-- ## Best Practices -->
-
-<!-- ::: {.incremental} -->
-<!-- - Always validate your data before writing -->
-<!-- - Use meaningful file names and paths -->
-<!-- - Check data types after reading -->
-<!-- - Handle errors gracefully in production code -->
-<!-- - Document your Dataset-JSON workflows -->
-<!-- ::: -->
-
-<!-- ## Integration with Other Packages -->
-
-<!-- ```{r} -->
-<!-- #| eval: false -->
-<!-- library(dplyr) -->
-<!-- library(datasetjson) -->
-
-<!-- # Process data with dplyr, then export -->
-<!-- filtered_cars <- mtcars %>% -->
-<!--   filter(mpg > 20) %>% -->
-<!--   select(mpg, cyl, hp) -->
-
-<!-- ds <- dataset_json(filtered_cars, name = "CARS", dataset_label = "Filtered Cars") -->
-<!-- write_dataset_json(ds, "filtered_cars.json") -->
-<!-- ``` -->
-
 ## Your Turn: Exercises
 
-Time to practice! Open `exercises/01-r.R` and work through:
+Now repeat the whole game with ADAE data! Open `exercises/01-r.R`:
 
 ::: {.incremental}
-1. **Basic Operations** - Read and write Dataset-JSON files
-2. **Data Exploration** - Examine Dataset-JSON structure  
-3. **Data Processing** - Transform and export data
-4. **Error Handling** - Handle common issues
-5. **Advanced Usage** - Work with metadata and attributes
+1. **Load ADAE** - Load data and metadata (RDS or Parquet)
+2. **Examine** - Look at data types and structure
+3. **Convert** - Create Dataset-JSON object
+4. **Write** - Save to standardized file
+5. **Read Back** - Verify round-trip fidelity
 :::
 
 ## Exercise Preview
 
 ```{r}
 #| eval: false
-# Exercise 1: Basic read/write operations
-# Exercise 2: Explore Dataset-JSON structure
-# Exercise 3: Data transformation pipeline
-# Exercise 4: Error handling scenarios
-# Exercise 5: Advanced metadata features
+# Load ADAE data and metadata
+adae <- readRDS("data/adam/adae.rds")
+adae_meta <- readRDS("data/adam/metadata/adae_meta.rds")
 
-# Let's get started!
+# Follow the same steps as ADSL!
+# Convert, write, read back, and compare
 ```
 
 ## Questions?
