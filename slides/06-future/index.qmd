@@ -19,4 +19,73 @@ execute:
 cache: false
 ---
 
-## Placeholder
+# Submission Pilot
+
+# FDA Request For Comments (RFC)
+
+## FDA FR Notice for Dataset-JSON Comments (Part 1 of 2)
+::: {.incremental}
+- In 2022, the FDA evaluated alternatives to serve as possible replacements to SAS V5 XPT
+- The FDA determined that JSON was the optimal modern format to serve as a replacement to SAS V5 XPT
+- JSON is the most commonly used format to represent HL7 FHIR-based EHR data
+- HL7 FHIR has been endorsed for EHR data by the Assistant Secretary for Technology Policy and ONC HIT
+- The CDISC-PHUSE pilot results demonstrated that Dataset-JSON could serve as a transport file for study data
+:::
+
+## FDA FR Notice for Dataset-JSON Comments (Part 2 of 2)
+::: {.incremental}
+- The vast majority of industry comments to the FDA were positive
+- Of the few negative comments, many were dated or inaccurate assessments
+- Several comments requested adequate testing and transition time to accommodate a change
+- Next step may be an FR Notice outlining an official FDA submissions pilot
+:::
+
+# Dataset-JSON API and Compressed Dataset-JSON
+
+## Dataset-JSON API Standard (Part 1 of 2)
+::: {.incremental}
+- A REST-based standard API specification (OAS 3.1) for the exchange of Dataset-JSON datasets
+- The API supports full CRUD operations, but a read-only implementation is valid
+- Primarily implements JSON, but also supports streaming NDJSON
+- Many API clients and servers may never work with Dataset-JSON as a file format
+:::
+
+## Dataset-JSON API Standard (Part 1 of 2)
+::: {.incremental}
+- A User Guide is available to support implementing the API
+- The OAS 3.1 formatted specification can be used to generate code for clients and servers
+- Successfully completed Public Review and the final standard should be published in December 2025
+- A POC API implementation will be available in December 2025
+:::
+
+## Compressed Dataset-JSON (Part 1 of 2)
+:::{.incremental}
+- Based on NDJSON format, which makes it easy to process large datasets.
+- Contents is compressed using a standard DEFLATE algorithm, widely supported by programming languages, including SAS, R, Python.
+- Compression algorithm is widely used and supported: PNG, DOCX, web traffic, etc.
+- Compression is also supported by the API
+:::
+
+## Compressed Dataset-JSON (Part 2 of 2)
+:::{.incremental}
+- SDTM package is 15 times smaller and ADaM package is 18 times smaller (larger datasets see greater compression)
+- All formats (JSON, NDJSON, and Compressed Dataset-JSON) represent the same underlying information
+- Uses the .dsjc file extension
+- Successfully completed Public Review and the final standard should be published in December 2025
+:::
+
+# References
+
+## References (Part 1 of 2)
+- [FDA FR Notice for Dataset-JSON Comments](https://www.federalregister.gov/documents/2025/04/09/2025-06051/electronic-study-data-submission-data-standards-clinical-data-interchange-standards-consortium)
+- [Dataset-JSON API Specification in HTML](https://cdisc-org.github.io/DataExchange-DatasetJson-API/)
+- [Dataset-JSON API Specification User Guide](https://github.com/cdisc-org/DataExchange-DatasetJson-API/blob/main/docs/dataset-json-api-1-0-ug.md)
+- [Dataset-JSON API Specification in OpenAPI Specification](https://github.com/cdisc-org/DataExchange-DatasetJson-API/blob/main/openapi/dataset-json-api-1-0.json)
+- [Compressed Dataset-JSON Specification](https://github.com/cdisc-org/DataExchange-DatasetJson/blob/master/doc/compressed-dataset-json1-1.md)
+
+## References (Part 2 of 2)
+- [NDJSON Standard](https://github.com/ndjson/ndjson-spec)
+- [Parquet Standard](https://parquet.apache.org/)
+- [PHUSE White Paper: Transport for the Next Generation](https://www.cdisc.org/sites/default/files/2023-05/Transport-for-the-Next-Generation-Version-1.0.pdf)
+- [FDA: Test Report for DS-XML Pilot](https://web.archive.org/web/20160208090353/http://www.fda.gov/downloads/ForIndustry/DataStandards/StudyDataStandards/UCM443327.pdf)
+- [Dataset-JSON as an Alternative Transport Format for Regulatory Submissions: Final Pilot Report](https://phuse.s3.eu-central-1.amazonaws.com/Deliverables/Optimizing+the+Use+of+Data+Standards/WP-88+Dataset-JSON+Report.pdf)

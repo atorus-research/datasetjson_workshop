@@ -19,4 +19,306 @@ execute:
 cache: false
 ---
 
-## Placeholder
+## Introduction to Dataset-JSON
+::: {.incremental}
+- Dataset-JSON is a data exchange standard for sharing tabular data using JSON.
+- It is designed to meet a wide range of data exchange scenarios, including regulatory submissions and API-based data exchange.
+- Each Dataset-JSON dataset can optionally reference a Define-XML file.
+- Dataset-JSON uses lowerCamelCase notation for attribute names.
+- Dataset-JSON must contain only one dataset per file.
+:::
+
+## Example Dataset-JSON Top-level Metadata
+```json
+{
+  "datasetJSONCreationDateTime": "2024-07-30T09:38:42",
+  "datasetJSONVersion": "1.1.0",
+  "fileOID": "www.cdisc.org/StudyMSGv2/1/2024-07-30/dd",
+  "dbLastModifiedDateTime": "2020-08-21T09:14:25",
+  "originator": "CDISC SDTM MSG Team",
+  "sourceSystem": {"name": "Sponsor System", "version": "1.0"},
+  "studyOID": "cdisc.com.CDISCPILOT01",
+  "metaDataVersionOID": "MDV.MSGv2.0.SDTMIG.3.3",
+  "metaDataRef": "define.xml",
+  "itemGroupOID": "IG.DD",
+  "records": 3,
+  "name": "DD",
+  "label": "Death Details",
+  "columns": [ ],
+  "rows": [ ]
+}
+```
+
+## Top-level Metadata Attributes (Part 1 of 4)
+
+| Attribute | Description |
+|----------|------------------------|
+| datasetJSONCreationDateTime | The date/time the Dataset-JSON file was created. |
+| datasetJSONVersion | The version of the Dataset-JSON standard used to create the dataset.|
+| fileOID | A unique identifier for this dataset.|
+| dbLastModifiedDateTime | The date/time the source database was last modified. |
+| originator | The organization that generated the dataset. |
+
+## Top-level Metadata Attributes (Part 2 of 4)
+
+| Attribute | Description |
+|-----------|-----------------------|
+| sourceSystem | The information system from which the dataset content was sourced. |
+| sourceSystem.name | The name of the sourceSystem above. |
+| sourceSystem.version | The version of the sourceSystem above. |
+| studyOID | Unique identifier for the study that may function as a foreign key to a Study/@OID in a Define-XML file. |
+
+## Top-level Metadata Attributes (Part 3 of 4)
+
+| Attribute | Description |
+|-----------|-----------------------|
+| metaDataVersionOID | Unique identifier for the metadata version that may also function as a foreign key to a MetaDataVersion/@OID in an associated Define-XML.|
+| metaDataRef | URI for a metadata file describing the dataset, such as a Define-XML file. |
+| itemGroupOID | Unique identifier for the dataset that may function as a foreign key to an ItemGroupDef/@OID in a Define-XML file. |
+| records | The total number of records in a dataset. |
+
+## Top-level Metadata Attributes (Part 4 of 4)
+
+| Attribute | Description |
+|-----------|-----------------------|
+| name | The human readable name for the dataset. |
+| label | A short description of the dataset. |
+| columns | An array of metadata objects that describe the dataset variables. |
+| rows | An array of data record arrays that represent the dataset rows. |
+
+## Column Metadata
+::: {.incremental}
+- **columns** is an array of basic information about dataset variables.
+- The **order of elements** in the array must be the same as **the order of variables** in the described dataset.
+:::
+
+## Example Dataset-JSON Column Metadata
+```json
+ "columns": [
+    {
+      "itemOID": "IT.DD.STUDYID",
+      "name": "STUDYID",
+      "label": "Study Identifier",
+      "dataType": "string",
+      "length": 12,
+      "keySequence": 1
+    },
+    {
+      "itemOID": "IT.DD.DOMAIN",
+      "name": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "dataType": "string",
+      "length": 2
+    }
+]
+```
+
+## Column Metadata Attributes (Part 1 of 2)
+
+| Attribute  | Description |
+|-----------|-----------------------|
+| itemOID | Unique identifier for the variable that may function as a foreign key to an ItemDef/@OID in a Define-XML file. |
+| name | Variable name |
+| label | Variable description |
+| dataType | Logical data type of the variable. |
+
+## Column Metadata Attributes (Part 2 of 2)
+| Attribute  | Description |
+|-----------|-----------------------|
+| targetDataType | The variable with a specified dataType must be converted into the targetDataType when transforming the Dataset-JSON dataset into an operational format. |
+| length | Specifies the number of characters allowed for the variable value when it is represented as a text. The variable lengths are planned lengths. |
+| displayFormat | A SAS display format value used for data visualization of numeric float and date values. |
+| keySequence | Indicates that this item is a key variable and the order of the keys in the dataset structure. |
+
+## Row Data
+- **rows** is an array of records with variable values.
+- Each record is represented as an array of variable values.
+```json
+"rows": [
+  [1, "MyStudy", "001", "DM", 56],
+  [2, "MyStudy", "002", "DM", 26],
+]
+```
+- Missing values are represented by null.
+```json
+[1, "MyStudy", null, "DM", null],
+```
+- Empty strings are represented by "".
+```json
+[1, "MyStudy", "", "DM", null],
+```
+
+## Date/Time Variables
+::: {.incremental}
+- Timing variables (datetime, date, time) are stored as ISO 8601 strings in the JSON format.
+- The targetDataType attribute needs to be specified when different from dataType attribute or the JSON data type.
+- The targetDataType for the date and datetime variables need not mentioned for SDTM datasets as the logical type is same as JSON.
+- For ADaM datasets, the targetDataType must be set to integer.
+:::
+
+## Example Dates for the TRTSDT, TRTEDT, and ASTDT  Variables (ADaM, numeric)
+```{.json code-line-numbers="4-6,15"}
+"columns": [
+   {"itemOID": "IT.AE.STUDYID", "name": "STUDYID", "label": "Study Identifier",
+   "dataType": "string", "length": 12},
+  {"itemOID": "IT.ADAE.TRTSDT", "name": "TRTSDT",
+   "label": "Date of First Exposure to Treatment", "dataType": "date",
+   "targetDataType": "integer", "displayFormat": "E8601DA."},
+  {"itemOID": "IT.ADAE.TRTEDT", "name": "TRTEDT",
+   "label": "Date of Last Exposure to Treatment", "dataType": "date",
+   "targetDataType": "integer", "displayFormat": "E8601DA."},
+  {"itemOID": "IT.ADAE.ASTDT", "name": "ASTDT",
+   "label": "Analysis Start Date", "dataType": "date",
+   "targetDataType": "integer", "displayFormat": "E8601DA.", "keySequence": 3}
+]
+"rows": [
+  ["CDISCPILOT01", "..."  , "2014-01-02", "2014-07-02", "2014-01-03", "..."]
+]
+```
+
+## Define-XML and Dataset-JSON
+::: {.incremental}
+- Define-XML is an XML standard, while Dataset-JSON uses JSON
+- Dataset-JSON includes the basic metadata needed to process a dataset
+- Common metadata in Dataset-JSON and Define-XML should be the same
+- Dataset-JSON includes an optional reference to a Define-XML
+- Define-XML remains a requirement for submissions
+:::
+
+## Referencing Define-XML (Example 1 of 2)
+```{.json code-line-numbers="10"}
+{
+  "datasetJSONCreationDateTime": "2024-07-30T09:38:42",
+  "datasetJSONVersion": "1.1.0",
+  "fileOID": "www.cdisc.org/StudyMSGv2/1/2024-07-30/dd",
+  "dbLastModifiedDateTime": "2020-08-21T09:14:25",
+  "originator": "CDISC SDTM MSG Team",
+  "sourceSystem": {"name": "Sponsor System", "version": "1.0"},
+  "studyOID": "cdisc.com/CDISCPILOT01",
+  "metaDataVersionOID": "MDV.MSGv2.0.SDTMIG.3.3",
+  "metaDataRef": "define.xml",
+  "itemGroupOID": "IG.DD",
+  "records": 3,
+  "name": "DD",
+  "label": "Death Details",
+  "columns": [ ],
+  "rows": [ ]
+```
+
+## Referencing Define-XML (Example 2 of 2)
+```{.json code-line-numbers="10"}
+{
+  "datasetJSONCreationDateTime": "2024-07-30T09:38:42",
+  "datasetJSONVersion": "1.1.0",
+  "fileOID": "www.cdisc.org/StudyMSGv2/1/2024-07-30/dd",
+  "dbLastModifiedDateTime": "2020-08-21T09:14:25",
+  "originator": "CDISC SDTM MSG Team",
+  "sourceSystem": {"name": "Sponsor System", "version": "1.0"},
+  "studyOID": "cdisc.com/CDISCPILOT01",
+  "metaDataVersionOID": "MDV.MSGv2.0.SDTMIG.3.3",
+  "metaDataRef": "https://metadata.location.org/CDISCPILOT01/define.xml",
+  "itemGroupOID": "IG.DD",
+  "records": 3,
+  "name": "DD",
+  "label": "Death Details",
+  "columns": [ ],
+  "rows": [ ]
+```
+
+# The NDJSON Format
+
+## What is NDJSON?
+::: {.incremental}
+- NDJSON = Newline Delimited JSON - each line is valid JSON
+- NDJSON is a standard for delimiting JSON in stream protocols
+- NDJSON is a variation of JSON that's designed for bulk data transfer
+- Dataset-JSON NDJSON and JSON formatted datasets have the same content
+- NDJSON content is written or read as 1 line of valid JSON at a time
+:::
+
+## Why NDJSON for Dataset-JSON?
+::: {.incremental}
+- The NDJSON representation simplifies streaming large datasets
+- Datasets can easily be read or written one row at a time without loading the entire dataset into memory
+- Most programming languages have libraries that read a large JSON dataset as a stream.
+- NDJSON makes it easy for the program to read and write a row at a time.
+:::
+
+## When to use NDJSON?
+::: {.incremental}
+- In a data exchange scenario, the sender and receiver determine whether to use the JSON or NDJSON representation of Dataset-JSON
+- No official guidelines on when to use 1 format over the other
+- NDJSON targets large dataset processing but can be used anytime the sender and receiver agree to use the format
+- Converting between JSON and NDJSON is straightforward
+- Standard Dataset-JSON API specification supports streaming NDJSON
+:::
+
+## How to create NDJSON from Dataset-JSON
+- Row 1: all the Dataset-JSON metadata is represented as a JSON object in one row
+    - Includes dataset metadata and column definitions
+- Row 2-n: each data row is written as an array in a single line of JSON
+- NDJSON files use `.ndjson` as the extension
+    - JSON files use `.json` as the extension
+
+## NDJSON Example
+```json
+{"datasetJSONCreationDateTime": "2023-06-28T15:38:43", "datasetJSONVersion": "1.1.0", "fileOID": "..." }
+[1, "CDISCPILOT01", "DM", "CDISC001", 84],
+[2, "CDISCPILOT01", "DM", "CDISC002", 76],
+[3, "CDISCPILOT01", "DM", "CDISC003", 61]
+```
+# Processing Dataset-JSON
+
+## Dataset-JSON Open-Source Tools
+::: {.incremental}
+- R conversion package by Atorus Research and Johnson & Johnson
+- Python conversion package by Sam Hume
+- SAS conversion tool by Lex Jansen
+- Dataset-JSON Viewer software
+- Numerous others
+:::
+
+## Dataset-JSON File Size Influencers
+::: {.incremental}
+- Dataset-JSON files tend to be smaller than XPT , with a ratio of ~0.7
+- Pretty printing Dataset-JSON adds newline, tab characters or spaces that inflate the size
+- Compression significantly reduces Dataset-JSON file sizes
+- In XPT, space is allocated for missing values. Dataset-JSON uses empty string quotes or null to represent the missing values.
+- Note: in XPT a missing variable with length=XX occupies XX bytes
+:::
+
+## Dataset-JSON Encoding
+- JSON uses UTF-8 encoding by default
+- UTF-8 encoding:
+    - Supports Unicode and represents any language and alphabet
+    - Is the most widely supported encoding scheme used on the Internet
+    - JSON standard requires UTF-8 support
+- SAS V5 XPORT uses an older encoding scheme
+
+# Validating Dataset-JSON
+
+## Dataset-JSON Validation
+::: {.incremental}
+- **Option 1:** schema validate JSON files using dataset.schema.json
+- **Option 2:** use the LinkML YAML model to validate the dataset
+- **Option 3:** validate NDJSON one line at a time
+- **Note:** schema validation does not replace the need for conformance rule checks
+:::
+
+## References
+- [Camel Case](https://en.wikipedia.org/wiki/Camel_case)
+- [User Guide article on representing numeric dates](https://wiki.cdisc.org/display/PUB/Representing+Numeric+Dates)
+- [Alignment of Dataset-JSON with Define-XML](https://wiki.cdisc.org/display/PUB/Alignment+of+Dataset-JSON+with+Define-XML)
+
+## References: Conversion Software
+- [R conversion package by Atorus Research and Johnson & Johnson](https://github.com/atorus-research/datasetjson)
+- [Python conversion package by Sam Hume](https://github.com/swhume/dataset-json)
+- [SAS conversion tool by Lex Jansen](https://github.com/lexjansen/dataset-json-sas)
+
+## References: Viewer Software
+- [Dataset-JSON Viewer Hackathon Winner](https://github.com/defineEditor/vde-dataset-viewer)
+- [Dataset-JSON Viewer Hackathon Runner-up](https://github.com/1mgroot/Open-Dataset-JSON)
+- [Dataset-JSON Viewer: JSON Visualizer](https://github.com/pfizer-opensource/JSON_Visualizer)
+- [Dataset-JSON Viewer: Smart Submission Dataset Viewer](https://sourceforge.net/projects/smart-submission-dataset-viewe/)
+- [Dataset-JSON Viewer: R-Shiny](https://github.com/sbarcelo777/Dataset-JSON-hackathon)
+- [Dataset-JSON Viewer: EDA Viewer](https://github.com/explore-eda/dataset-json-viewer)
