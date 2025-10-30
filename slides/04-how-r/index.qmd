@@ -13,6 +13,8 @@ format:
     transition: fade
     slide-number: true
     chalkboard: true
+filters:
+  - output-line-highlight.lua
 execute:
   echo: true
   freeze: false
@@ -23,115 +25,143 @@ cache: false
 
 ## The Whole Game
 
-Let's see the complete workflow with real ADAM data:
+Let's see the complete workflow with [{pharmaverseadam}](https://github.com/pharmaverse/pharmaverseadam) data:
 
-::: {.incremental}
-1. **Start** with ADAM datasets (RDS/Parquet + metadata)
-2. **Combine** data with metadata 
-3. **Convert** to Dataset-JSON
-4. **Share** the standardized file
-5. **Read** it back anywhere
+::: incremental
+1.  **Start** with ADAM datasets (RDS/Parquet/xpt/sas7bdat/...)
+2.  **Prepare** top-level metadata and column metadata
+3.  **Convert** to Dataset-JSON
+4.  **Share** the standardized file
+5.  **Read** it back anywhere
 :::
 
----
+------------------------------------------------------------------------
 
 ## Step 1: Load ADAM Data and Metadata
 
 ```{r}
 #| eval: true
+#| code-line-numbers: 1-2|3-5
 library(datasetjson)
 
 # Load data (RDS, Parquet, ... - your choice)
 adsl <- readRDS("../../data/adam/adsl.rds")
 # adsl <- arrow::read_parquet("adsl.parquet")
+```
 
-# Load metadata
+------------------------------------------------------------------------
+
+## Step 1a: Examine What We Have - ADSL
+
+```{r}
+#| eval: true
+knitr::kable(head(adsl[1:6]), format = "html", table.attr = "style='font-size: 24px;'")
+```
+
+------------------------------------------------------------------------
+
+## Step 2: Prepare Metadata
+
+```{r}
+#| eval: true
+#| 
+# Load column metadata
 adsl_meta <- readRDS("../../data/adam/metadata/adsl_meta.rds")
 # adsl_meta <- arrow::read_parquet("adsl_meta.parquet")
 ```
----
 
-## Step 2: Examine What We Have
+------------------------------------------------------------------------
 
-```{r}
-#| eval: true
-# Clinical trial data
-knitr::kable(
-  head(adsl[1:6]),
-  format = "html",
-  table.attr = "style='font-size: 24px;'")
-```
-
----
-
-## Step 2: Examine What We Have
+## Step 2a: Examine What We Have - adsl_meta
 
 ```{r}
 #| eval: true
-# Metadata follows Dataset-JSON spec
-knitr::kable(
-  head(adsl_meta),
-  format = "html",
-  table.attr = "style='font-size: 24px;'")
+knitr::kable(head(adsl_meta), format = "html", table.attr = "style='font-size: 24px;'")
 ```
 
----
+<!-- --- -->
 
-## Step 2: Examine What We Have
-#### Data Type: float
+<!-- ## Step 2: Examine What We Have -->
 
-```{r}
-#| eval: true
-# Clinical trial data
-floats <- adsl_meta |>
-  dplyr::filter(adsl_meta$dataType == "float")
+<!-- #### Data Type: float -->
 
-knitr::kable(
-  head(floats, 4),
-  format = "html",
-  table.attr = "style='font-size: 24px;'")
-```
----
+<!-- ```{r} -->
 
-## Step 2: Examine What We Have
-#### Data Type: datetime
+<!-- #| eval: true -->
 
-```{r}
-#| eval: true
-# Clinical trial data
-datetime <- adsl_meta |>
-  dplyr::filter(adsl_meta$dataType == "datetime")
+<!-- floats <- adsl_meta |> -->
 
-knitr::kable(
-  head(datetime, 4),
-  format = "html",
-  table.attr = "style='font-size: 24px;'")
-```
+<!--   dplyr::filter(adsl_meta$dataType == "float") -->
 
----
+<!-- knitr::kable( -->
 
-## Step 2: Examine What We Have
-#### Data Type: date
+<!--   head(floats, 4), -->
 
-```{r}
-#| eval: true
-# Clinical trial data
-dates <- adsl_meta |>
-  dplyr::filter(adsl_meta$dataType == "date")
+<!--   format = "html", -->
 
-knitr::kable(
-  head(dates, 4),
-  format = "html",
-  table.attr = "style='font-size: 24px;'")
-```
+<!--   table.attr = "style='font-size: 24px;'") -->
 
----
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ## Step 2: Examine What We Have -->
+
+<!-- #### Data Type: datetime -->
+
+<!-- ```{r} -->
+
+<!-- #| eval: true -->
+
+<!-- datetime <- adsl_meta |> -->
+
+<!--   dplyr::filter(adsl_meta$dataType == "datetime") -->
+
+<!-- knitr::kable( -->
+
+<!--   head(datetime, 4), -->
+
+<!--   format = "html", -->
+
+<!--   table.attr = "style='font-size: 24px;'") -->
+
+<!-- ``` -->
+
+<!-- --- -->
+
+<!-- ## Step 2: Examine What We Have -->
+
+<!-- #### Data Type: date -->
+
+<!-- ```{r} -->
+
+<!-- #| eval: true -->
+
+<!-- dates <- adsl_meta |> -->
+
+<!--   dplyr::filter(adsl_meta$dataType == "date") -->
+
+<!-- knitr::kable( -->
+
+<!--   head(dates, 4), -->
+
+<!--   format = "html", -->
+
+<!--   table.attr = "style='font-size: 24px;'") -->
+
+<!-- ``` -->
+
+------------------------------------------------------------------------
 
 ## Step 3: Create Dataset-JSON
 
 ```{r}
 #| eval: true
+#| code-line-numbers: 1,5,10|1,2,7,8|1,3,9|1,4,6
 # Convert ADSL to Dataset-JSON
+## top-level metadata
+## column/variable metadata
+## rows
 adsl_json <- dataset_json(
   adsl,
   name = "ADSL", 
@@ -140,65 +170,103 @@ adsl_json <- dataset_json(
 )
 ```
 
----
+::: aside
+<a href="https://github.com/cdisc-org/DataExchange-DatasetJson/blob/40b2b23c6792d073bed1ee32e15891077ea90d96/doc/dataset-json1-1.md" target="_blank">CDISC Dataset-JSON v1.1 Specification</a>
+:::
 
-## Step 4: Inspect Dataset-JSON Object
+------------------------------------------------------------------------
+
+## Step 3a: Inspect Dataset-JSON Object
 
 ```{r}
 #| eval: true
-# Convert ADSL to Dataset-JSON
 head(adsl_json)
 ```
 
----
+------------------------------------------------------------------------
 
-## Step 4: Inspect Dataset-JSON Object
-#### Dataset-JSON Attributes
+## Step 3b: Inspect Dataset-JSON Object Attributes
+
+#### class, top-level, column
 
 ```{r}
 #| eval: true
-str(attributes(adsl_json)[c("label", "name", "columns")])
+#| class-output: highlight
+#| output-line-numbers: 5|4,7,8|9-1000
+str(attributes(adsl_json))
 ```
 
----
+------------------------------------------------------------------------
 
-## Step 5: Share Standardized Files
+## Step 4: Share Standardized Files
 
 ```{r}
 #| eval: true
 # Write to Dataset-JSON files
-write_dataset_json(adsl_json, "output/ADSL.json")
-# write_dataset_json(adsl_json, "output/ADSL.json", pretty = TRUE) # use pretty when viewing
-
-# Now anyone can read these files!
-# - Regulatory reviewers
-# - External collaborators  
-# - Different software (R, Python, SAS)
+write_dataset_json(adsl_json, "output/ADSL.json", pretty = TRUE) # use pretty when viewing
 ```
 
----
+<br><br> Now anyone can read these files!
 
-## Step 6: Read Back Anywhere
+-   Regulatory reviewers
+-   External collaborators
+-   Different software (R, Python, SAS)
+
+------------------------------------------------------------------------
+
+## Step 4a: Inspect Dataset-JSON File
+
+```{ojs}
+FileAttachment("output/ADSL.json").json()
+```
+
+------------------------------------------------------------------------
+
+## Step 5: Read Back Anywhere
 
 ```{r}
 #| eval: true
 # Read back - gets original data + metadata
 adsl_restored <- read_dataset_json("output/ADSL.json")
-
-adsl_restored
 ```
 
----
+------------------------------------------------------------------------
 
-## Step 6: Read Back Anywhere
+## Step 5a: Inspect Dataset-JSON Object
 
 ```{r}
 #| eval: true
-# Read back - gets original data + metadata
-str(attributes(adsl_restored)[c("label", "name", "columns")])
+adsl_restored
 ```
 
----
+------------------------------------------------------------------------
+
+## Step 5b: Inspect Dataset-JSON Object Attributes
+
+#### class, top-level, column
+
+```{r}
+#| eval: true
+#| class-output: highlight
+#| output-line-numbers: 4|5,6,7|7-1000
+str(attributes(adsl_restored))
+```
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Step 6: Read Back Anywhere -->
+
+<!-- ```{r} -->
+
+<!-- #| eval: true -->
+
+<!-- # Read back - gets original data + metadata -->
+
+<!-- str(attributes(adsl_restored)[c("label", "name", "columns")]) -->
+
+<!-- ``` -->
+
+------------------------------------------------------------------------
 
 ## Compare Original and Restored
 
@@ -208,7 +276,7 @@ str(attributes(adsl_restored)[c("label", "name", "columns")])
 diffdf::diffdf(adsl, adsl_restored)
 ```
 
----
+------------------------------------------------------------------------
 
 ## Compare Original and Restored
 
@@ -218,30 +286,171 @@ diffdf::diffdf(adsl, adsl_restored)
 waldo::compare(adsl, adsl_restored)
 ```
 
----
+------------------------------------------------------------------------
 
 ## Why This Matters
 
-::: {.incremental}
-- **Format agnostic**: Start with RDS, Parquet, CSV - doesn't matter
-- **Metadata preserved**: Labels, types, all CDISC information
-- **Standardized**: One format for sharing across tools/organizations
-- **Validated**: Built-in schema validation
-- **Round-trip safe**: _Almost_ Perfect data fidelity
+::: incremental
+-   **Format agnostic**: Start with RDS, Parquet, CSV - doesn't matter, convert to RDS
+-   **Metadata preserved**: Labels, types, all CDISC information
+-   **Standardized**: One format for sharing across tools/organizations
+-   **Validated**: Built-in schema validation
+-   **Round-trip safe**: *Almost* Perfect data fidelity
 :::
 
----
+------------------------------------------------------------------------
+
+## *Almost!?!* Perfect Data Fidelity
+
+::: incremental
+-   [R doesn’t have a specific built in type of time. We decided to take on {hms} as a dependency.](https://atorus-research.github.io/datasetjson/articles/date_time_datetime.html)
+    -   Takeaway: You can see a difference in classes and formatting between writing and reading times. We will always apply \`hms::hms()\` to times on read.
+-   [Numeric precision starts to vary around the 7th decimal](https://atorus-research.github.io/datasetjson/articles/precision.html)
+    -   Takeaway: Set the `float_as_decimals` and `decimals_as_floats` arguments to TRUE when writing and reading to preserve 16 digits
+:::
+
+------------------------------------------------------------------------
+
+## Time Demo
+
+```{r}
+#| eval: true
+#| code-line-numbers: 1-6|7-22|23-33|34-40
+# Load libraries and data
+library(datasetjson)
+library(dplyr)
+
+time_df <- head(iris, 5)
+
+# add a time
+time_df['time_col'] <- lubridate::hms(
+  c("10:00:00", "11:30:15", "14:45:30", "18:01:00", "22:15:59")
+  )
+
+# add column metadata for this new time var
+time_items <- iris_items |> bind_rows(
+  data.frame(
+    itemOID = "IT.IR.float_col",
+    name = "time_col",
+    label = "Test time class",
+    dataType = "time",
+    targetDataType = "integer"
+  )
+)
+
+# create datasetjson object and write out
+dsjson <- dataset_json(
+  time_df, 
+  item_oid = "time_df",
+  name = "time_df",
+  dataset_label = "time_df",
+  columns = time_items
+)
+
+json_out <- write_dataset_json(dsjson)
+
+# read back in
+out <- read_dataset_json(json_out)
+```
+
+------------------------------------------------------------------------
+
+## Time Demo - Show class difference
+
+```{r}
+#| class-output: highlight
+#| output-line-numbers: 1-5|6-7
+# class compare
+classes <- list(original = class(time_df$time_col) , new =  class(out$time_col))
+classes
+```
+------------------------------------------------------------------------
+
+## Time Demo - Values
+
+```{r}
+#| class-output: highlight
+#| output-line-numbers: 1|2|3|4|5
+# value compare
+for (i in 1:length(time_df$time_col)) {
+  print(paste("Value from original:", time_df$time_col[i], "| Value from new:", out$time_col[i]))
+}
+```
+
+------------------------------------------------------------------------
+
+## Numeric Precision Demo
+#### Show decimal precision difference
+
+```{r}
+#| eval: true
+#| code-line-numbers: 1-6|7-15|16-25|26-36|37-40
+# Load libraries and data
+library(datasetjson)
+library(dplyr)
+
+test_df <- head(iris, 5)
+
+# add a float/double
+test_df['float_col'] <- c(
+  143.66666666666699825,
+  2/3,
+  1/3,
+  165/37,
+  6/7
+)
+
+# add column metadata for this new float/double
+test_items <- iris_items |> bind_rows(
+  data.frame(
+    itemOID = "IT.IR.float_col",
+    name = "float_col",
+    label = "Test column long decimal",
+    dataType = "float"
+  )
+)
+
+# create datasetjson object and write out
+dsjson <- dataset_json(
+  test_df, 
+  item_oid = "test_df",
+  name = "test_df",
+  dataset_label = "test_df",
+  columns = test_items
+)
+
+json_out <- write_dataset_json(dsjson)
+
+# read back in and subtract
+out <- read_dataset_json(json_out)
+
+test_df$float_col - out$float_col
+```
+
+## Numeric Precision Demo
+#### Use `float_as_decimals` and `decimals_as_floats` arguments
+
+```{r}
+json_out <-write_dataset_json(dsjson, float_as_decimals = TRUE)
+
+out <- read_dataset_json(json_out, decimals_as_floats = TRUE)
+
+test_df$float_col - out$float_col
+```
+
+
+------------------------------------------------------------------------
 
 ## Your Turn: Exercises
 
 Now repeat the whole game with ADAE data! Open `exercises/01-r.R`:
 
-::: {.incremental}
-1. **Load ADAE** - Load data and metadata (RDS or Parquet)
-2. **Examine** - Look at data types and structure
-3. **Convert** - Create Dataset-JSON object
-4. **Write** - Save to standardized file
-5. **Read Back** - Verify round-trip fidelity
+::: incremental
+1.  **Load ADAE** - Load data and metadata (RDS or Parquet)
+2.  **Examine** - Look at data types and structure
+3.  **Convert** - Create Dataset-JSON object
+4.  **Write** - Save to standardized file
+5.  **Read Back** - Verify round-trip fidelity
 :::
 
 ## Exercise Preview
@@ -258,7 +467,7 @@ adae_meta <- readRDS("data/adam/metadata/adae_meta.rds")
 
 ## Questions?
 
-::: {.center}
+::: center
 Ready to dive into the exercises?
 
 Open `exercises/01-r.R` and let's explore the datasetjson package together!
