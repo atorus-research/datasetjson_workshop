@@ -50,7 +50,7 @@ cache: false
 - Many API clients and servers may never work with Dataset-JSON as a file format
 :::
 
-## Dataset-JSON API Standard (Part 1 of 2)
+## Dataset-JSON API Standard (Part 2 of 2)
 ::: {.incremental}
 - A User Guide is available to support implementing the API
 - The OAS 3.1 formatted specification can be used to generate code for clients and servers
