@@ -1,364 +1,364 @@
 {
-  "datasetJSONCreationDateTime": "2025-10-20T14:30:32",
+  "datasetJSONCreationDateTime": "2025-10-30T16:21:53",
   "datasetJSONVersion": "1.1.0",
   "records": 306,
   "name": "ADSL",
   "label": "Subject Level Analysis Dataset",
   "columns": [
     {
-      "dataType": "string",
-      "length": 12,
       "itemOID": "STUDYID",
       "name": "STUDYID",
-      "label": "Study Identifier"
+      "label": "Study Identifier",
+      "dataType": "string",
+      "length": 12
     },
     {
-      "dataType": "string",
-      "length": 11,
       "itemOID": "USUBJID",
       "name": "USUBJID",
-      "label": "Unique Subject Identifier"
+      "label": "Unique Subject Identifier",
+      "dataType": "string",
+      "length": 11
     },
     {
-      "dataType": "string",
-      "length": 4,
       "itemOID": "SUBJID",
       "name": "SUBJID",
-      "label": "Subject Identifier for the Study"
+      "label": "Subject Identifier for the Study",
+      "dataType": "string",
+      "length": 4
     },
     {
-      "dataType": "string",
       "itemOID": "RFSTDTC",
       "name": "RFSTDTC",
-      "label": "Subject Reference Start Date/Time"
+      "label": "Subject Reference Start Date/Time",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "RFENDTC",
       "name": "RFENDTC",
-      "label": "Subject Reference End Date/Time"
+      "label": "Subject Reference End Date/Time",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "RFXSTDTC",
       "name": "RFXSTDTC",
-      "label": "Date/Time of First Study Treatment"
+      "label": "Date/Time of First Study Treatment",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "RFXENDTC",
       "name": "RFXENDTC",
-      "label": "Date/Time of Last Study Treatment"
+      "label": "Date/Time of Last Study Treatment",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "RFICDTC",
       "name": "RFICDTC",
-      "label": "Date/Time of Informed Consent"
+      "label": "Date/Time of Informed Consent",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
-      "length": 16,
       "itemOID": "RFPENDTC",
       "name": "RFPENDTC",
-      "label": "Date/Time of End of Participation"
+      "label": "Date/Time of End of Participation",
+      "dataType": "string",
+      "length": 16
     },
     {
-      "dataType": "string",
       "itemOID": "DTHDTC",
       "name": "DTHDTC",
-      "label": "Date/Time of Death"
+      "label": "Date/Time of Death",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "DTHFL",
       "name": "DTHFL",
-      "label": "Subject Death Flag"
+      "label": "Subject Death Flag",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
-      "length": 3,
       "itemOID": "SITEID",
       "name": "SITEID",
-      "label": "Study Site Identifier"
+      "label": "Study Site Identifier",
+      "dataType": "string",
+      "length": 3
     },
     {
-      "dataType": "float",
       "itemOID": "AGE",
       "name": "AGE",
-      "label": "Age"
+      "label": "Age",
+      "dataType": "float"
     },
     {
-      "dataType": "string",
-      "length": 5,
       "itemOID": "AGEU",
       "name": "AGEU",
-      "label": "Age Units"
+      "label": "Age Units",
+      "dataType": "string",
+      "length": 5
     },
     {
-      "dataType": "string",
-      "length": 1,
       "itemOID": "SEX",
       "name": "SEX",
-      "label": "Sex"
+      "label": "Sex",
+      "dataType": "string",
+      "length": 1
     },
     {
-      "dataType": "string",
-      "length": 32,
       "itemOID": "RACE",
       "name": "RACE",
-      "label": "Race"
+      "label": "Race",
+      "dataType": "string",
+      "length": 32
     },
     {
-      "dataType": "string",
-      "length": 22,
       "itemOID": "ETHNIC",
       "name": "ETHNIC",
-      "label": "Ethnicity"
+      "label": "Ethnicity",
+      "dataType": "string",
+      "length": 22
     },
     {
-      "dataType": "string",
-      "length": 8,
       "itemOID": "ARMCD",
       "name": "ARMCD",
-      "label": "Planned Arm Code"
+      "label": "Planned Arm Code",
+      "dataType": "string",
+      "length": 8
     },
     {
-      "dataType": "string",
-      "length": 20,
       "itemOID": "ARM",
       "name": "ARM",
-      "label": "Description of Planned Arm"
+      "label": "Description of Planned Arm",
+      "dataType": "string",
+      "length": 20
     },
     {
-      "dataType": "string",
-      "length": 8,
       "itemOID": "ACTARMCD",
       "name": "ACTARMCD",
-      "label": "Actual Arm Code"
+      "label": "Actual Arm Code",
+      "dataType": "string",
+      "length": 8
     },
     {
-      "dataType": "string",
-      "length": 20,
       "itemOID": "ACTARM",
       "name": "ACTARM",
-      "label": "Description of Actual Arm"
+      "label": "Description of Actual Arm",
+      "dataType": "string",
+      "length": 20
     },
     {
-      "dataType": "string",
-      "length": 3,
       "itemOID": "COUNTRY",
       "name": "COUNTRY",
-      "label": "Country"
+      "label": "Country",
+      "dataType": "string",
+      "length": 3
     },
     {
-      "dataType": "string",
-      "length": 10,
       "itemOID": "DMDTC",
       "name": "DMDTC",
-      "label": "Date/Time of Collection"
+      "label": "Date/Time of Collection",
+      "dataType": "string",
+      "length": 10
     },
     {
-      "dataType": "float",
       "itemOID": "DMDY",
       "name": "DMDY",
-      "label": "Study Day of Collection"
+      "label": "Study Day of Collection",
+      "dataType": "float"
     },
     {
-      "dataType": "string",
-      "length": 20,
       "itemOID": "TRT01P",
       "name": "TRT01P",
-      "label": "Planned Treatment for Period 01"
+      "label": "Planned Treatment for Period 01",
+      "dataType": "string",
+      "length": 20
     },
     {
-      "dataType": "string",
-      "length": 20,
       "itemOID": "TRT01A",
       "name": "TRT01A",
-      "label": "Actual Treatment for Period 01"
+      "label": "Actual Treatment for Period 01",
+      "dataType": "string",
+      "length": 20
     },
     {
-      "dataType": "datetime",
       "itemOID": "TRTSDTM",
       "name": "TRTSDTM",
       "label": "Datetime of First Exposure to Treatment",
+      "dataType": "datetime",
       "targetDataType": "integer"
     },
     {
-      "dataType": "string",
       "itemOID": "TRTSTMF",
       "name": "TRTSTMF",
-      "label": "Time of First Exposure Imput. Flag"
+      "label": "Time of First Exposure Imput. Flag",
+      "dataType": "string"
     },
     {
-      "dataType": "datetime",
       "itemOID": "TRTEDTM",
       "name": "TRTEDTM",
       "label": "Datetime of Last Exposure to Treatment",
+      "dataType": "datetime",
       "targetDataType": "integer"
     },
     {
-      "dataType": "string",
       "itemOID": "TRTETMF",
       "name": "TRTETMF",
-      "label": "Time of Last Exposure Imput. Flag"
+      "label": "Time of Last Exposure Imput. Flag",
+      "dataType": "string"
     },
     {
-      "dataType": "date",
       "itemOID": "TRTSDT",
       "name": "TRTSDT",
       "label": "Date of First Exposure to Treatment",
+      "dataType": "date",
       "targetDataType": "integer"
     },
     {
-      "dataType": "date",
       "itemOID": "TRTEDT",
       "name": "TRTEDT",
       "label": "Date of Last Exposure to Treatment",
+      "dataType": "date",
       "targetDataType": "integer"
     },
     {
-      "dataType": "float",
       "itemOID": "TRTDURD",
       "name": "TRTDURD",
-      "label": "Total Treatment Duration (Days)"
+      "label": "Total Treatment Duration (Days)",
+      "dataType": "float"
     },
     {
-      "dataType": "date",
       "itemOID": "SCRFDT",
       "name": "SCRFDT",
       "label": "Screen Failure Date",
+      "dataType": "date",
       "targetDataType": "integer"
     },
     {
-      "dataType": "date",
       "itemOID": "EOSDT",
       "name": "EOSDT",
       "label": "End of Study Date",
+      "dataType": "date",
       "targetDataType": "integer"
     },
     {
-      "dataType": "string",
       "itemOID": "EOSSTT",
       "name": "EOSSTT",
-      "label": "End of Study Status"
+      "label": "End of Study Status",
+      "dataType": "string"
     },
     {
-      "dataType": "date",
       "itemOID": "FRVDT",
       "name": "FRVDT",
       "label": "Final Retrieval Visit Date",
+      "dataType": "date",
       "targetDataType": "integer"
     },
     {
-      "dataType": "date",
       "itemOID": "RANDDT",
       "name": "RANDDT",
       "label": "Date of Randomization",
+      "dataType": "date",
       "targetDataType": "integer"
     },
     {
-      "dataType": "date",
       "itemOID": "DTHDT",
       "name": "DTHDT",
       "label": "Date of Death",
+      "dataType": "date",
       "targetDataType": "integer"
     },
     {
-      "dataType": "string",
       "itemOID": "DTHDTF",
       "name": "DTHDTF",
-      "label": "Date of Death Imputation Flag"
+      "label": "Date of Death Imputation Flag",
+      "dataType": "string"
     },
     {
-      "dataType": "float",
       "itemOID": "DTHADY",
       "name": "DTHADY",
-      "label": "Relative Day of Death"
+      "label": "Relative Day of Death",
+      "dataType": "float"
     },
     {
-      "dataType": "float",
       "itemOID": "LDDTHELD",
       "name": "LDDTHELD",
-      "label": "Elapsed Days from Last Dose to Death"
+      "label": "Elapsed Days from Last Dose to Death",
+      "dataType": "float"
     },
     {
-      "dataType": "string",
       "itemOID": "DTHCAUS",
       "name": "DTHCAUS",
-      "label": "Cause of Death"
+      "label": "Cause of Death",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "DTHDOM",
       "name": "DTHDOM",
-      "label": "Domain for Date of Death Collection"
+      "label": "Domain for Date of Death Collection",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "DTHCGR1",
       "name": "DTHCGR1",
-      "label": "Cause of Death Reason 1"
+      "label": "Cause of Death Reason 1",
+      "dataType": "string"
     },
     {
-      "dataType": "date",
       "itemOID": "LSTALVDT",
       "name": "LSTALVDT",
       "label": "Date Last Known Alive",
+      "dataType": "date",
       "targetDataType": "integer"
     },
     {
-      "dataType": "string",
-      "length": 1,
       "itemOID": "SAFFL",
       "name": "SAFFL",
-      "label": "Safety Population Flag"
+      "label": "Safety Population Flag",
+      "dataType": "string",
+      "length": 1
     },
     {
-      "dataType": "string",
-      "length": 9,
       "itemOID": "RACEGR1",
       "name": "RACEGR1",
-      "label": "Pooled Race Group 1"
+      "label": "Pooled Race Group 1",
+      "dataType": "string",
+      "length": 9
     },
     {
-      "dataType": "string",
-      "length": 5,
       "itemOID": "AGEGR1",
       "name": "AGEGR1",
-      "label": "Pooled Age Group 1"
+      "label": "Pooled Age Group 1",
+      "dataType": "string",
+      "length": 5
     },
     {
-      "dataType": "string",
-      "length": 2,
       "itemOID": "REGION1",
       "name": "REGION1",
-      "label": "Geographic Region 1"
+      "label": "Geographic Region 1",
+      "dataType": "string",
+      "length": 2
     },
     {
-      "dataType": "string",
       "itemOID": "LDDTHGR1",
       "name": "LDDTHGR1",
-      "label": "Last Dose to Death - Days Elapsed Grp 1"
+      "label": "Last Dose to Death - Days Elapsed Grp 1",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "DTH30FL",
       "name": "DTH30FL",
-      "label": "Death Within 30 Days of Last Trt Flag"
+      "label": "Death Within 30 Days of Last Trt Flag",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "DTHA30FL",
       "name": "DTHA30FL",
-      "label": "Death After 30 Days from Last Trt Flag"
+      "label": "Death After 30 Days from Last Trt Flag",
+      "dataType": "string"
     },
     {
-      "dataType": "string",
       "itemOID": "DTHB30FL",
       "name": "DTHB30FL",
-      "label": "Death Within 30 Days of First Trt Flag"
+      "label": "Death Within 30 Days of First Trt Flag",
+      "dataType": "string"
     }
   ],
   "rows": [

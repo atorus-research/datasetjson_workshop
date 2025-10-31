@@ -41,7 +41,9 @@ extract_xpt_meta <- function(n, .data) {
 
 # adsl ----
 adsl <- pharmaverseadam::adsl
-adsl_meta <- purrr::map_df(names(adsl), extract_xpt_meta, .data=adsl)
+adsl_meta <- purrr::map_df(names(adsl), extract_xpt_meta, .data=adsl) |>
+  dplyr::select(itemOID, name, label, dataType, targetDataType, length)
+  
 
 ## rds
 saveRDS(adsl, "data/adam/adsl.rds")
@@ -53,7 +55,8 @@ arrow::write_parquet(adsl_meta, "data/adam/metadata/adsl_meta.parquet")
 
 # adae ----
 adae <- pharmaverseadam::adae
-adae_meta <- purrr::map_df(names(adae), extract_xpt_meta, .data=adae)
+adae_meta <- purrr::map_df(names(adae), extract_xpt_meta, .data=adae) |>
+  dplyr::select(itemOID, name, label, dataType, targetDataType, length)
 
 ## rds
 saveRDS(adae, "data/adam/adae.rds")
