@@ -7,8 +7,6 @@
 # 3. Run your code to test it works
 # 4. Check your answers against exercises/answers/01-r-answer.R
 # 5. Ask for help if you get stuck!
-#
-# TIP: Use Ctrl+Enter (Cmd+Enter on Mac) to run individual lines
 
 # Load required libraries
 library(datasetjson)
@@ -47,12 +45,12 @@ if (!file.exists("data")) {
 
 # WG.4 Create Dataset-JSON object
 # TODO: Use dataset_json() to combine the data and metadata
-# HINT: dataset_json(adae, name = "ADAE", dataset_label = "Adverse Events Analysis Dataset", columns = adae_meta)
+# HINT: Only data, name, dataset_label and columns are required.
 # YOUR CODE HERE:
 
 
 # WG.5 Write to standardized file
-# TODO: Use write_dataset_json() to save as "ADAE_complete.json"
+# TODO: Use write_dataset_json() to save as "ADAE.json"
 # YOUR CODE HERE:
 
 
@@ -60,11 +58,13 @@ if (!file.exists("data")) {
 # TODO: Use read_dataset_json() to read the file back
 # Check that labels are preserved and data is identical
 # Pay attention to any time variables - do their classes change?
+# Pay attention to any doubles - do their decimal precisions change?  If so, consider additional arguments for write and read to improve precision.
 # YOUR CODE HERE:
 
 
 # WG.7 Compare original and restored
-# TODO: Use diffdf::diffdf() and waldo::compare() to check differences
+# TODO: Use diffdf::diffdf() and/or waldo::compare() to check differences
+# Hint: If variable types change, check your column/variable metadata
 # YOUR CODE HERE:
 
 
