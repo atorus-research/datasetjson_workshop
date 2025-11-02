@@ -19,4 +19,106 @@ execute:
 cache: false
 ---
 
-## Placeholder
+# How to Read/Write Dataset-JSON using Python
+
+## Getting to Know dsjconvert for Dataset-JSON
+::: {.incremental}
+1. Introduction to the dsjconvert package
+2. Using dsjconvert: as a command-line tool
+3. Using dsjconvert: as a Python package
+4. Exercises: getting your hands dirty
+:::
+
+## Introduction to dsjconvert
+::: {.incremental}
+- Converts SAS XPT and SAS7BDAT files to Dataset-JSON v1.1 in JSON or NDJSON
+- Converts Dataset-JSON in JSON or NDJSON to SAS XPT
+- Validates Dataset-JSON datasets
+- Functions as a CLI application or a Python library
+:::
+
+## dsjconvert Features
+::: {.incremental}
+- **Multiple Input Formats**: Converts XPT, SAS7BDAT, and Dataset-JSON datasets
+- **Dual Output Formats**: Dataset-JSON and SAS XPT
+- **Dual Dataset-JSON Formats**: Supports JSON and NDJSON Dataset-JSON formats
+- **Flexible Metadata**: Use Define-XML metadata or auto-infer from source data
+- **Validation**: Built-in validation against Dataset-JSON schemas
+- **Logging**: Configurable logging levels for debugging
+:::
+
+## Usage: as a CLI Tool
+Convert XPT files using defaults (NDJSON format):
+```bash
+dsjconvert -v -x
+```
+Convert SAS7BDAT files to JSON format:
+```bash
+dsjconvert -v -b --format json
+```
+Convert Dataset-JSON to XPT
+```bash
+dsjconvert -v --to-xpt --input-format ndjson
+```
+
+## Usage: as a Python Library
+```python
+from dsjconvert import XPTConverter, MetadataExtractor
+
+# With Define-XML metadata
+extractor = MetadataExtractor('path/to/define.xml')
+converter = XPTConverter(
+    metadata_extractor=extractor,
+    output_format='ndjson',
+    skip_validation=True
+)
+converter.convert_dataset('input.xpt', 'output_dir')
+
+# Without Define-XML (auto-infer metadata)
+converter = XPTConverter(output_format='ndjson')
+converter.convert_dataset('input.xpt', 'output_dir')
+```
+
+## Usage: as a Python Library
+Convert multiple SAS7BDAT files to JSON format:
+```python
+import os
+from dsjconvert import SAS7BDATConverter
+
+converter = SAS7BDATConverter(output_format='json')
+
+# Get all SAS files
+sas_dir = 'data'
+sas_files = [f for f in os.listdir(sas_dir) if f.endswith('.sas7bdat')]
+
+# Convert each file
+for sas_file in sas_files:
+    input_path = os.path.join(sas_dir, sas_file)
+    output_path = converter.convert_dataset(input_path, 'output')
+    print(f"Converted: {output_path}")
+```
+
+## Usage: as a Python Library
+Convert Dataset-JSON to SAS XPT
+```python
+from dsjconvert import DatasetJSONToXPTConverter
+
+converter = DatasetJSONToXPTConverter(input_format='ndjson')
+xpt_path = converter.convert_dataset('input.ndjson', 'output_dir')
+```
+
+## Questions?
+::: {.incremental}
+- Questions?
+- Let's get into the exercises!
+- The exercises focus on converting to and from Dataset-JSON
+- Open `exercises/02-python.py` and work through the exercises
+:::
+
+## dsjconvert Exercises
+::: {.incremental}
+1. Convert cm.xpt to CM.ndjson using the define.xml metadata
+2. Convert vs.xpt to VS.ndjson without using the define.xml metadata
+3. Convert dm.xpt to DM.json using the define.xml metadata
+4. Convert MH.ndjson to mh.xpt using the define.xml metadata
+:::
