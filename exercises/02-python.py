@@ -29,11 +29,11 @@ def main():
     # SOLUTION to Dataset-JSON conversion exercises using Python and dsjconvert
     # =============================================================================
 
-    # Exercise 1: convert ae.xpt to AE.ndjson using the define.xml metadata
+    # Exercise 1: convert cm.xpt to CM.ndjson using the define.xml metadata
     data_path = Path(__file__).parent.joinpath("data")
-    xpt_file = Path(data_path).joinpath("ae.xpt")
+    xpt_file = Path(data_path).joinpath("cm.xpt")
     define_file = Path(data_path).joinpath("define.xml")
-    # TODO use a function to convert ae.xpt to AE.ndjson using the define.xml metadata
+    # TODO use a function to convert cm.xpt to CM.ndjson using the define.xml metadata
 
     # Exercise 2: convert vs.xpt to VS.ndjson without using the define.xml metadata
     xpt_file = Path(data_path).joinpath("vs.xpt")

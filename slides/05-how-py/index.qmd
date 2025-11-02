@@ -117,8 +117,8 @@ xpt_path = converter.convert_dataset('input.ndjson', 'output_dir')
 
 ## dsjconvert Exercises
 ::: {.incremental}
-1. Convert ae.xpt to AE.ndjson using the define.xml metadata
+1. Convert cm.xpt to CM.ndjson using the define.xml metadata
 2. Convert vs.xpt to VS.ndjson without using the define.xml metadata
-3. Convert dm.xpt to dm.json using the define.xml metadata
+3. Convert dm.xpt to DM.json using the define.xml metadata
 4. Convert MH.ndjson to mh.xpt using the define.xml metadata
 :::
