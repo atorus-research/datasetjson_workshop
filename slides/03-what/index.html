@@ -30,6 +30,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-471efe567f70e2ed53f9fd6b18ccfdfb.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -144,11 +210,496 @@
 
   <p class="date">2025-11-07</p>
 </section>
-<section id="placeholder" class="slide level2">
-<h2>Placeholder</h2>
-
+<section id="introduction-to-dataset-json" class="slide level2">
+<h2>Introduction to Dataset-JSON</h2>
+<ul>
+<li class="fragment">Dataset-JSON is a data exchange standard for sharing tabular data using JSON.</li>
+<li class="fragment">It is designed to meet a wide range of data exchange scenarios, including regulatory submissions and API-based data exchange.</li>
+<li class="fragment">Each Dataset-JSON dataset can optionally reference a Define-XML file.</li>
+<li class="fragment">Dataset-JSON uses lowerCamelCase notation for attribute names.</li>
+<li class="fragment">Dataset-JSON must contain only one dataset per file.</li>
+</ul>
+</section>
+<section id="example-dataset-json-top-level-metadata" class="slide level2">
+<h2>Example Dataset-JSON Top-level Metadata</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a></a><span class="fu">{</span></span>
+<span id="cb1-2"><a></a>  <span class="dt">"datasetJSONCreationDateTime"</span><span class="fu">:</span> <span class="st">"2024-07-30T09:38:42"</span><span class="fu">,</span></span>
+<span id="cb1-3"><a></a>  <span class="dt">"datasetJSONVersion"</span><span class="fu">:</span> <span class="st">"1.1.0"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a></a>  <span class="dt">"fileOID"</span><span class="fu">:</span> <span class="st">"www.cdisc.org/StudyMSGv2/1/2024-07-30/dd"</span><span class="fu">,</span></span>
+<span id="cb1-5"><a></a>  <span class="dt">"dbLastModifiedDateTime"</span><span class="fu">:</span> <span class="st">"2020-08-21T09:14:25"</span><span class="fu">,</span></span>
+<span id="cb1-6"><a></a>  <span class="dt">"originator"</span><span class="fu">:</span> <span class="st">"CDISC SDTM MSG Team"</span><span class="fu">,</span></span>
+<span id="cb1-7"><a></a>  <span class="dt">"sourceSystem"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Sponsor System"</span><span class="fu">,</span> <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"1.0"</span><span class="fu">},</span></span>
+<span id="cb1-8"><a></a>  <span class="dt">"studyOID"</span><span class="fu">:</span> <span class="st">"cdisc.com.CDISCPILOT01"</span><span class="fu">,</span></span>
+<span id="cb1-9"><a></a>  <span class="dt">"metaDataVersionOID"</span><span class="fu">:</span> <span class="st">"MDV.MSGv2.0.SDTMIG.3.3"</span><span class="fu">,</span></span>
+<span id="cb1-10"><a></a>  <span class="dt">"metaDataRef"</span><span class="fu">:</span> <span class="st">"define.xml"</span><span class="fu">,</span></span>
+<span id="cb1-11"><a></a>  <span class="dt">"itemGroupOID"</span><span class="fu">:</span> <span class="st">"IG.DD"</span><span class="fu">,</span></span>
+<span id="cb1-12"><a></a>  <span class="dt">"records"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb1-13"><a></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"DD"</span><span class="fu">,</span></span>
+<span id="cb1-14"><a></a>  <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Death Details"</span><span class="fu">,</span></span>
+<span id="cb1-15"><a></a>  <span class="dt">"columns"</span><span class="fu">:</span> <span class="ot">[</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-16"><a></a>  <span class="dt">"rows"</span><span class="fu">:</span> <span class="ot">[</span> <span class="ot">]</span></span>
+<span id="cb1-17"><a></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="top-level-metadata-attributes-part-1-of-4" class="slide level2">
+<h2>Top-level Metadata Attributes (Part 1 of 4)</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>datasetJSONCreationDateTime</td>
+<td>The date/time the Dataset-JSON file was created.</td>
+</tr>
+<tr class="even">
+<td>datasetJSONVersion</td>
+<td>The version of the Dataset-JSON standard used to create the dataset.</td>
+</tr>
+<tr class="odd">
+<td>fileOID</td>
+<td>A unique identifier for this dataset.</td>
+</tr>
+<tr class="even">
+<td>dbLastModifiedDateTime</td>
+<td>The date/time the source database was last modified.</td>
+</tr>
+<tr class="odd">
+<td>originator</td>
+<td>The organization that generated the dataset.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="top-level-metadata-attributes-part-2-of-4" class="slide level2">
+<h2>Top-level Metadata Attributes (Part 2 of 4)</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sourceSystem</td>
+<td>The information system from which the dataset content was sourced.</td>
+</tr>
+<tr class="even">
+<td>sourceSystem.name</td>
+<td>The name of the sourceSystem above.</td>
+</tr>
+<tr class="odd">
+<td>sourceSystem.version</td>
+<td>The version of the sourceSystem above.</td>
+</tr>
+<tr class="even">
+<td>studyOID</td>
+<td>Unique identifier for the study that may function as a foreign key to a Study/<span class="citation" data-cites="OID">@OID</span> in a Define-XML file.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="top-level-metadata-attributes-part-3-of-4" class="slide level2">
+<h2>Top-level Metadata Attributes (Part 3 of 4)</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>metaDataVersionOID</td>
+<td>Unique identifier for the metadata version that may also function as a foreign key to a MetaDataVersion/<span class="citation" data-cites="OID">@OID</span> in an associated Define-XML.</td>
+</tr>
+<tr class="even">
+<td>metaDataRef</td>
+<td>URI for a metadata file describing the dataset, such as a Define-XML file.</td>
+</tr>
+<tr class="odd">
+<td>itemGroupOID</td>
+<td>Unique identifier for the dataset that may function as a foreign key to an ItemGroupDef/<span class="citation" data-cites="OID">@OID</span> in a Define-XML file.</td>
+</tr>
+<tr class="even">
+<td>records</td>
+<td>The total number of records in a dataset.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="top-level-metadata-attributes-part-4-of-4" class="slide level2">
+<h2>Top-level Metadata Attributes (Part 4 of 4)</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>name</td>
+<td>The human readable name for the dataset.</td>
+</tr>
+<tr class="even">
+<td>label</td>
+<td>A short description of the dataset.</td>
+</tr>
+<tr class="odd">
+<td>columns</td>
+<td>An array of metadata objects that describe the dataset variables.</td>
+</tr>
+<tr class="even">
+<td>rows</td>
+<td>An array of data record arrays that represent the dataset rows.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="column-metadata" class="slide level2">
+<h2>Column Metadata</h2>
+<ul>
+<li class="fragment"><strong>columns</strong> is an array of basic information about dataset variables.</li>
+<li class="fragment">The <strong>order of elements</strong> in the array must be the same as <strong>the order of variables</strong> in the described dataset.</li>
+</ul>
+</section>
+<section id="example-dataset-json-column-metadata" class="slide level2">
+<h2>Example Dataset-JSON Column Metadata</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a></a> <span class="er">"columns":</span> <span class="ot">[</span></span>
+<span id="cb2-2"><a></a>    <span class="fu">{</span></span>
+<span id="cb2-3"><a></a>      <span class="dt">"itemOID"</span><span class="fu">:</span> <span class="st">"IT.DD.STUDYID"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"STUDYID"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Study Identifier"</span><span class="fu">,</span></span>
+<span id="cb2-6"><a></a>      <span class="dt">"dataType"</span><span class="fu">:</span> <span class="st">"string"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a></a>      <span class="dt">"length"</span><span class="fu">:</span> <span class="dv">12</span><span class="fu">,</span></span>
+<span id="cb2-8"><a></a>      <span class="dt">"keySequence"</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb2-9"><a></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb2-10"><a></a>    <span class="fu">{</span></span>
+<span id="cb2-11"><a></a>      <span class="dt">"itemOID"</span><span class="fu">:</span> <span class="st">"IT.DD.DOMAIN"</span><span class="fu">,</span></span>
+<span id="cb2-12"><a></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"DOMAIN"</span><span class="fu">,</span></span>
+<span id="cb2-13"><a></a>      <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Domain Abbreviation"</span><span class="fu">,</span></span>
+<span id="cb2-14"><a></a>      <span class="dt">"dataType"</span><span class="fu">:</span> <span class="st">"string"</span><span class="fu">,</span></span>
+<span id="cb2-15"><a></a>      <span class="dt">"length"</span><span class="fu">:</span> <span class="dv">2</span></span>
+<span id="cb2-16"><a></a>    <span class="fu">}</span></span>
+<span id="cb2-17"><a></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="column-metadata-attributes-part-1-of-2" class="slide level2">
+<h2>Column Metadata Attributes (Part 1 of 2)</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>itemOID</td>
+<td>Unique identifier for the variable that may function as a foreign key to an ItemDef/<span class="citation" data-cites="OID">@OID</span> in a Define-XML file.</td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>Variable name</td>
+</tr>
+<tr class="odd">
+<td>label</td>
+<td>Variable description</td>
+</tr>
+<tr class="even">
+<td>dataType</td>
+<td>Logical data type of the variable.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="column-metadata-attributes-part-2-of-2" class="slide level2">
+<h2>Column Metadata Attributes (Part 2 of 2)</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>targetDataType</td>
+<td>The variable with a specified dataType must be converted into the targetDataType when transforming the Dataset-JSON dataset into an operational format.</td>
+</tr>
+<tr class="even">
+<td>length</td>
+<td>Specifies the number of characters allowed for the variable value when it is represented as a text. The variable lengths are planned lengths.</td>
+</tr>
+<tr class="odd">
+<td>displayFormat</td>
+<td>A SAS display format value used for data visualization of numeric float and date values.</td>
+</tr>
+<tr class="even">
+<td>keySequence</td>
+<td>Indicates that this item is a key variable and the order of the keys in the dataset structure.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="row-data" class="slide level2">
+<h2>Row Data</h2>
+<ul>
+<li><strong>rows</strong> is an array of records with variable values.</li>
+<li>Each record is represented as an array of variable values.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a></a><span class="er">"rows":</span> <span class="ot">[</span></span>
+<span id="cb3-2"><a></a>  <span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="st">"MyStudy"</span><span class="ot">,</span> <span class="st">"001"</span><span class="ot">,</span> <span class="st">"DM"</span><span class="ot">,</span> <span class="dv">56</span><span class="ot">],</span></span>
+<span id="cb3-3"><a></a>  <span class="ot">[</span><span class="dv">2</span><span class="ot">,</span> <span class="st">"MyStudy"</span><span class="ot">,</span> <span class="st">"002"</span><span class="ot">,</span> <span class="st">"DM"</span><span class="ot">,</span> <span class="dv">26</span><span class="ot">],</span></span>
+<span id="cb3-4"><a></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Missing values are represented by null.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb4-1"><a></a><span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="st">"MyStudy"</span><span class="ot">,</span> <span class="kw">null</span><span class="ot">,</span> <span class="st">"DM"</span><span class="ot">,</span> <span class="kw">null</span><span class="ot">]</span><span class="er">,</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Empty strings are represented by ““.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a></a><span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="st">"MyStudy"</span><span class="ot">,</span> <span class="st">""</span><span class="ot">,</span> <span class="st">"DM"</span><span class="ot">,</span> <span class="kw">null</span><span class="ot">]</span><span class="er">,</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="datetime-variables" class="slide level2">
+<h2>Date/Time Variables</h2>
+<ul>
+<li class="fragment">Timing variables (datetime, date, time) are stored as ISO 8601 strings in the JSON format.</li>
+<li class="fragment">The targetDataType attribute needs to be specified when different from dataType attribute or the JSON data type.</li>
+<li class="fragment">The targetDataType for the date and datetime variables need not mentioned for SDTM datasets as the logical type is same as JSON.</li>
+<li class="fragment">For ADaM datasets, the targetDataType must be set to integer.</li>
+</ul>
+</section>
+<section id="example-dates-for-the-trtsdt-trtedt-and-astdt-variables-adam-numeric" class="slide level2">
+<h2>Example Dates for the TRTSDT, TRTEDT, and ASTDT Variables (ADaM, numeric)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-code-line-numbers="4-6,15"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a></a><span class="er">"columns":</span> <span class="ot">[</span></span>
+<span id="cb6-2"><a></a>   <span class="fu">{</span><span class="dt">"itemOID"</span><span class="fu">:</span> <span class="st">"IT.AE.STUDYID"</span><span class="fu">,</span> <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"STUDYID"</span><span class="fu">,</span> <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Study Identifier"</span><span class="fu">,</span></span>
+<span id="cb6-3"><a></a>   <span class="dt">"dataType"</span><span class="fu">:</span> <span class="st">"string"</span><span class="fu">,</span> <span class="dt">"length"</span><span class="fu">:</span> <span class="dv">12</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb6-4"><a></a>  <span class="fu">{</span><span class="dt">"itemOID"</span><span class="fu">:</span> <span class="st">"IT.ADAE.TRTSDT"</span><span class="fu">,</span> <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"TRTSDT"</span><span class="fu">,</span></span>
+<span id="cb6-5"><a></a>   <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Date of First Exposure to Treatment"</span><span class="fu">,</span> <span class="dt">"dataType"</span><span class="fu">:</span> <span class="st">"date"</span><span class="fu">,</span></span>
+<span id="cb6-6"><a></a>   <span class="dt">"targetDataType"</span><span class="fu">:</span> <span class="st">"integer"</span><span class="fu">,</span> <span class="dt">"displayFormat"</span><span class="fu">:</span> <span class="st">"E8601DA."</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb6-7"><a></a>  <span class="fu">{</span><span class="dt">"itemOID"</span><span class="fu">:</span> <span class="st">"IT.ADAE.TRTEDT"</span><span class="fu">,</span> <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"TRTEDT"</span><span class="fu">,</span></span>
+<span id="cb6-8"><a></a>   <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Date of Last Exposure to Treatment"</span><span class="fu">,</span> <span class="dt">"dataType"</span><span class="fu">:</span> <span class="st">"date"</span><span class="fu">,</span></span>
+<span id="cb6-9"><a></a>   <span class="dt">"targetDataType"</span><span class="fu">:</span> <span class="st">"integer"</span><span class="fu">,</span> <span class="dt">"displayFormat"</span><span class="fu">:</span> <span class="st">"E8601DA."</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb6-10"><a></a>  <span class="fu">{</span><span class="dt">"itemOID"</span><span class="fu">:</span> <span class="st">"IT.ADAE.ASTDT"</span><span class="fu">,</span> <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"ASTDT"</span><span class="fu">,</span></span>
+<span id="cb6-11"><a></a>   <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Analysis Start Date"</span><span class="fu">,</span> <span class="dt">"dataType"</span><span class="fu">:</span> <span class="st">"date"</span><span class="fu">,</span></span>
+<span id="cb6-12"><a></a>   <span class="dt">"targetDataType"</span><span class="fu">:</span> <span class="st">"integer"</span><span class="fu">,</span> <span class="dt">"displayFormat"</span><span class="fu">:</span> <span class="st">"E8601DA."</span><span class="fu">,</span> <span class="dt">"keySequence"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">}</span></span>
+<span id="cb6-13"><a></a><span class="ot">]</span></span>
+<span id="cb6-14"><a></a><span class="er">"rows":</span> <span class="ot">[</span></span>
+<span id="cb6-15"><a></a>  <span class="ot">[</span><span class="st">"CDISCPILOT01"</span><span class="ot">,</span> <span class="st">"..."</span>  <span class="ot">,</span> <span class="st">"2014-01-02"</span><span class="ot">,</span> <span class="st">"2014-07-02"</span><span class="ot">,</span> <span class="st">"2014-01-03"</span><span class="ot">,</span> <span class="st">"..."</span><span class="ot">]</span></span>
+<span id="cb6-16"><a></a><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="define-xml-and-dataset-json" class="slide level2">
+<h2>Define-XML and Dataset-JSON</h2>
+<ul>
+<li class="fragment">Define-XML is an XML standard, while Dataset-JSON uses JSON</li>
+<li class="fragment">Dataset-JSON includes the basic metadata needed to process a dataset</li>
+<li class="fragment">Common metadata in Dataset-JSON and Define-XML should be the same</li>
+<li class="fragment">Dataset-JSON includes an optional reference to a Define-XML</li>
+<li class="fragment">Define-XML remains a requirement for submissions</li>
+</ul>
+</section>
+<section id="referencing-define-xml-example-1-of-2" class="slide level2">
+<h2>Referencing Define-XML (Example 1 of 2)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-code-line-numbers="10"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb7-1"><a></a><span class="fu">{</span></span>
+<span id="cb7-2"><a></a>  <span class="dt">"datasetJSONCreationDateTime"</span><span class="fu">:</span> <span class="st">"2024-07-30T09:38:42"</span><span class="fu">,</span></span>
+<span id="cb7-3"><a></a>  <span class="dt">"datasetJSONVersion"</span><span class="fu">:</span> <span class="st">"1.1.0"</span><span class="fu">,</span></span>
+<span id="cb7-4"><a></a>  <span class="dt">"fileOID"</span><span class="fu">:</span> <span class="st">"www.cdisc.org/StudyMSGv2/1/2024-07-30/dd"</span><span class="fu">,</span></span>
+<span id="cb7-5"><a></a>  <span class="dt">"dbLastModifiedDateTime"</span><span class="fu">:</span> <span class="st">"2020-08-21T09:14:25"</span><span class="fu">,</span></span>
+<span id="cb7-6"><a></a>  <span class="dt">"originator"</span><span class="fu">:</span> <span class="st">"CDISC SDTM MSG Team"</span><span class="fu">,</span></span>
+<span id="cb7-7"><a></a>  <span class="dt">"sourceSystem"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Sponsor System"</span><span class="fu">,</span> <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"1.0"</span><span class="fu">},</span></span>
+<span id="cb7-8"><a></a>  <span class="dt">"studyOID"</span><span class="fu">:</span> <span class="st">"cdisc.com/CDISCPILOT01"</span><span class="fu">,</span></span>
+<span id="cb7-9"><a></a>  <span class="dt">"metaDataVersionOID"</span><span class="fu">:</span> <span class="st">"MDV.MSGv2.0.SDTMIG.3.3"</span><span class="fu">,</span></span>
+<span id="cb7-10"><a></a>  <span class="dt">"metaDataRef"</span><span class="fu">:</span> <span class="st">"define.xml"</span><span class="fu">,</span></span>
+<span id="cb7-11"><a></a>  <span class="dt">"itemGroupOID"</span><span class="fu">:</span> <span class="st">"IG.DD"</span><span class="fu">,</span></span>
+<span id="cb7-12"><a></a>  <span class="dt">"records"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb7-13"><a></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"DD"</span><span class="fu">,</span></span>
+<span id="cb7-14"><a></a>  <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Death Details"</span><span class="fu">,</span></span>
+<span id="cb7-15"><a></a>  <span class="dt">"columns"</span><span class="fu">:</span> <span class="ot">[</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb7-16"><a></a>  <span class="dt">"rows"</span><span class="fu">:</span> <span class="ot">[</span> <span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="referencing-define-xml-example-2-of-2" class="slide level2">
+<h2>Referencing Define-XML (Example 2 of 2)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-code-line-numbers="10"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb8-1"><a></a><span class="fu">{</span></span>
+<span id="cb8-2"><a></a>  <span class="dt">"datasetJSONCreationDateTime"</span><span class="fu">:</span> <span class="st">"2024-07-30T09:38:42"</span><span class="fu">,</span></span>
+<span id="cb8-3"><a></a>  <span class="dt">"datasetJSONVersion"</span><span class="fu">:</span> <span class="st">"1.1.0"</span><span class="fu">,</span></span>
+<span id="cb8-4"><a></a>  <span class="dt">"fileOID"</span><span class="fu">:</span> <span class="st">"www.cdisc.org/StudyMSGv2/1/2024-07-30/dd"</span><span class="fu">,</span></span>
+<span id="cb8-5"><a></a>  <span class="dt">"dbLastModifiedDateTime"</span><span class="fu">:</span> <span class="st">"2020-08-21T09:14:25"</span><span class="fu">,</span></span>
+<span id="cb8-6"><a></a>  <span class="dt">"originator"</span><span class="fu">:</span> <span class="st">"CDISC SDTM MSG Team"</span><span class="fu">,</span></span>
+<span id="cb8-7"><a></a>  <span class="dt">"sourceSystem"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Sponsor System"</span><span class="fu">,</span> <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"1.0"</span><span class="fu">},</span></span>
+<span id="cb8-8"><a></a>  <span class="dt">"studyOID"</span><span class="fu">:</span> <span class="st">"cdisc.com/CDISCPILOT01"</span><span class="fu">,</span></span>
+<span id="cb8-9"><a></a>  <span class="dt">"metaDataVersionOID"</span><span class="fu">:</span> <span class="st">"MDV.MSGv2.0.SDTMIG.3.3"</span><span class="fu">,</span></span>
+<span id="cb8-10"><a></a>  <span class="dt">"metaDataRef"</span><span class="fu">:</span> <span class="st">"https://metadata.location.org/CDISCPILOT01/define.xml"</span><span class="fu">,</span></span>
+<span id="cb8-11"><a></a>  <span class="dt">"itemGroupOID"</span><span class="fu">:</span> <span class="st">"IG.DD"</span><span class="fu">,</span></span>
+<span id="cb8-12"><a></a>  <span class="dt">"records"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb8-13"><a></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"DD"</span><span class="fu">,</span></span>
+<span id="cb8-14"><a></a>  <span class="dt">"label"</span><span class="fu">:</span> <span class="st">"Death Details"</span><span class="fu">,</span></span>
+<span id="cb8-15"><a></a>  <span class="dt">"columns"</span><span class="fu">:</span> <span class="ot">[</span> <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb8-16"><a></a>  <span class="dt">"rows"</span><span class="fu">:</span> <span class="ot">[</span> <span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section>
+<section id="the-ndjson-format" class="title-slide slide level1 center">
+<h1>The NDJSON Format</h1>
 
 </section>
+<section id="what-is-ndjson" class="slide level2">
+<h2>What is NDJSON?</h2>
+<ul>
+<li class="fragment">NDJSON = Newline Delimited JSON - each line is valid JSON</li>
+<li class="fragment">NDJSON is a standard for delimiting JSON in stream protocols</li>
+<li class="fragment">NDJSON is a variation of JSON that’s designed for bulk data transfer</li>
+<li class="fragment">Dataset-JSON NDJSON and JSON formatted datasets have the same content</li>
+<li class="fragment">NDJSON content is written or read as 1 line of valid JSON at a time</li>
+</ul>
+</section>
+<section id="why-ndjson-for-dataset-json" class="slide level2">
+<h2>Why NDJSON for Dataset-JSON?</h2>
+<ul>
+<li class="fragment">The NDJSON representation simplifies streaming large datasets</li>
+<li class="fragment">Datasets can easily be read or written one row at a time without loading the entire dataset into memory</li>
+<li class="fragment">Most programming languages have libraries that read a large JSON dataset as a stream.</li>
+<li class="fragment">NDJSON makes it easy for the program to read and write a row at a time.</li>
+</ul>
+</section>
+<section id="when-to-use-ndjson" class="slide level2">
+<h2>When to use NDJSON?</h2>
+<ul>
+<li class="fragment">In a data exchange scenario, the sender and receiver determine whether to use the JSON or NDJSON representation of Dataset-JSON</li>
+<li class="fragment">No official guidelines on when to use 1 format over the other</li>
+<li class="fragment">NDJSON targets large dataset processing but can be used anytime the sender and receiver agree to use the format</li>
+<li class="fragment">Converting between JSON and NDJSON is straightforward</li>
+<li class="fragment">Standard Dataset-JSON API specification supports streaming NDJSON</li>
+</ul>
+</section>
+<section id="how-to-create-ndjson-from-dataset-json" class="slide level2">
+<h2>How to create NDJSON from Dataset-JSON</h2>
+<ul>
+<li>Row 1: all the Dataset-JSON metadata is represented as a JSON object in one row
+<ul>
+<li>Includes dataset metadata and column definitions</li>
+</ul></li>
+<li>Row 2-n: each data row is written as an array in a single line of JSON</li>
+<li>NDJSON files use <code>.ndjson</code> as the extension
+<ul>
+<li>JSON files use <code>.json</code> as the extension</li>
+</ul></li>
+</ul>
+</section>
+<section id="ndjson-example" class="slide level2">
+<h2>NDJSON Example</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb9-1"><a></a><span class="fu">{</span><span class="dt">"datasetJSONCreationDateTime"</span><span class="fu">:</span> <span class="st">"2023-06-28T15:38:43"</span><span class="fu">,</span> <span class="dt">"datasetJSONVersion"</span><span class="fu">:</span> <span class="st">"1.1.0"</span><span class="fu">,</span> <span class="dt">"fileOID"</span><span class="fu">:</span> <span class="st">"..."</span> <span class="fu">}</span></span>
+<span id="cb9-2"><a></a><span class="ot">[</span><span class="dv">1</span><span class="ot">,</span> <span class="st">"CDISCPILOT01"</span><span class="ot">,</span> <span class="st">"DM"</span><span class="ot">,</span> <span class="st">"CDISC001"</span><span class="ot">,</span> <span class="dv">84</span><span class="ot">]</span><span class="er">,</span></span>
+<span id="cb9-3"><a></a><span class="ot">[</span><span class="dv">2</span><span class="ot">,</span> <span class="st">"CDISCPILOT01"</span><span class="ot">,</span> <span class="st">"DM"</span><span class="ot">,</span> <span class="st">"CDISC002"</span><span class="ot">,</span> <span class="dv">76</span><span class="ot">]</span><span class="er">,</span></span>
+<span id="cb9-4"><a></a><span class="ot">[</span><span class="dv">3</span><span class="ot">,</span> <span class="st">"CDISCPILOT01"</span><span class="ot">,</span> <span class="st">"DM"</span><span class="ot">,</span> <span class="st">"CDISC003"</span><span class="ot">,</span> <span class="dv">61</span><span class="ot">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section></section>
+<section>
+<section id="processing-dataset-json" class="title-slide slide level1 center">
+<h1>Processing Dataset-JSON</h1>
+
+</section>
+<section id="dataset-json-open-source-tools" class="slide level2">
+<h2>Dataset-JSON Open-Source Tools</h2>
+<ul>
+<li class="fragment">R conversion package by Atorus Research and Johnson &amp; Johnson</li>
+<li class="fragment">Python conversion package by Sam Hume</li>
+<li class="fragment">SAS conversion tool by Lex Jansen</li>
+<li class="fragment">Dataset-JSON Viewer software</li>
+<li class="fragment">Numerous others</li>
+</ul>
+</section>
+<section id="dataset-json-file-size-influencers" class="slide level2">
+<h2>Dataset-JSON File Size Influencers</h2>
+<ul>
+<li class="fragment">Dataset-JSON files tend to be smaller than XPT , with a ratio of ~0.7</li>
+<li class="fragment">Pretty printing Dataset-JSON adds newline, tab characters or spaces that inflate the size</li>
+<li class="fragment">Compression significantly reduces Dataset-JSON file sizes</li>
+<li class="fragment">In XPT, space is allocated for missing values. Dataset-JSON uses empty string quotes or null to represent the missing values.</li>
+<li class="fragment">Note: in XPT a missing variable with length=XX occupies XX bytes</li>
+</ul>
+</section>
+<section id="dataset-json-encoding" class="slide level2">
+<h2>Dataset-JSON Encoding</h2>
+<ul>
+<li>JSON uses UTF-8 encoding by default</li>
+<li>UTF-8 encoding:
+<ul>
+<li>Supports Unicode and represents any language and alphabet</li>
+<li>Is the most widely supported encoding scheme used on the Internet</li>
+<li>JSON standard requires UTF-8 support</li>
+</ul></li>
+<li>SAS V5 XPORT uses an older encoding scheme</li>
+</ul>
+</section></section>
+<section>
+<section id="validating-dataset-json" class="title-slide slide level1 center">
+<h1>Validating Dataset-JSON</h1>
+
+</section>
+<section id="dataset-json-validation" class="slide level2">
+<h2>Dataset-JSON Validation</h2>
+<ul>
+<li class="fragment"><strong>Option 1:</strong> schema validate JSON files using dataset.schema.json</li>
+<li class="fragment"><strong>Option 2:</strong> use the LinkML YAML model to validate the dataset</li>
+<li class="fragment"><strong>Option 3:</strong> validate NDJSON one line at a time</li>
+<li class="fragment"><strong>Note:</strong> schema validation does not replace the need for conformance rule checks</li>
+</ul>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Camel_case">Camel Case</a></li>
+<li><a href="https://wiki.cdisc.org/display/PUB/Representing+Numeric+Dates">User Guide article on representing numeric dates</a></li>
+<li><a href="https://wiki.cdisc.org/display/PUB/Alignment+of+Dataset-JSON+with+Define-XML">Alignment of Dataset-JSON with Define-XML</a></li>
+</ul>
+</section>
+<section id="references-conversion-software" class="slide level2">
+<h2>References: Conversion Software</h2>
+<ul>
+<li><a href="https://github.com/atorus-research/datasetjson">R conversion package by Atorus Research and Johnson &amp; Johnson</a></li>
+<li><a href="https://github.com/swhume/dataset-json">Python conversion package by Sam Hume</a></li>
+<li><a href="https://github.com/lexjansen/dataset-json-sas">SAS conversion tool by Lex Jansen</a></li>
+</ul>
+</section>
+<section id="references-viewer-software" class="slide level2">
+<h2>References: Viewer Software</h2>
+<ul>
+<li><a href="https://github.com/defineEditor/vde-dataset-viewer">Dataset-JSON Viewer Hackathon Winner</a></li>
+<li><a href="https://github.com/1mgroot/Open-Dataset-JSON">Dataset-JSON Viewer Hackathon Runner-up</a></li>
+<li><a href="https://github.com/pfizer-opensource/JSON_Visualizer">Dataset-JSON Viewer: JSON Visualizer</a></li>
+<li><a href="https://sourceforge.net/projects/smart-submission-dataset-viewe/">Dataset-JSON Viewer: Smart Submission Dataset Viewer</a></li>
+<li><a href="https://github.com/sbarcelo777/Dataset-JSON-hackathon">Dataset-JSON Viewer: R-Shiny</a></li>
+<li><a href="https://github.com/explore-eda/dataset-json-viewer">Dataset-JSON Viewer: EDA Viewer</a></li>
+</ul>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../images/sticker.svg" class="slide-logo"></p>

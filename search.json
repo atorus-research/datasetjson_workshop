@@ -7,18 +7,263 @@
     "text": "Placeholder"
   },
   {
-    "objectID": "slides/05-how-py/index.html#placeholder",
-    "href": "slides/05-how-py/index.html#placeholder",
+    "objectID": "slides/05-how-py/index.html#getting-to-know-dsjconvert-for-dataset-json",
+    "href": "slides/05-how-py/index.html#getting-to-know-dsjconvert-for-dataset-json",
     "title": "How to in python",
-    "section": "Placeholder",
-    "text": "Placeholder"
+    "section": "Getting to Know dsjconvert for Dataset-JSON",
+    "text": "Getting to Know dsjconvert for Dataset-JSON\n\nIntroduction to the dsjconvert package\nUsing dsjconvert: as a command-line tool\nUsing dsjconvert: as a Python package\nExercises: getting your hands dirty"
   },
   {
-    "objectID": "slides/03-what/index.html#placeholder",
-    "href": "slides/03-what/index.html#placeholder",
+    "objectID": "slides/05-how-py/index.html#introduction-to-dsjconvert",
+    "href": "slides/05-how-py/index.html#introduction-to-dsjconvert",
+    "title": "How to in python",
+    "section": "Introduction to dsjconvert",
+    "text": "Introduction to dsjconvert\n\nConverts SAS XPT and SAS7BDAT files to Dataset-JSON v1.1 in JSON or NDJSON\nConverts Dataset-JSON in JSON or NDJSON to SAS XPT\nValidates Dataset-JSON datasets\nFunctions as a CLI application or a Python library"
+  },
+  {
+    "objectID": "slides/05-how-py/index.html#dsjconvert-features",
+    "href": "slides/05-how-py/index.html#dsjconvert-features",
+    "title": "How to in python",
+    "section": "dsjconvert Features",
+    "text": "dsjconvert Features\n\nMultiple Input Formats: Converts XPT, SAS7BDAT, and Dataset-JSON datasets\nDual Output Formats: Dataset-JSON and SAS XPT\nDual Dataset-JSON Formats: Supports JSON and NDJSON Dataset-JSON formats\nFlexible Metadata: Use Define-XML metadata or auto-infer from source data\nValidation: Built-in validation against Dataset-JSON schemas\nLogging: Configurable logging levels for debugging"
+  },
+  {
+    "objectID": "slides/05-how-py/index.html#usage-as-a-cli-tool",
+    "href": "slides/05-how-py/index.html#usage-as-a-cli-tool",
+    "title": "How to in python",
+    "section": "Usage: as a CLI Tool",
+    "text": "Usage: as a CLI Tool\nConvert XPT files using defaults (NDJSON format):\ndsjconvert -v -x\nConvert SAS7BDAT files to JSON format:\ndsjconvert -v -b --format json\nConvert Dataset-JSON to XPT\ndsjconvert -v --to-xpt --input-format ndjson"
+  },
+  {
+    "objectID": "slides/05-how-py/index.html#usage-as-a-python-library",
+    "href": "slides/05-how-py/index.html#usage-as-a-python-library",
+    "title": "How to in python",
+    "section": "Usage: as a Python Library",
+    "text": "Usage: as a Python Library\nfrom dsjconvert import XPTConverter, MetadataExtractor\n\n# With Define-XML metadata\nextractor = MetadataExtractor('path/to/define.xml')\nconverter = XPTConverter(\n    metadata_extractor=extractor,\n    output_format='ndjson',\n    skip_validation=True\n)\nconverter.convert_dataset('input.xpt', 'output_dir')\n\n# Without Define-XML (auto-infer metadata)\nconverter = XPTConverter(output_format='ndjson')\nconverter.convert_dataset('input.xpt', 'output_dir')"
+  },
+  {
+    "objectID": "slides/05-how-py/index.html#usage-as-a-python-library-1",
+    "href": "slides/05-how-py/index.html#usage-as-a-python-library-1",
+    "title": "How to in python",
+    "section": "Usage: as a Python Library",
+    "text": "Usage: as a Python Library\nConvert multiple SAS7BDAT files to JSON format:\nimport os\nfrom dsjconvert import SAS7BDATConverter\n\nconverter = SAS7BDATConverter(output_format='json')\n\n# Get all SAS files\nsas_dir = 'data'\nsas_files = [f for f in os.listdir(sas_dir) if f.endswith('.sas7bdat')]\n\n# Convert each file\nfor sas_file in sas_files:\n    input_path = os.path.join(sas_dir, sas_file)\n    output_path = converter.convert_dataset(input_path, 'output')\n    print(f\"Converted: {output_path}\")"
+  },
+  {
+    "objectID": "slides/05-how-py/index.html#usage-as-a-python-library-2",
+    "href": "slides/05-how-py/index.html#usage-as-a-python-library-2",
+    "title": "How to in python",
+    "section": "Usage: as a Python Library",
+    "text": "Usage: as a Python Library\nConvert Dataset-JSON to SAS XPT\nfrom dsjconvert import DatasetJSONToXPTConverter\n\nconverter = DatasetJSONToXPTConverter(input_format='ndjson')\nxpt_path = converter.convert_dataset('input.ndjson', 'output_dir')"
+  },
+  {
+    "objectID": "slides/05-how-py/index.html#questions",
+    "href": "slides/05-how-py/index.html#questions",
+    "title": "How to in python",
+    "section": "Questions?",
+    "text": "Questions?\n\nQuestions?\nLet’s get into the exercises!\nThe exercises focus on converting to and from Dataset-JSON\nOpen exercises/02-python.py and work through the exercises"
+  },
+  {
+    "objectID": "slides/05-how-py/index.html#dsjconvert-exercises",
+    "href": "slides/05-how-py/index.html#dsjconvert-exercises",
+    "title": "How to in python",
+    "section": "dsjconvert Exercises",
+    "text": "dsjconvert Exercises\n\nConvert cm.xpt to CM.ndjson using the define.xml metadata\nConvert vs.xpt to VS.ndjson without using the define.xml metadata\nConvert dm.xpt to DM.json using the define.xml metadata\nConvert MH.ndjson to mh.xpt using the define.xml metadata"
+  },
+  {
+    "objectID": "slides/03-what/index.html#introduction-to-dataset-json",
+    "href": "slides/03-what/index.html#introduction-to-dataset-json",
     "title": "What is Dataset-JSON",
-    "section": "Placeholder",
-    "text": "Placeholder"
+    "section": "Introduction to Dataset-JSON",
+    "text": "Introduction to Dataset-JSON\n\nDataset-JSON is a data exchange standard for sharing tabular data using JSON.\nIt is designed to meet a wide range of data exchange scenarios, including regulatory submissions and API-based data exchange.\nEach Dataset-JSON dataset can optionally reference a Define-XML file.\nDataset-JSON uses lowerCamelCase notation for attribute names.\nDataset-JSON must contain only one dataset per file."
+  },
+  {
+    "objectID": "slides/03-what/index.html#example-dataset-json-top-level-metadata",
+    "href": "slides/03-what/index.html#example-dataset-json-top-level-metadata",
+    "title": "What is Dataset-JSON",
+    "section": "Example Dataset-JSON Top-level Metadata",
+    "text": "Example Dataset-JSON Top-level Metadata\n{\n  \"datasetJSONCreationDateTime\": \"2024-07-30T09:38:42\",\n  \"datasetJSONVersion\": \"1.1.0\",\n  \"fileOID\": \"www.cdisc.org/StudyMSGv2/1/2024-07-30/dd\",\n  \"dbLastModifiedDateTime\": \"2020-08-21T09:14:25\",\n  \"originator\": \"CDISC SDTM MSG Team\",\n  \"sourceSystem\": {\"name\": \"Sponsor System\", \"version\": \"1.0\"},\n  \"studyOID\": \"cdisc.com.CDISCPILOT01\",\n  \"metaDataVersionOID\": \"MDV.MSGv2.0.SDTMIG.3.3\",\n  \"metaDataRef\": \"define.xml\",\n  \"itemGroupOID\": \"IG.DD\",\n  \"records\": 3,\n  \"name\": \"DD\",\n  \"label\": \"Death Details\",\n  \"columns\": [ ],\n  \"rows\": [ ]\n}"
+  },
+  {
+    "objectID": "slides/03-what/index.html#top-level-metadata-attributes-part-1-of-4",
+    "href": "slides/03-what/index.html#top-level-metadata-attributes-part-1-of-4",
+    "title": "What is Dataset-JSON",
+    "section": "Top-level Metadata Attributes (Part 1 of 4)",
+    "text": "Top-level Metadata Attributes (Part 1 of 4)\n\n\n\n\n\n\n\nAttribute\nDescription\n\n\n\n\ndatasetJSONCreationDateTime\nThe date/time the Dataset-JSON file was created.\n\n\ndatasetJSONVersion\nThe version of the Dataset-JSON standard used to create the dataset.\n\n\nfileOID\nA unique identifier for this dataset.\n\n\ndbLastModifiedDateTime\nThe date/time the source database was last modified.\n\n\noriginator\nThe organization that generated the dataset."
+  },
+  {
+    "objectID": "slides/03-what/index.html#top-level-metadata-attributes-part-2-of-4",
+    "href": "slides/03-what/index.html#top-level-metadata-attributes-part-2-of-4",
+    "title": "What is Dataset-JSON",
+    "section": "Top-level Metadata Attributes (Part 2 of 4)",
+    "text": "Top-level Metadata Attributes (Part 2 of 4)\n\n\n\n\n\n\n\nAttribute\nDescription\n\n\n\n\nsourceSystem\nThe information system from which the dataset content was sourced.\n\n\nsourceSystem.name\nThe name of the sourceSystem above.\n\n\nsourceSystem.version\nThe version of the sourceSystem above.\n\n\nstudyOID\nUnique identifier for the study that may function as a foreign key to a Study/@OID in a Define-XML file."
+  },
+  {
+    "objectID": "slides/03-what/index.html#top-level-metadata-attributes-part-3-of-4",
+    "href": "slides/03-what/index.html#top-level-metadata-attributes-part-3-of-4",
+    "title": "What is Dataset-JSON",
+    "section": "Top-level Metadata Attributes (Part 3 of 4)",
+    "text": "Top-level Metadata Attributes (Part 3 of 4)\n\n\n\n\n\n\n\nAttribute\nDescription\n\n\n\n\nmetaDataVersionOID\nUnique identifier for the metadata version that may also function as a foreign key to a MetaDataVersion/@OID in an associated Define-XML.\n\n\nmetaDataRef\nURI for a metadata file describing the dataset, such as a Define-XML file.\n\n\nitemGroupOID\nUnique identifier for the dataset that may function as a foreign key to an ItemGroupDef/@OID in a Define-XML file.\n\n\nrecords\nThe total number of records in a dataset."
+  },
+  {
+    "objectID": "slides/03-what/index.html#top-level-metadata-attributes-part-4-of-4",
+    "href": "slides/03-what/index.html#top-level-metadata-attributes-part-4-of-4",
+    "title": "What is Dataset-JSON",
+    "section": "Top-level Metadata Attributes (Part 4 of 4)",
+    "text": "Top-level Metadata Attributes (Part 4 of 4)\n\n\n\n\n\n\n\nAttribute\nDescription\n\n\n\n\nname\nThe human readable name for the dataset.\n\n\nlabel\nA short description of the dataset.\n\n\ncolumns\nAn array of metadata objects that describe the dataset variables.\n\n\nrows\nAn array of data record arrays that represent the dataset rows."
+  },
+  {
+    "objectID": "slides/03-what/index.html#column-metadata",
+    "href": "slides/03-what/index.html#column-metadata",
+    "title": "What is Dataset-JSON",
+    "section": "Column Metadata",
+    "text": "Column Metadata\n\ncolumns is an array of basic information about dataset variables.\nThe order of elements in the array must be the same as the order of variables in the described dataset."
+  },
+  {
+    "objectID": "slides/03-what/index.html#example-dataset-json-column-metadata",
+    "href": "slides/03-what/index.html#example-dataset-json-column-metadata",
+    "title": "What is Dataset-JSON",
+    "section": "Example Dataset-JSON Column Metadata",
+    "text": "Example Dataset-JSON Column Metadata\n \"columns\": [\n    {\n      \"itemOID\": \"IT.DD.STUDYID\",\n      \"name\": \"STUDYID\",\n      \"label\": \"Study Identifier\",\n      \"dataType\": \"string\",\n      \"length\": 12,\n      \"keySequence\": 1\n    },\n    {\n      \"itemOID\": \"IT.DD.DOMAIN\",\n      \"name\": \"DOMAIN\",\n      \"label\": \"Domain Abbreviation\",\n      \"dataType\": \"string\",\n      \"length\": 2\n    }\n]"
+  },
+  {
+    "objectID": "slides/03-what/index.html#column-metadata-attributes-part-1-of-2",
+    "href": "slides/03-what/index.html#column-metadata-attributes-part-1-of-2",
+    "title": "What is Dataset-JSON",
+    "section": "Column Metadata Attributes (Part 1 of 2)",
+    "text": "Column Metadata Attributes (Part 1 of 2)\n\n\n\n\n\n\n\nAttribute\nDescription\n\n\n\n\nitemOID\nUnique identifier for the variable that may function as a foreign key to an ItemDef/@OID in a Define-XML file.\n\n\nname\nVariable name\n\n\nlabel\nVariable description\n\n\ndataType\nLogical data type of the variable."
+  },
+  {
+    "objectID": "slides/03-what/index.html#column-metadata-attributes-part-2-of-2",
+    "href": "slides/03-what/index.html#column-metadata-attributes-part-2-of-2",
+    "title": "What is Dataset-JSON",
+    "section": "Column Metadata Attributes (Part 2 of 2)",
+    "text": "Column Metadata Attributes (Part 2 of 2)\n\n\n\n\n\n\n\nAttribute\nDescription\n\n\n\n\ntargetDataType\nThe variable with a specified dataType must be converted into the targetDataType when transforming the Dataset-JSON dataset into an operational format.\n\n\nlength\nSpecifies the number of characters allowed for the variable value when it is represented as a text. The variable lengths are planned lengths.\n\n\ndisplayFormat\nA SAS display format value used for data visualization of numeric float and date values.\n\n\nkeySequence\nIndicates that this item is a key variable and the order of the keys in the dataset structure."
+  },
+  {
+    "objectID": "slides/03-what/index.html#row-data",
+    "href": "slides/03-what/index.html#row-data",
+    "title": "What is Dataset-JSON",
+    "section": "Row Data",
+    "text": "Row Data\n\nrows is an array of records with variable values.\nEach record is represented as an array of variable values.\n\n\"rows\": [\n  [1, \"MyStudy\", \"001\", \"DM\", 56],\n  [2, \"MyStudy\", \"002\", \"DM\", 26],\n]\n\nMissing values are represented by null.\n\n[1, \"MyStudy\", null, \"DM\", null],\n\nEmpty strings are represented by ““.\n\n[1, \"MyStudy\", \"\", \"DM\", null],"
+  },
+  {
+    "objectID": "slides/03-what/index.html#datetime-variables",
+    "href": "slides/03-what/index.html#datetime-variables",
+    "title": "What is Dataset-JSON",
+    "section": "Date/Time Variables",
+    "text": "Date/Time Variables\n\nTiming variables (datetime, date, time) are stored as ISO 8601 strings in the JSON format.\nThe targetDataType attribute needs to be specified when different from dataType attribute or the JSON data type.\nThe targetDataType for the date and datetime variables need not mentioned for SDTM datasets as the logical type is same as JSON.\nFor ADaM datasets, the targetDataType must be set to integer."
+  },
+  {
+    "objectID": "slides/03-what/index.html#example-dates-for-the-trtsdt-trtedt-and-astdt-variables-adam-numeric",
+    "href": "slides/03-what/index.html#example-dates-for-the-trtsdt-trtedt-and-astdt-variables-adam-numeric",
+    "title": "What is Dataset-JSON",
+    "section": "Example Dates for the TRTSDT, TRTEDT, and ASTDT Variables (ADaM, numeric)",
+    "text": "Example Dates for the TRTSDT, TRTEDT, and ASTDT Variables (ADaM, numeric)\n\"columns\": [\n   {\"itemOID\": \"IT.AE.STUDYID\", \"name\": \"STUDYID\", \"label\": \"Study Identifier\",\n   \"dataType\": \"string\", \"length\": 12},\n  {\"itemOID\": \"IT.ADAE.TRTSDT\", \"name\": \"TRTSDT\",\n   \"label\": \"Date of First Exposure to Treatment\", \"dataType\": \"date\",\n   \"targetDataType\": \"integer\", \"displayFormat\": \"E8601DA.\"},\n  {\"itemOID\": \"IT.ADAE.TRTEDT\", \"name\": \"TRTEDT\",\n   \"label\": \"Date of Last Exposure to Treatment\", \"dataType\": \"date\",\n   \"targetDataType\": \"integer\", \"displayFormat\": \"E8601DA.\"},\n  {\"itemOID\": \"IT.ADAE.ASTDT\", \"name\": \"ASTDT\",\n   \"label\": \"Analysis Start Date\", \"dataType\": \"date\",\n   \"targetDataType\": \"integer\", \"displayFormat\": \"E8601DA.\", \"keySequence\": 3}\n]\n\"rows\": [\n  [\"CDISCPILOT01\", \"...\"  , \"2014-01-02\", \"2014-07-02\", \"2014-01-03\", \"...\"]\n]"
+  },
+  {
+    "objectID": "slides/03-what/index.html#define-xml-and-dataset-json",
+    "href": "slides/03-what/index.html#define-xml-and-dataset-json",
+    "title": "What is Dataset-JSON",
+    "section": "Define-XML and Dataset-JSON",
+    "text": "Define-XML and Dataset-JSON\n\nDefine-XML is an XML standard, while Dataset-JSON uses JSON\nDataset-JSON includes the basic metadata needed to process a dataset\nCommon metadata in Dataset-JSON and Define-XML should be the same\nDataset-JSON includes an optional reference to a Define-XML\nDefine-XML remains a requirement for submissions"
+  },
+  {
+    "objectID": "slides/03-what/index.html#referencing-define-xml-example-1-of-2",
+    "href": "slides/03-what/index.html#referencing-define-xml-example-1-of-2",
+    "title": "What is Dataset-JSON",
+    "section": "Referencing Define-XML (Example 1 of 2)",
+    "text": "Referencing Define-XML (Example 1 of 2)\n{\n  \"datasetJSONCreationDateTime\": \"2024-07-30T09:38:42\",\n  \"datasetJSONVersion\": \"1.1.0\",\n  \"fileOID\": \"www.cdisc.org/StudyMSGv2/1/2024-07-30/dd\",\n  \"dbLastModifiedDateTime\": \"2020-08-21T09:14:25\",\n  \"originator\": \"CDISC SDTM MSG Team\",\n  \"sourceSystem\": {\"name\": \"Sponsor System\", \"version\": \"1.0\"},\n  \"studyOID\": \"cdisc.com/CDISCPILOT01\",\n  \"metaDataVersionOID\": \"MDV.MSGv2.0.SDTMIG.3.3\",\n  \"metaDataRef\": \"define.xml\",\n  \"itemGroupOID\": \"IG.DD\",\n  \"records\": 3,\n  \"name\": \"DD\",\n  \"label\": \"Death Details\",\n  \"columns\": [ ],\n  \"rows\": [ ]"
+  },
+  {
+    "objectID": "slides/03-what/index.html#referencing-define-xml-example-2-of-2",
+    "href": "slides/03-what/index.html#referencing-define-xml-example-2-of-2",
+    "title": "What is Dataset-JSON",
+    "section": "Referencing Define-XML (Example 2 of 2)",
+    "text": "Referencing Define-XML (Example 2 of 2)\n{\n  \"datasetJSONCreationDateTime\": \"2024-07-30T09:38:42\",\n  \"datasetJSONVersion\": \"1.1.0\",\n  \"fileOID\": \"www.cdisc.org/StudyMSGv2/1/2024-07-30/dd\",\n  \"dbLastModifiedDateTime\": \"2020-08-21T09:14:25\",\n  \"originator\": \"CDISC SDTM MSG Team\",\n  \"sourceSystem\": {\"name\": \"Sponsor System\", \"version\": \"1.0\"},\n  \"studyOID\": \"cdisc.com/CDISCPILOT01\",\n  \"metaDataVersionOID\": \"MDV.MSGv2.0.SDTMIG.3.3\",\n  \"metaDataRef\": \"https://metadata.location.org/CDISCPILOT01/define.xml\",\n  \"itemGroupOID\": \"IG.DD\",\n  \"records\": 3,\n  \"name\": \"DD\",\n  \"label\": \"Death Details\",\n  \"columns\": [ ],\n  \"rows\": [ ]"
+  },
+  {
+    "objectID": "slides/03-what/index.html#what-is-ndjson",
+    "href": "slides/03-what/index.html#what-is-ndjson",
+    "title": "What is Dataset-JSON",
+    "section": "What is NDJSON?",
+    "text": "What is NDJSON?\n\nNDJSON = Newline Delimited JSON - each line is valid JSON\nNDJSON is a standard for delimiting JSON in stream protocols\nNDJSON is a variation of JSON that’s designed for bulk data transfer\nDataset-JSON NDJSON and JSON formatted datasets have the same content\nNDJSON content is written or read as 1 line of valid JSON at a time"
+  },
+  {
+    "objectID": "slides/03-what/index.html#why-ndjson-for-dataset-json",
+    "href": "slides/03-what/index.html#why-ndjson-for-dataset-json",
+    "title": "What is Dataset-JSON",
+    "section": "Why NDJSON for Dataset-JSON?",
+    "text": "Why NDJSON for Dataset-JSON?\n\nThe NDJSON representation simplifies streaming large datasets\nDatasets can easily be read or written one row at a time without loading the entire dataset into memory\nMost programming languages have libraries that read a large JSON dataset as a stream.\nNDJSON makes it easy for the program to read and write a row at a time."
+  },
+  {
+    "objectID": "slides/03-what/index.html#when-to-use-ndjson",
+    "href": "slides/03-what/index.html#when-to-use-ndjson",
+    "title": "What is Dataset-JSON",
+    "section": "When to use NDJSON?",
+    "text": "When to use NDJSON?\n\nIn a data exchange scenario, the sender and receiver determine whether to use the JSON or NDJSON representation of Dataset-JSON\nNo official guidelines on when to use 1 format over the other\nNDJSON targets large dataset processing but can be used anytime the sender and receiver agree to use the format\nConverting between JSON and NDJSON is straightforward\nStandard Dataset-JSON API specification supports streaming NDJSON"
+  },
+  {
+    "objectID": "slides/03-what/index.html#how-to-create-ndjson-from-dataset-json",
+    "href": "slides/03-what/index.html#how-to-create-ndjson-from-dataset-json",
+    "title": "What is Dataset-JSON",
+    "section": "How to create NDJSON from Dataset-JSON",
+    "text": "How to create NDJSON from Dataset-JSON\n\nRow 1: all the Dataset-JSON metadata is represented as a JSON object in one row\n\nIncludes dataset metadata and column definitions\n\nRow 2-n: each data row is written as an array in a single line of JSON\nNDJSON files use .ndjson as the extension\n\nJSON files use .json as the extension"
+  },
+  {
+    "objectID": "slides/03-what/index.html#ndjson-example",
+    "href": "slides/03-what/index.html#ndjson-example",
+    "title": "What is Dataset-JSON",
+    "section": "NDJSON Example",
+    "text": "NDJSON Example\n{\"datasetJSONCreationDateTime\": \"2023-06-28T15:38:43\", \"datasetJSONVersion\": \"1.1.0\", \"fileOID\": \"...\" }\n[1, \"CDISCPILOT01\", \"DM\", \"CDISC001\", 84],\n[2, \"CDISCPILOT01\", \"DM\", \"CDISC002\", 76],\n[3, \"CDISCPILOT01\", \"DM\", \"CDISC003\", 61]"
+  },
+  {
+    "objectID": "slides/03-what/index.html#dataset-json-open-source-tools",
+    "href": "slides/03-what/index.html#dataset-json-open-source-tools",
+    "title": "What is Dataset-JSON",
+    "section": "Dataset-JSON Open-Source Tools",
+    "text": "Dataset-JSON Open-Source Tools\n\nR conversion package by Atorus Research and Johnson & Johnson\nPython conversion package by Sam Hume\nSAS conversion tool by Lex Jansen\nDataset-JSON Viewer software\nNumerous others"
+  },
+  {
+    "objectID": "slides/03-what/index.html#dataset-json-file-size-influencers",
+    "href": "slides/03-what/index.html#dataset-json-file-size-influencers",
+    "title": "What is Dataset-JSON",
+    "section": "Dataset-JSON File Size Influencers",
+    "text": "Dataset-JSON File Size Influencers\n\nDataset-JSON files tend to be smaller than XPT , with a ratio of ~0.7\nPretty printing Dataset-JSON adds newline, tab characters or spaces that inflate the size\nCompression significantly reduces Dataset-JSON file sizes\nIn XPT, space is allocated for missing values. Dataset-JSON uses empty string quotes or null to represent the missing values.\nNote: in XPT a missing variable with length=XX occupies XX bytes"
+  },
+  {
+    "objectID": "slides/03-what/index.html#dataset-json-encoding",
+    "href": "slides/03-what/index.html#dataset-json-encoding",
+    "title": "What is Dataset-JSON",
+    "section": "Dataset-JSON Encoding",
+    "text": "Dataset-JSON Encoding\n\nJSON uses UTF-8 encoding by default\nUTF-8 encoding:\n\nSupports Unicode and represents any language and alphabet\nIs the most widely supported encoding scheme used on the Internet\nJSON standard requires UTF-8 support\n\nSAS V5 XPORT uses an older encoding scheme"
+  },
+  {
+    "objectID": "slides/03-what/index.html#dataset-json-validation",
+    "href": "slides/03-what/index.html#dataset-json-validation",
+    "title": "What is Dataset-JSON",
+    "section": "Dataset-JSON Validation",
+    "text": "Dataset-JSON Validation\n\nOption 1: schema validate JSON files using dataset.schema.json\nOption 2: use the LinkML YAML model to validate the dataset\nOption 3: validate NDJSON one line at a time\nNote: schema validation does not replace the need for conformance rule checks"
+  },
+  {
+    "objectID": "slides/03-what/index.html#references",
+    "href": "slides/03-what/index.html#references",
+    "title": "What is Dataset-JSON",
+    "section": "References",
+    "text": "References\n\nCamel Case\nUser Guide article on representing numeric dates\nAlignment of Dataset-JSON with Define-XML"
+  },
+  {
+    "objectID": "slides/03-what/index.html#references-conversion-software",
+    "href": "slides/03-what/index.html#references-conversion-software",
+    "title": "What is Dataset-JSON",
+    "section": "References: Conversion Software",
+    "text": "References: Conversion Software\n\nR conversion package by Atorus Research and Johnson & Johnson\nPython conversion package by Sam Hume\nSAS conversion tool by Lex Jansen"
+  },
+  {
+    "objectID": "slides/03-what/index.html#references-viewer-software",
+    "href": "slides/03-what/index.html#references-viewer-software",
+    "title": "What is Dataset-JSON",
+    "section": "References: Viewer Software",
+    "text": "References: Viewer Software\n\nDataset-JSON Viewer Hackathon Winner\nDataset-JSON Viewer Hackathon Runner-up\nDataset-JSON Viewer: JSON Visualizer\nDataset-JSON Viewer: Smart Submission Dataset Viewer\nDataset-JSON Viewer: R-Shiny\nDataset-JSON Viewer: EDA Viewer"
   },
   {
     "objectID": "slides/01-intro/index.html#placeholder",
@@ -92,7 +337,7 @@
     "href": "exercises/exercises.html#python.py-1",
     "title": "Exercises + Solutions",
     "section": "02-python.py",
-    "text": "02-python.py\n\n\n# Placeholder for answers",
+    "text": "02-python.py\n\n\n# R/Pharma 2025 Workshop: dsjconvert in Python\n# Solution to the exercises for hands-on practice with the dsjconvert Python package\n# =============================================================================\n# This is the solution to the Python dsjconvert exercises.\n# =============================================================================\n# EXERCISE INSTRUCTIONS:\n# 1. Load the required packages need to complete the exercises\n# 2. Find the main() function and work through each exercise in order\n# 3. Replace TODO comments with actual Python code\n# 4. Use the examples is the slides to help you, or\n# 5. Check the examples in the dsjconvert README.md (https://github.com/swhume/dataset-json)\n# 6. Run your code to make sure it works\n# 7. Check your answers against exercises/answers/02-python-answer.py\n# 8. Ask for help if you get stuck!\n\nfrom pathlib import Path\nfrom dsjconvert import XPTConverter, MetadataExtractor\nfrom dsjconvert import DatasetJSONToXPTConverter\n\n\ndef convert_xpt_dataset(dsj_format: str, data_path: Path, xpt_file: Path, define_file: Path = None):\n    if define_file:\n        extractor = MetadataExtractor(define_file)\n        converter = XPTConverter(\n            metadata_extractor=extractor,\n            output_format=dsj_format,\n            skip_validation=True\n        )\n    else:\n        converter = XPTConverter(\n            output_format=dsj_format,\n            skip_validation=True\n        )\n    converter.convert_dataset(xpt_file, data_path)\n\n\ndef convert_dsj_dataset(dsj_format: str, data_path: Path, dsj_file: Path):\n    converter = DatasetJSONToXPTConverter(input_format=dsj_format, skip_validation=True)\n    converter.convert_dataset(dsj_file, data_path)\n\n\ndef check_data_dir_exists() -&gt; None:\n    directory_path = Path(\"data\")\n    if not directory_path.is_dir():\n        raise FileNotFoundError(f\"The directory '{directory_path}' does not exist or is not a directory.\")\n\n\ndef main():\n    check_data_dir_exists()\n\n    # =============================================================================\n    # SOLUTION to Dataset-JSON conversion exercises using Python and dsjconvert\n    # =============================================================================\n\n    # Exercise 1: convert cm.xpt to CM.ndjson using the define.xml metadata\n    data_path = Path(__file__).parent.joinpath(\"data\")\n    xpt_file = Path(data_path).joinpath(\"cm.xpt\")\n    define_file = Path(data_path).joinpath(\"define.xml\")\n    # TODO use a function to convert cm.xpt to CM.ndjson using the define.xml metadata\n    convert_xpt_dataset('ndjson', data_path, xpt_file, define_file)\n\n    # Exercise 2: convert vs.xpt to VS.ndjson without using the define.xml metadata\n    xpt_file = Path(data_path).joinpath(\"vs.xpt\")\n    # TODO use a function to convert vs.xpt to VS.ndjson without using the define.xml metadata\n    convert_xpt_dataset('ndjson', data_path, xpt_file)\n\n    # Exercise 3: convert dm.xpt to dm.json using the define.xml metadata\n    xpt_file = Path(data_path).joinpath(\"dm.xpt\")\n    # TODO use a function to convert dm.xpt to dm.json using the define.xml metadata\n    convert_xpt_dataset('json', data_path, xpt_file, define_file)\n\n    # Exercise 4: convert MH.ndjson to mh.xpt using the define.xml metadata\n    dsj_file = Path(data_path).joinpath(\"MH.ndjson\")\n    # TODO use a function to convert MH.ndjson to mh.xpt\n    convert_dsj_dataset(\"ndjson\", data_path, dsj_file)\n\n\nif __name__ == '__main__':\n    main()\n# Placeholder for answers",
     "crumbs": [
       "Exercises + Solutions"
     ]
@@ -108,11 +353,102 @@
     ]
   },
   {
-    "objectID": "slides/02-why/index.html#placeholder",
-    "href": "slides/02-why/index.html#placeholder",
+    "objectID": "slides/02-why/index.html#why-change-from-sas-v5-xport-xpt",
+    "href": "slides/02-why/index.html#why-change-from-sas-v5-xport-xpt",
     "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
-    "section": "Placeholder",
-    "text": "Placeholder"
+    "section": "Why Change from SAS V5 XPORT (XPT)?",
+    "text": "Why Change from SAS V5 XPORT (XPT)?\n\nGame Boy. Sega Genesis. The Casio F-91W. And SAS XPT.\nAll were introduced in 1989.\nIn 1999, the FDA standardized the submission of clinical data using SAS XPT.\nIn 2012, FDA organized a Public Meeting on Study Data Exchange and later conducted the Dataset-XML pilot.\nFrom a programming perspective, we now work in a multilingual world.\nAnd now it may be time for SAS XPT to meet its end."
+  },
+  {
+    "objectID": "slides/02-why/index.html#sas-xpt-limitations-part-1-of-2",
+    "href": "slides/02-why/index.html#sas-xpt-limitations-part-1-of-2",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "SAS XPT Limitations (Part 1 of 2)",
+    "text": "SAS XPT Limitations (Part 1 of 2)\n\nData File Format\n\nLimited variable types\nLimited to US ASCII encoding\n8-character variable names\n40-character labels\n200-character field widths\n\nStorage\n\nInefficient use of storage space\nThe inability to compress datasets leads to file logistical issues (e.g., splitting datasets)"
+  },
+  {
+    "objectID": "slides/02-why/index.html#sas-xpt-limitations-part-1-of-2-1",
+    "href": "slides/02-why/index.html#sas-xpt-limitations-part-1-of-2-1",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "SAS XPT Limitations (Part 1 of 2)",
+    "text": "SAS XPT Limitations (Part 1 of 2)\n\nContent\n\nLacks a robust metadata layer\nOnly works for 2-dimensional data structures\n\nExtensibility\n\nNot extensible"
+  },
+  {
+    "objectID": "slides/02-why/index.html#what-is-dataset-json",
+    "href": "slides/02-why/index.html#what-is-dataset-json",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "What is Dataset-JSON?",
+    "text": "What is Dataset-JSON?\n\nA CDISC data exchange format for tabular datasets\nDesigned to support a broad range of data exchange scenarios\nSupports API and file-based data exchange\nJSON/NDJSON is simple to implement, very stable, and widely supported\nExtensible to support new metadata and new use cases"
+  },
+  {
+    "objectID": "slides/02-why/index.html#why-json",
+    "href": "slides/02-why/index.html#why-json",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "Why JSON?",
+    "text": "Why JSON?\n\nJSON is the most widely used data interchange standard globally\nJSON is a lightweight text-based interchange format\nJSON is very simple and widely supported\nJSON is easy to read and write\nJSON targets data exchange\nJSON is a language independent standard"
+  },
+  {
+    "objectID": "slides/02-why/index.html#dataset-json-as-an-alternative-transport-format-for-regulatory-submissions-pilot",
+    "href": "slides/02-why/index.html#dataset-json-as-an-alternative-transport-format-for-regulatory-submissions-pilot",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "Dataset-JSON as an Alternative Transport Format for Regulatory Submissions Pilot",
+    "text": "Dataset-JSON as an Alternative Transport Format for Regulatory Submissions Pilot\n\nThe pilot was a collaboration between CDISC, PHUSE, and the FDA\nThe pilot final readout occurred in June 2024\nThe pilot demonstrated that Dataset-JSON can transport data without disruption to business\nPilot findings resulted in: (1) standards updates, (2) User’s Guide content, and (3) tool updates and enhancements\nFDA testing included internal testing and external testing including submissions using the test ESG"
+  },
+  {
+    "objectID": "slides/02-why/index.html#json-definition",
+    "href": "slides/02-why/index.html#json-definition",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "JSON Definition",
+    "text": "JSON Definition\nFrom the JSON website: JSON is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. JSON is a text format that is completely language independent but uses conventions that are familiar to programmers. These properties make JSON an ideal data-interchange language."
+  },
+  {
+    "objectID": "slides/02-why/index.html#parquet-definition",
+    "href": "slides/02-why/index.html#parquet-definition",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "Parquet Definition",
+    "text": "Parquet Definition\nFrom the Parquet website: Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval. It provides efficient data compression and encoding schemes with enhanced performance to handle complex data in bulk. We created Parquet to make the advantages of compressed, efficient columnar data representation available to any project in the Hadoop ecosystem."
+  },
+  {
+    "objectID": "slides/02-why/index.html#what-is-the-purpose-of-dataset-json",
+    "href": "slides/02-why/index.html#what-is-the-purpose-of-dataset-json",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "What is the Purpose of Dataset-JSON?",
+    "text": "What is the Purpose of Dataset-JSON?\n\nAddresses the data exchange use case\nAPI and File-based data exchange\nOptimized for breadth of support and ease of implementation for a broad range of data exchange scenarios\nAligned with other data exchange standards, HL7 FHIR and ODM v2.0"
+  },
+  {
+    "objectID": "slides/02-why/index.html#what-is-the-purpose-of-parquet",
+    "href": "slides/02-why/index.html#what-is-the-purpose-of-parquet",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "What is the Purpose of Parquet?",
+    "text": "What is the Purpose of Parquet?\n\nAddresses the storage and analytical processing use case\nFile-based data exchange\nOptimized for storage and analytical data processing performance\nAligned with sponsor statistical computing environment use"
+  },
+  {
+    "objectID": "slides/02-why/index.html#dataset-json-assumptions-part-1-of-2",
+    "href": "slides/02-why/index.html#dataset-json-assumptions-part-1-of-2",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "Dataset-JSON Assumptions (Part 1 of 2)",
+    "text": "Dataset-JSON Assumptions (Part 1 of 2)\n\nData exchange scenarios include datasets generated by applications such as EDC, ePRO, labs, and other data sources\nAPIs will provide the most common means to exchange data\nAligns with:\n\n\nODM v2.0, define.json, and works with Define-XML\nDDF USDM, ARS, CORE, CDISC Library, OAK, and other CDISC projects\nHealthcare data exchange standards like HL7 FHIR"
+  },
+  {
+    "objectID": "slides/02-why/index.html#dataset-json-assumptions-part-2-of-2",
+    "href": "slides/02-why/index.html#dataset-json-assumptions-part-2-of-2",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "Dataset-JSON Assumptions (Part 2 of 2)",
+    "text": "Dataset-JSON Assumptions (Part 2 of 2)\n\nSystems will not make frequent reads/writes to Dataset-JSON files\nExtensible. Most vendors extend ODM-based standards\nMany vendors already import/export JSON\nAddresses SAS XPT limitations\nCommit to creating Dataset-JSON Parquet conversion software"
+  },
+  {
+    "objectID": "slides/02-why/index.html#references-part-1-of-2",
+    "href": "slides/02-why/index.html#references-part-1-of-2",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "References (Part 1 of 2)",
+    "text": "References (Part 1 of 2)\n\nCDISC Dataset-JSON v1.1 Standard\nNo More XPT? Piloting New Dataset-JSON For FDA Submissions\nWhy JSON for Datasets?\nJSON Standard"
+  },
+  {
+    "objectID": "slides/02-why/index.html#references-part-2-of-2",
+    "href": "slides/02-why/index.html#references-part-2-of-2",
+    "title": "[Why Change / Why Dataset-JSON / Why not Parquet?",
+    "section": "References (Part 2 of 2)",
+    "text": "References (Part 2 of 2)\n\nNDJSON Standard\nParquet Standard\nPHUSE White Paper: Transport for the Next Generation\nFDA: Test Report for DS-XML Pilot\nDataset-JSON as an Alternative Transport Format for Regulatory Submissions: Final Pilot Report"
   },
   {
     "objectID": "slides/04-how-r/index.html#the-whole-game",
@@ -203,7 +539,7 @@
     "href": "slides/04-how-r/index.html#step-5b-inspect-dataset-json-object-attributes",
     "title": "How to in R",
     "section": "Step 5b: Inspect Dataset-JSON Object Attributes",
-    "text": "Step 5b: Inspect Dataset-JSON Object Attributes\nclass, top-level, column\n\nstr(attributes(adsl_restored))\n\nList of 9\n $ names                      : chr [1:54] \"STUDYID\" \"USUBJID\" \"SUBJID\" \"RFSTDTC\" ...\n $ row.names                  : int [1:306] 1 2 3 4 5 6 7 8 9 10 ...\n $ class                      : chr [1:3] \"datasetjson_v1_1_0\" \"datasetjson\" \"data.frame\"\n $ datasetJSONVersion         : chr \"1.1.0\"\n $ name                       : chr \"ADSL\"\n $ label                      : chr \"Subject Level Analysis Dataset\"\n $ columns                    :List of 54\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"STUDYID\"\n  .. ..$ name    : chr \"STUDYID\"\n  .. ..$ label   : chr \"Study Identifier\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 12\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"USUBJID\"\n  .. ..$ name    : chr \"USUBJID\"\n  .. ..$ label   : chr \"Unique Subject Identifier\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 11\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"SUBJID\"\n  .. ..$ name    : chr \"SUBJID\"\n  .. ..$ label   : chr \"Subject Identifier for the Study\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 4\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFSTDTC\"\n  .. ..$ name    : chr \"RFSTDTC\"\n  .. ..$ label   : chr \"Subject Reference Start Date/Time\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFENDTC\"\n  .. ..$ name    : chr \"RFENDTC\"\n  .. ..$ label   : chr \"Subject Reference End Date/Time\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFXSTDTC\"\n  .. ..$ name    : chr \"RFXSTDTC\"\n  .. ..$ label   : chr \"Date/Time of First Study Treatment\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFXENDTC\"\n  .. ..$ name    : chr \"RFXENDTC\"\n  .. ..$ label   : chr \"Date/Time of Last Study Treatment\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFICDTC\"\n  .. ..$ name    : chr \"RFICDTC\"\n  .. ..$ label   : chr \"Date/Time of Informed Consent\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"RFPENDTC\"\n  .. ..$ name    : chr \"RFPENDTC\"\n  .. ..$ label   : chr \"Date/Time of End of Participation\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 16\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHDTC\"\n  .. ..$ name    : chr \"DTHDTC\"\n  .. ..$ label   : chr \"Date/Time of Death\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHFL\"\n  .. ..$ name    : chr \"DTHFL\"\n  .. ..$ label   : chr \"Subject Death Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"SITEID\"\n  .. ..$ name    : chr \"SITEID\"\n  .. ..$ label   : chr \"Study Site Identifier\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 3\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"AGE\"\n  .. ..$ name    : chr \"AGE\"\n  .. ..$ label   : chr \"Age\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"AGEU\"\n  .. ..$ name    : chr \"AGEU\"\n  .. ..$ label   : chr \"Age Units\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 5\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"SEX\"\n  .. ..$ name    : chr \"SEX\"\n  .. ..$ label   : chr \"Sex\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 1\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"RACE\"\n  .. ..$ name    : chr \"RACE\"\n  .. ..$ label   : chr \"Race\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 32\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ETHNIC\"\n  .. ..$ name    : chr \"ETHNIC\"\n  .. ..$ label   : chr \"Ethnicity\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 22\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ARMCD\"\n  .. ..$ name    : chr \"ARMCD\"\n  .. ..$ label   : chr \"Planned Arm Code\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 8\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ARM\"\n  .. ..$ name    : chr \"ARM\"\n  .. ..$ label   : chr \"Description of Planned Arm\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 20\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ACTARMCD\"\n  .. ..$ name    : chr \"ACTARMCD\"\n  .. ..$ label   : chr \"Actual Arm Code\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 8\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ACTARM\"\n  .. ..$ name    : chr \"ACTARM\"\n  .. ..$ label   : chr \"Description of Actual Arm\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 20\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"COUNTRY\"\n  .. ..$ name    : chr \"COUNTRY\"\n  .. ..$ label   : chr \"Country\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 3\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"DMDTC\"\n  .. ..$ name    : chr \"DMDTC\"\n  .. ..$ label   : chr \"Date/Time of Collection\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 10\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DMDY\"\n  .. ..$ name    : chr \"DMDY\"\n  .. ..$ label   : chr \"Study Day of Collection\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"TRT01P\"\n  .. ..$ name    : chr \"TRT01P\"\n  .. ..$ label   : chr \"Planned Treatment for Period 01\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 20\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"TRT01A\"\n  .. ..$ name    : chr \"TRT01A\"\n  .. ..$ label   : chr \"Actual Treatment for Period 01\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 20\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"TRTSDTM\"\n  .. ..$ name          : chr \"TRTSDTM\"\n  .. ..$ label         : chr \"Datetime of First Exposure to Treatment\"\n  .. ..$ dataType      : chr \"datetime\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"TRTSTMF\"\n  .. ..$ name    : chr \"TRTSTMF\"\n  .. ..$ label   : chr \"Time of First Exposure Imput. Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"TRTEDTM\"\n  .. ..$ name          : chr \"TRTEDTM\"\n  .. ..$ label         : chr \"Datetime of Last Exposure to Treatment\"\n  .. ..$ dataType      : chr \"datetime\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"TRTETMF\"\n  .. ..$ name    : chr \"TRTETMF\"\n  .. ..$ label   : chr \"Time of Last Exposure Imput. Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"TRTSDT\"\n  .. ..$ name          : chr \"TRTSDT\"\n  .. ..$ label         : chr \"Date of First Exposure to Treatment\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"TRTEDT\"\n  .. ..$ name          : chr \"TRTEDT\"\n  .. ..$ label         : chr \"Date of Last Exposure to Treatment\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"TRTDURD\"\n  .. ..$ name    : chr \"TRTDURD\"\n  .. ..$ label   : chr \"Total Treatment Duration (Days)\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"SCRFDT\"\n  .. ..$ name          : chr \"SCRFDT\"\n  .. ..$ label         : chr \"Screen Failure Date\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"EOSDT\"\n  .. ..$ name          : chr \"EOSDT\"\n  .. ..$ label         : chr \"End of Study Date\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"EOSSTT\"\n  .. ..$ name    : chr \"EOSSTT\"\n  .. ..$ label   : chr \"End of Study Status\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"FRVDT\"\n  .. ..$ name          : chr \"FRVDT\"\n  .. ..$ label         : chr \"Final Retrieval Visit Date\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"RANDDT\"\n  .. ..$ name          : chr \"RANDDT\"\n  .. ..$ label         : chr \"Date of Randomization\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"DTHDT\"\n  .. ..$ name          : chr \"DTHDT\"\n  .. ..$ label         : chr \"Date of Death\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHDTF\"\n  .. ..$ name    : chr \"DTHDTF\"\n  .. ..$ label   : chr \"Date of Death Imputation Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHADY\"\n  .. ..$ name    : chr \"DTHADY\"\n  .. ..$ label   : chr \"Relative Day of Death\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"LDDTHELD\"\n  .. ..$ name    : chr \"LDDTHELD\"\n  .. ..$ label   : chr \"Elapsed Days from Last Dose to Death\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHCAUS\"\n  .. ..$ name    : chr \"DTHCAUS\"\n  .. ..$ label   : chr \"Cause of Death\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHDOM\"\n  .. ..$ name    : chr \"DTHDOM\"\n  .. ..$ label   : chr \"Domain for Date of Death Collection\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHCGR1\"\n  .. ..$ name    : chr \"DTHCGR1\"\n  .. ..$ label   : chr \"Cause of Death Reason 1\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"LSTALVDT\"\n  .. ..$ name          : chr \"LSTALVDT\"\n  .. ..$ label         : chr \"Date Last Known Alive\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"SAFFL\"\n  .. ..$ name    : chr \"SAFFL\"\n  .. ..$ label   : chr \"Safety Population Flag\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 1\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"RACEGR1\"\n  .. ..$ name    : chr \"RACEGR1\"\n  .. ..$ label   : chr \"Pooled Race Group 1\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 9\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"AGEGR1\"\n  .. ..$ name    : chr \"AGEGR1\"\n  .. ..$ label   : chr \"Pooled Age Group 1\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 5\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"REGION1\"\n  .. ..$ name    : chr \"REGION1\"\n  .. ..$ label   : chr \"Geographic Region 1\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 2\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"LDDTHGR1\"\n  .. ..$ name    : chr \"LDDTHGR1\"\n  .. ..$ label   : chr \"Last Dose to Death - Days Elapsed Grp 1\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTH30FL\"\n  .. ..$ name    : chr \"DTH30FL\"\n  .. ..$ label   : chr \"Death Within 30 Days of Last Trt Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHA30FL\"\n  .. ..$ name    : chr \"DTHA30FL\"\n  .. ..$ label   : chr \"Death After 30 Days from Last Trt Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHB30FL\"\n  .. ..$ name    : chr \"DTHB30FL\"\n  .. ..$ label   : chr \"Death Within 30 Days of First Trt Flag\"\n  .. ..$ dataType: chr \"string\"\n $ records                    : int 306\n $ datasetJSONCreationDateTime: chr \"2025-10-31T14:47:35\""
+    "text": "Step 5b: Inspect Dataset-JSON Object Attributes\nclass, top-level, column\n\nstr(attributes(adsl_restored))\n\nList of 9\n $ names                      : chr [1:54] \"STUDYID\" \"USUBJID\" \"SUBJID\" \"RFSTDTC\" ...\n $ row.names                  : int [1:306] 1 2 3 4 5 6 7 8 9 10 ...\n $ class                      : chr [1:3] \"datasetjson_v1_1_0\" \"datasetjson\" \"data.frame\"\n $ datasetJSONVersion         : chr \"1.1.0\"\n $ name                       : chr \"ADSL\"\n $ label                      : chr \"Subject Level Analysis Dataset\"\n $ columns                    :List of 54\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"STUDYID\"\n  .. ..$ name    : chr \"STUDYID\"\n  .. ..$ label   : chr \"Study Identifier\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 12\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"USUBJID\"\n  .. ..$ name    : chr \"USUBJID\"\n  .. ..$ label   : chr \"Unique Subject Identifier\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 11\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"SUBJID\"\n  .. ..$ name    : chr \"SUBJID\"\n  .. ..$ label   : chr \"Subject Identifier for the Study\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 4\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFSTDTC\"\n  .. ..$ name    : chr \"RFSTDTC\"\n  .. ..$ label   : chr \"Subject Reference Start Date/Time\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFENDTC\"\n  .. ..$ name    : chr \"RFENDTC\"\n  .. ..$ label   : chr \"Subject Reference End Date/Time\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFXSTDTC\"\n  .. ..$ name    : chr \"RFXSTDTC\"\n  .. ..$ label   : chr \"Date/Time of First Study Treatment\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFXENDTC\"\n  .. ..$ name    : chr \"RFXENDTC\"\n  .. ..$ label   : chr \"Date/Time of Last Study Treatment\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"RFICDTC\"\n  .. ..$ name    : chr \"RFICDTC\"\n  .. ..$ label   : chr \"Date/Time of Informed Consent\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"RFPENDTC\"\n  .. ..$ name    : chr \"RFPENDTC\"\n  .. ..$ label   : chr \"Date/Time of End of Participation\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 16\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHDTC\"\n  .. ..$ name    : chr \"DTHDTC\"\n  .. ..$ label   : chr \"Date/Time of Death\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHFL\"\n  .. ..$ name    : chr \"DTHFL\"\n  .. ..$ label   : chr \"Subject Death Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"SITEID\"\n  .. ..$ name    : chr \"SITEID\"\n  .. ..$ label   : chr \"Study Site Identifier\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 3\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"AGE\"\n  .. ..$ name    : chr \"AGE\"\n  .. ..$ label   : chr \"Age\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"AGEU\"\n  .. ..$ name    : chr \"AGEU\"\n  .. ..$ label   : chr \"Age Units\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 5\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"SEX\"\n  .. ..$ name    : chr \"SEX\"\n  .. ..$ label   : chr \"Sex\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 1\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"RACE\"\n  .. ..$ name    : chr \"RACE\"\n  .. ..$ label   : chr \"Race\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 32\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ETHNIC\"\n  .. ..$ name    : chr \"ETHNIC\"\n  .. ..$ label   : chr \"Ethnicity\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 22\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ARMCD\"\n  .. ..$ name    : chr \"ARMCD\"\n  .. ..$ label   : chr \"Planned Arm Code\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 8\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ARM\"\n  .. ..$ name    : chr \"ARM\"\n  .. ..$ label   : chr \"Description of Planned Arm\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 20\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ACTARMCD\"\n  .. ..$ name    : chr \"ACTARMCD\"\n  .. ..$ label   : chr \"Actual Arm Code\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 8\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"ACTARM\"\n  .. ..$ name    : chr \"ACTARM\"\n  .. ..$ label   : chr \"Description of Actual Arm\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 20\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"COUNTRY\"\n  .. ..$ name    : chr \"COUNTRY\"\n  .. ..$ label   : chr \"Country\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 3\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"DMDTC\"\n  .. ..$ name    : chr \"DMDTC\"\n  .. ..$ label   : chr \"Date/Time of Collection\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 10\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DMDY\"\n  .. ..$ name    : chr \"DMDY\"\n  .. ..$ label   : chr \"Study Day of Collection\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"TRT01P\"\n  .. ..$ name    : chr \"TRT01P\"\n  .. ..$ label   : chr \"Planned Treatment for Period 01\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 20\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"TRT01A\"\n  .. ..$ name    : chr \"TRT01A\"\n  .. ..$ label   : chr \"Actual Treatment for Period 01\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 20\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"TRTSDTM\"\n  .. ..$ name          : chr \"TRTSDTM\"\n  .. ..$ label         : chr \"Datetime of First Exposure to Treatment\"\n  .. ..$ dataType      : chr \"datetime\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"TRTSTMF\"\n  .. ..$ name    : chr \"TRTSTMF\"\n  .. ..$ label   : chr \"Time of First Exposure Imput. Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"TRTEDTM\"\n  .. ..$ name          : chr \"TRTEDTM\"\n  .. ..$ label         : chr \"Datetime of Last Exposure to Treatment\"\n  .. ..$ dataType      : chr \"datetime\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"TRTETMF\"\n  .. ..$ name    : chr \"TRTETMF\"\n  .. ..$ label   : chr \"Time of Last Exposure Imput. Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"TRTSDT\"\n  .. ..$ name          : chr \"TRTSDT\"\n  .. ..$ label         : chr \"Date of First Exposure to Treatment\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"TRTEDT\"\n  .. ..$ name          : chr \"TRTEDT\"\n  .. ..$ label         : chr \"Date of Last Exposure to Treatment\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"TRTDURD\"\n  .. ..$ name    : chr \"TRTDURD\"\n  .. ..$ label   : chr \"Total Treatment Duration (Days)\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"SCRFDT\"\n  .. ..$ name          : chr \"SCRFDT\"\n  .. ..$ label         : chr \"Screen Failure Date\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"EOSDT\"\n  .. ..$ name          : chr \"EOSDT\"\n  .. ..$ label         : chr \"End of Study Date\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"EOSSTT\"\n  .. ..$ name    : chr \"EOSSTT\"\n  .. ..$ label   : chr \"End of Study Status\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"FRVDT\"\n  .. ..$ name          : chr \"FRVDT\"\n  .. ..$ label         : chr \"Final Retrieval Visit Date\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"RANDDT\"\n  .. ..$ name          : chr \"RANDDT\"\n  .. ..$ label         : chr \"Date of Randomization\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"DTHDT\"\n  .. ..$ name          : chr \"DTHDT\"\n  .. ..$ label         : chr \"Date of Death\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHDTF\"\n  .. ..$ name    : chr \"DTHDTF\"\n  .. ..$ label   : chr \"Date of Death Imputation Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHADY\"\n  .. ..$ name    : chr \"DTHADY\"\n  .. ..$ label   : chr \"Relative Day of Death\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"LDDTHELD\"\n  .. ..$ name    : chr \"LDDTHELD\"\n  .. ..$ label   : chr \"Elapsed Days from Last Dose to Death\"\n  .. ..$ dataType: chr \"float\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHCAUS\"\n  .. ..$ name    : chr \"DTHCAUS\"\n  .. ..$ label   : chr \"Cause of Death\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHDOM\"\n  .. ..$ name    : chr \"DTHDOM\"\n  .. ..$ label   : chr \"Domain for Date of Death Collection\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHCGR1\"\n  .. ..$ name    : chr \"DTHCGR1\"\n  .. ..$ label   : chr \"Cause of Death Reason 1\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 5\n  .. ..$ itemOID       : chr \"LSTALVDT\"\n  .. ..$ name          : chr \"LSTALVDT\"\n  .. ..$ label         : chr \"Date Last Known Alive\"\n  .. ..$ dataType      : chr \"date\"\n  .. ..$ targetDataType: chr \"integer\"\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"SAFFL\"\n  .. ..$ name    : chr \"SAFFL\"\n  .. ..$ label   : chr \"Safety Population Flag\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 1\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"RACEGR1\"\n  .. ..$ name    : chr \"RACEGR1\"\n  .. ..$ label   : chr \"Pooled Race Group 1\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 9\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"AGEGR1\"\n  .. ..$ name    : chr \"AGEGR1\"\n  .. ..$ label   : chr \"Pooled Age Group 1\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 5\n  ..$ :List of 5\n  .. ..$ itemOID : chr \"REGION1\"\n  .. ..$ name    : chr \"REGION1\"\n  .. ..$ label   : chr \"Geographic Region 1\"\n  .. ..$ dataType: chr \"string\"\n  .. ..$ length  : int 2\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"LDDTHGR1\"\n  .. ..$ name    : chr \"LDDTHGR1\"\n  .. ..$ label   : chr \"Last Dose to Death - Days Elapsed Grp 1\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTH30FL\"\n  .. ..$ name    : chr \"DTH30FL\"\n  .. ..$ label   : chr \"Death Within 30 Days of Last Trt Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHA30FL\"\n  .. ..$ name    : chr \"DTHA30FL\"\n  .. ..$ label   : chr \"Death After 30 Days from Last Trt Flag\"\n  .. ..$ dataType: chr \"string\"\n  ..$ :List of 4\n  .. ..$ itemOID : chr \"DTHB30FL\"\n  .. ..$ name    : chr \"DTHB30FL\"\n  .. ..$ label   : chr \"Death Within 30 Days of First Trt Flag\"\n  .. ..$ dataType: chr \"string\"\n $ records                    : int 306\n $ datasetJSONCreationDateTime: chr \"2025-11-02T15:59:24\""
   },
   {
     "objectID": "slides/04-how-r/index.html#compare-original-and-restored",
@@ -217,7 +553,7 @@
     "href": "slides/04-how-r/index.html#compare-original-and-restored-1",
     "title": "How to in R",
     "section": "Compare Original and Restored",
-    "text": "Compare Original and Restored\n\n# compare class and attributes\nwaldo::compare(adsl, adsl_restored)\n\n`class(old)`: \"tbl_df\"             \"tbl\"         \"data.frame\"\n`class(new)`: \"datasetjson_v1_1_0\" \"datasetjson\" \"data.frame\"\n\n`attr(old, '_xportr.df_arg_')` is a character vector ('ADSL')\n`attr(new, '_xportr.df_arg_')` is absent\n\n`attr(old, 'label')`: \"Subject Level Analysis\"        \n`attr(new, 'label')`: \"Subject Level Analysis Dataset\"\n\n`attr(old, 'columns')` is absent\n`attr(new, 'columns')` is a list\n\n`attr(old, 'datasetJSONCreationDateTime')` is absent\n`attr(new, 'datasetJSONCreationDateTime')` is a character vector ('2025-10-31T14:47:35')\n\n`attr(old, 'datasetJSONVersion')` is absent\n`attr(new, 'datasetJSONVersion')` is a character vector ('1.1.0')\n\n`attr(old, 'name')` is absent\n`attr(new, 'name')` is a character vector ('ADSL')\n\n`attr(old, 'records')` is absent\n`attr(new, 'records')` is an integer vector (306)"
+    "text": "Compare Original and Restored\n\n# compare class and attributes\nwaldo::compare(adsl, adsl_restored)\n\n`class(old)`: \"tbl_df\"             \"tbl\"         \"data.frame\"\n`class(new)`: \"datasetjson_v1_1_0\" \"datasetjson\" \"data.frame\"\n\n`attr(old, '_xportr.df_arg_')` is a character vector ('ADSL')\n`attr(new, '_xportr.df_arg_')` is absent\n\n`attr(old, 'label')`: \"Subject Level Analysis\"        \n`attr(new, 'label')`: \"Subject Level Analysis Dataset\"\n\n`attr(old, 'columns')` is absent\n`attr(new, 'columns')` is a list\n\n`attr(old, 'datasetJSONCreationDateTime')` is absent\n`attr(new, 'datasetJSONCreationDateTime')` is a character vector ('2025-11-02T15:59:24')\n\n`attr(old, 'datasetJSONVersion')` is absent\n`attr(new, 'datasetJSONVersion')` is a character vector ('1.1.0')\n\n`attr(old, 'name')` is absent\n`attr(new, 'name')` is a character vector ('ADSL')\n\n`attr(old, 'records')` is absent\n`attr(new, 'records')` is an integer vector (306)"
   },
   {
     "objectID": "slides/04-how-r/index.html#why-this-matters",
@@ -290,10 +626,59 @@
     "text": "Questions?\n\nReady to dive into the exercises?\nOpen exercises/01-r.R and let’s explore the datasetjson package together!"
   },
   {
-    "objectID": "slides/06-future/index.html#placeholder",
-    "href": "slides/06-future/index.html#placeholder",
+    "objectID": "slides/06-future/index.html#fda-fr-notice-for-dataset-json-comments-part-1-of-2",
+    "href": "slides/06-future/index.html#fda-fr-notice-for-dataset-json-comments-part-1-of-2",
     "title": "Adoption and Future",
-    "section": "Placeholder",
-    "text": "Placeholder"
+    "section": "FDA FR Notice for Dataset-JSON Comments (Part 1 of 2)",
+    "text": "FDA FR Notice for Dataset-JSON Comments (Part 1 of 2)\n\nIn 2022, the FDA evaluated alternatives to serve as possible replacements to SAS V5 XPT\nThe FDA determined that JSON was the optimal modern format to serve as a replacement to SAS V5 XPT\nJSON is the most commonly used format to represent HL7 FHIR-based EHR data\nHL7 FHIR has been endorsed for EHR data by the Assistant Secretary for Technology Policy and ONC HIT\nThe CDISC-PHUSE pilot results demonstrated that Dataset-JSON could serve as a transport file for study data"
+  },
+  {
+    "objectID": "slides/06-future/index.html#fda-fr-notice-for-dataset-json-comments-part-2-of-2",
+    "href": "slides/06-future/index.html#fda-fr-notice-for-dataset-json-comments-part-2-of-2",
+    "title": "Adoption and Future",
+    "section": "FDA FR Notice for Dataset-JSON Comments (Part 2 of 2)",
+    "text": "FDA FR Notice for Dataset-JSON Comments (Part 2 of 2)\n\nThe vast majority of industry comments to the FDA were positive\nOf the few negative comments, many were dated or inaccurate assessments\nSeveral comments requested adequate testing and transition time to accommodate a change\nNext step may be an FR Notice outlining an official FDA submissions pilot"
+  },
+  {
+    "objectID": "slides/06-future/index.html#dataset-json-api-standard-part-1-of-2",
+    "href": "slides/06-future/index.html#dataset-json-api-standard-part-1-of-2",
+    "title": "Adoption and Future",
+    "section": "Dataset-JSON API Standard (Part 1 of 2)",
+    "text": "Dataset-JSON API Standard (Part 1 of 2)\n\nA REST-based standard API specification (OAS 3.1) for the exchange of Dataset-JSON datasets\nThe API supports full CRUD operations, but a read-only implementation is valid\nPrimarily implements JSON, but also supports streaming NDJSON\nMany API clients and servers may never work with Dataset-JSON as a file format"
+  },
+  {
+    "objectID": "slides/06-future/index.html#dataset-json-api-standard-part-2-of-2",
+    "href": "slides/06-future/index.html#dataset-json-api-standard-part-2-of-2",
+    "title": "Adoption and Future",
+    "section": "Dataset-JSON API Standard (Part 2 of 2)",
+    "text": "Dataset-JSON API Standard (Part 2 of 2)\n\nA User Guide is available to support implementing the API\nThe OAS 3.1 formatted specification can be used to generate code for clients and servers\nSuccessfully completed Public Review and the final standard should be published in December 2025\nA POC API implementation will be available in December 2025"
+  },
+  {
+    "objectID": "slides/06-future/index.html#compressed-dataset-json-part-1-of-2",
+    "href": "slides/06-future/index.html#compressed-dataset-json-part-1-of-2",
+    "title": "Adoption and Future",
+    "section": "Compressed Dataset-JSON (Part 1 of 2)",
+    "text": "Compressed Dataset-JSON (Part 1 of 2)\n\nBased on NDJSON format, which makes it easy to process large datasets.\nContents is compressed using a standard DEFLATE algorithm, widely supported by programming languages, including SAS, R, Python.\nCompression algorithm is widely used and supported: PNG, DOCX, web traffic, etc.\nCompression is also supported by the API"
+  },
+  {
+    "objectID": "slides/06-future/index.html#compressed-dataset-json-part-2-of-2",
+    "href": "slides/06-future/index.html#compressed-dataset-json-part-2-of-2",
+    "title": "Adoption and Future",
+    "section": "Compressed Dataset-JSON (Part 2 of 2)",
+    "text": "Compressed Dataset-JSON (Part 2 of 2)\n\nSDTM package is 15 times smaller and ADaM package is 18 times smaller (larger datasets see greater compression)\nAll formats (JSON, NDJSON, and Compressed Dataset-JSON) represent the same underlying information\nUses the .dsjc file extension\nSuccessfully completed Public Review and the final standard should be published in December 2025"
+  },
+  {
+    "objectID": "slides/06-future/index.html#references-part-1-of-2",
+    "href": "slides/06-future/index.html#references-part-1-of-2",
+    "title": "Adoption and Future",
+    "section": "References (Part 1 of 2)",
+    "text": "References (Part 1 of 2)\n\nFDA FR Notice for Dataset-JSON Comments\nDataset-JSON API Specification in HTML\nDataset-JSON API Specification User Guide\nDataset-JSON API Specification in OpenAPI Specification\nCompressed Dataset-JSON Specification"
+  },
+  {
+    "objectID": "slides/06-future/index.html#references-part-2-of-2",
+    "href": "slides/06-future/index.html#references-part-2-of-2",
+    "title": "Adoption and Future",
+    "section": "References (Part 2 of 2)",
+    "text": "References (Part 2 of 2)\n\nNDJSON Standard\nParquet Standard\nPHUSE White Paper: Transport for the Next Generation\nFDA: Test Report for DS-XML Pilot\nDataset-JSON as an Alternative Transport Format for Regulatory Submissions: Final Pilot Report"
   }
 ]

@@ -144,11 +144,165 @@
 
   <p class="date">2025-11-07</p>
 </section>
-<section id="placeholder" class="slide level2">
-<h2>Placeholder</h2>
-
+<section>
+<section id="why-change" class="title-slide slide level1 center">
+<h1>Why Change?</h1>
 
 </section>
+<section id="why-change-from-sas-v5-xport-xpt" class="slide level2">
+<h2>Why Change from SAS V5 XPORT (XPT)?</h2>
+<ul>
+<li class="fragment">Game Boy. Sega Genesis. The Casio F-91W. And SAS XPT.</li>
+<li class="fragment">All were introduced in 1989.</li>
+<li class="fragment">In 1999, the FDA standardized the submission of clinical data using SAS XPT.</li>
+<li class="fragment">In 2012, FDA organized a Public Meeting on Study Data Exchange and later conducted the Dataset-XML pilot.</li>
+<li class="fragment">From a programming perspective, we now work in a multilingual world.</li>
+<li class="fragment">And now it may be time for SAS XPT to meet its end.</li>
+</ul>
+</section>
+<section id="sas-xpt-limitations-part-1-of-2" class="slide level2">
+<h2>SAS XPT Limitations (Part 1 of 2)</h2>
+<ol type="1">
+<li class="fragment"><strong>Data File Format</strong>
+<ul>
+<li class="fragment">Limited variable types</li>
+<li class="fragment">Limited to US ASCII encoding</li>
+<li class="fragment">8-character variable names</li>
+<li class="fragment">40-character labels</li>
+<li class="fragment">200-character field widths</li>
+</ul></li>
+<li class="fragment"><strong>Storage</strong>
+<ul>
+<li class="fragment">Inefficient use of storage space</li>
+<li class="fragment">The inability to compress datasets leads to file logistical issues (e.g., splitting datasets)</li>
+</ul></li>
+</ol>
+</section>
+<section id="sas-xpt-limitations-part-1-of-2-1" class="slide level2">
+<h2>SAS XPT Limitations (Part 1 of 2)</h2>
+<ol start="3" type="1">
+<li class="fragment"><strong>Content</strong>
+<ul>
+<li class="fragment">Lacks a robust metadata layer</li>
+<li class="fragment">Only works for 2-dimensional data structures</li>
+</ul></li>
+<li class="fragment"><strong>Extensibility</strong>
+<ul>
+<li class="fragment">Not extensible</li>
+</ul></li>
+</ol>
+</section>
+<section id="what-is-dataset-json" class="slide level2">
+<h2>What is Dataset-JSON?</h2>
+<ul>
+<li class="fragment">A CDISC data exchange format for tabular datasets</li>
+<li class="fragment">Designed to support a broad range of data exchange scenarios</li>
+<li class="fragment">Supports API and file-based data exchange</li>
+<li class="fragment">JSON/NDJSON is simple to implement, very stable, and widely supported</li>
+<li class="fragment">Extensible to support new metadata and new use cases</li>
+</ul>
+</section></section>
+<section>
+<section id="why-dataset-json" class="title-slide slide level1 center">
+<h1>Why Dataset-JSON?</h1>
+
+</section>
+<section id="why-json" class="slide level2">
+<h2>Why JSON?</h2>
+<ul>
+<li class="fragment">JSON is the most widely used data interchange standard globally</li>
+<li class="fragment">JSON is a lightweight text-based interchange format</li>
+<li class="fragment">JSON is very simple and widely supported</li>
+<li class="fragment">JSON is easy to read and write</li>
+<li class="fragment">JSON targets data exchange</li>
+<li class="fragment">JSON is a language independent standard</li>
+</ul>
+</section>
+<section id="dataset-json-as-an-alternative-transport-format-for-regulatory-submissions-pilot" class="slide level2">
+<h2>Dataset-JSON as an Alternative Transport Format for Regulatory Submissions Pilot</h2>
+<ul>
+<li class="fragment">The pilot was a collaboration between CDISC, PHUSE, and the FDA</li>
+<li class="fragment">The pilot final readout occurred in June 2024</li>
+<li class="fragment">The pilot demonstrated that Dataset-JSON can transport data without disruption to business</li>
+<li class="fragment">Pilot findings resulted in: (1) standards updates, (2) User’s Guide content, and (3) tool updates and enhancements</li>
+<li class="fragment">FDA testing included internal testing and external testing including submissions using the test ESG</li>
+</ul>
+</section></section>
+<section>
+<section id="why-not-parquet" class="title-slide slide level1 center">
+<h1>Why not Parquet?</h1>
+
+</section>
+<section id="json-definition" class="slide level2">
+<h2>JSON Definition</h2>
+<p><strong>From the JSON website:</strong> JSON is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. JSON is a text format that is completely language independent but uses conventions that are familiar to programmers. These properties make JSON an ideal data-interchange language.</p>
+</section>
+<section id="parquet-definition" class="slide level2">
+<h2>Parquet Definition</h2>
+<p><strong>From the Parquet website:</strong> Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval. It provides efficient data compression and encoding schemes with enhanced performance to handle complex data in bulk. We created Parquet to make the advantages of compressed, efficient columnar data representation available to any project in the Hadoop ecosystem.</p>
+</section>
+<section id="what-is-the-purpose-of-dataset-json" class="slide level2">
+<h2>What is the Purpose of Dataset-JSON?</h2>
+<ol type="1">
+<li class="fragment">Addresses the data exchange use case</li>
+<li class="fragment">API and File-based data exchange</li>
+<li class="fragment">Optimized for breadth of support and ease of implementation for a broad range of data exchange scenarios</li>
+<li class="fragment">Aligned with other data exchange standards, HL7 FHIR and ODM v2.0</li>
+</ol>
+</section>
+<section id="what-is-the-purpose-of-parquet" class="slide level2">
+<h2>What is the Purpose of Parquet?</h2>
+<ol type="1">
+<li class="fragment">Addresses the storage and analytical processing use case</li>
+<li class="fragment">File-based data exchange</li>
+<li class="fragment">Optimized for storage and analytical data processing performance</li>
+<li class="fragment">Aligned with sponsor statistical computing environment use</li>
+</ol>
+</section>
+<section id="dataset-json-assumptions-part-1-of-2" class="slide level2">
+<h2>Dataset-JSON Assumptions (Part 1 of 2)</h2>
+<ol type="1">
+<li class="fragment">Data exchange scenarios include datasets generated by applications such as EDC, ePRO, labs, and other data sources</li>
+<li class="fragment">APIs will provide the most common means to exchange data</li>
+<li class="fragment">Aligns with:</li>
+</ol>
+<ul>
+<li class="fragment">ODM v2.0, define.json, and works with Define-XML</li>
+<li class="fragment">DDF USDM, ARS, CORE, CDISC Library, OAK, and other CDISC projects</li>
+<li class="fragment">Healthcare data exchange standards like HL7 FHIR</li>
+</ul>
+</section>
+<section id="dataset-json-assumptions-part-2-of-2" class="slide level2">
+<h2>Dataset-JSON Assumptions (Part 2 of 2)</h2>
+<ol start="4" type="1">
+<li class="fragment">Systems will not make frequent reads/writes to Dataset-JSON files</li>
+<li class="fragment">Extensible. Most vendors extend ODM-based standards</li>
+<li class="fragment">Many vendors already import/export JSON</li>
+<li class="fragment">Addresses SAS XPT limitations</li>
+<li class="fragment">Commit to creating Dataset-JSON Parquet conversion software</li>
+</ol>
+</section>
+<section id="references-part-1-of-2" class="slide level2">
+<h2>References (Part 1 of 2)</h2>
+<ul>
+<li><a href="https://github.com/cdisc-org/DataExchange-DatasetJson">CDISC Dataset-JSON v1.1 Standard</a></li>
+<li><a href="https://www.clinicalleader.com/doc/no-more-xpt-piloting-new-dataset-json-for-fda-submissions-0001">No More XPT? Piloting New Dataset-JSON For FDA Submissions</a></li>
+<li><a href="https://www.linkedin.com/pulse/why-json-datasets-sam-hume-iw6ee">Why JSON for Datasets?</a></li>
+<li><a href="https://www.json.org/json-en.html">JSON Standard</a></li>
+</ul>
+</section>
+<section id="references-part-2-of-2" class="slide level2">
+<h2>References (Part 2 of 2)</h2>
+<ul>
+<li><a href="https://github.com/ndjson/ndjson-spec">NDJSON Standard</a></li>
+<li><a href="https://parquet.apache.org/">Parquet Standard</a></li>
+<li><a href="https://www.cdisc.org/sites/default/files/2023-05/Transport-for-the-Next-Generation-Version-1.0.pdf">PHUSE White Paper: Transport for the Next Generation</a></li>
+<li><a href="https://web.archive.org/web/20160208090353/http://www.fda.gov/downloads/ForIndustry/DataStandards/StudyDataStandards/UCM443327.pdf">FDA: Test Report for DS-XML Pilot</a></li>
+<li><a href="https://phuse.s3.eu-central-1.amazonaws.com/Deliverables/Optimizing+the+Use+of+Data+Standards/WP-88+Dataset-JSON+Report.pdf">Dataset-JSON as an Alternative Transport Format for Regulatory Submissions: Final Pilot Report</a></li>
+</ul>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="../../images/sticker.svg" class="slide-logo"></p>
