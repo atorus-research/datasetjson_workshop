@@ -16,6 +16,7 @@
 from pathlib import Path
 from dsjconvert import XPTConverter, MetadataExtractor
 from dsjconvert import DatasetJSONToXPTConverter
+from os import getcwd
 
 
 def convert_xpt_dataset(dsj_format: str, data_path: Path, xpt_file: Path, define_file: Path = None):
@@ -53,7 +54,7 @@ def main():
     # =============================================================================
 
     # Exercise 1: convert cm.xpt to CM.ndjson using the define.xml metadata
-    data_path = Path(__file__).parent.joinpath("data")
+    data_path = Path(getcwd()).joinpath("data")
     xpt_file = Path(data_path).joinpath("cm.xpt")
     define_file = Path(data_path).joinpath("define.xml")
     # TODO use a function to convert cm.xpt to CM.ndjson using the define.xml metadata
