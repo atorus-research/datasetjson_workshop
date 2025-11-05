@@ -41,7 +41,7 @@ tibble::tribble(
   "08:45 - 09:15", "[What is Dataset-JSON](https://atorus-research.github.io/datasetjson_workshop/slides/03-what/#/title-slide)",
   "09:15 - 09:30", "*Coffee Break*",
   "09:30 - 10:00", "[How to in R](https://atorus-research.github.io/datasetjson_workshop/slides/04-how-r/#/title-slide)",
-  "10:00 - 10:30", "[How to in python](https://atorus-research.github.io/datasetjson_workshop/slides/05-how-pyr/#/title-slide)",
+  "10:00 - 10:30", "[How to in python](https://atorus-research.github.io/datasetjson_workshop/slides/05-how-py/#/title-slide)",
   "10:30 - 10:55", "[Adoption and Future](https://atorus-research.github.io/datasetjson_workshop/slides/06-future/#/title-slide)",
   "10:55 - 11:00", "[Wrap-up](https://atorus-research.github.io/datasetjson_workshop/slides/07-wrapup/#/title-slide)"
 ) |> 
