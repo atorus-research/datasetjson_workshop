@@ -61,7 +61,7 @@ in improving dataset interoperability and sharing standards.
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>09:30 - 10:00</span></td>
 <td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/04-how-r/#/title-slide">How to in R</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>10:00 - 10:30</span></td>
-<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/05-how-pyr/#/title-slide">How to in python</a></span></td></tr>
+<td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/05-how-py/#/title-slide">How to in python</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>10:30 - 10:55</span></td>
 <td headers="desc" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'><a href="https://atorus-research.github.io/datasetjson_workshop/slides/06-future/#/title-slide">Adoption and Future</a></span></td></tr>
     <tr><td headers="time" class="gt_row gt_left" style="vertical-align:top"><span class='gt_from_md'>10:55 - 11:00</span></td>
