@@ -51,9 +51,11 @@ tibble::tribble(
 
 ## Pre-work
 
-- [ ] Bookmark this site. You'll reference it throughout the workshop.   [tbd]()
+- [ ] Bookmark this site. You'll reference it throughout the workshop.   [workshop site](https://atorus-research.github.io/datasetjson_workshop/)
 
 - [ ] Sign up for a *free* [Posit Cloud](https://posit.cloud/) account.
+
+- [ ] Log into Posit Cloud and copy the workshop [Posit Cloud Workshop](https://posit.cloud/spaces/717326/join?access_code=PJ9jXpW21PMqrENRNTQ3r-g0kJ_PUMqM_pWTa6CS).
 
 
 ## Instructors
