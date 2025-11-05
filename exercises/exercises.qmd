@@ -11,7 +11,9 @@ editor: source
 #| echo: false
 #| class-output: "sourceCode r"
 
-
+"01-r.R" |> 
+  readLines() |> 
+  cat(sep = "\n")
 ```
 
 ## `02-python.py`
@@ -20,7 +22,9 @@ editor: source
 #| echo: false
 #| class-output: "sourceCode py"
 
-
+"02-python.py" |> 
+  readLines() |> 
+  cat(sep = "\n")
 ```
 
 
