@@ -21,6 +21,29 @@ cache: false
 
 # Submission Pilot
 
+## Submission Pilot (Part 1 of 3)
+::: {.incremental}
+- Dataset-JSON as Alternative Transport Format for Regulatory Submissions pilot
+- The pilot was a collaboration between CDISC, PHUSE, and the FDA
+- Pilot milestone 1: demonstrate that Dataset-JSON can transport information with no disruption to business
+- Pilot milestone 2: Demonstrate the viability of Dataset-JSON as the primary transport option
+:::
+
+## Submission Pilot: FDA CDER OCS Pilot Testing (Part 2 of 3)
+::: {.incremental}
+- Minimal effort required to convert datasets utilizing Python conversion software
+- Internal testing: Used the Python conversion software. Data integrity confirmed
+- External testing: Includes submissions through test ESG with CDER and CBER data
+- No showstopper findings. Integer date conversion findings encountered
+:::
+
+## Submission Pilot: Findings (Part 3 of 3)
+::: {.incremental}
+- The Pilot achieved its primary objective; Dataset-JSON can transport information with no disruption to business
+- Findings have solutions that include: (1) standards updates, (2) User’s Guide content, and (3) tool updates
+- Dataset-JSON v1.1 is a response to the findings from the pilot and other feedback
+:::
+
 # FDA Request For Comments (RFC)
 
 ## FDA FR Notice for Dataset-JSON Comments (Part 1 of 2)

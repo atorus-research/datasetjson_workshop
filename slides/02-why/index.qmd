@@ -1,5 +1,5 @@
 ---
-title: "[Why Change / Why Dataset-JSON / Why not Parquet?"
+title: "Why Change / Why Dataset-JSON / Why not Parquet?"
 subtitle: "datasetjson - Read and write CDISC Dataset JSON formatted datasets in R and Python"
 author: <code>R/Pharma 2025 Workshop</code>
 date: 2025-11-07
