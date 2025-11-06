@@ -19,4 +19,16 @@ execute:
 cache: false
 ---
 
-## Placeholder
+## What You'll Learn Today
+::: {.incremental}
+- What Dataset JSON is
+- Why Dataset JSON is
+- Implementing Dataset JSON in R
+- Implementing Dataset JSON in Python
+:::
+
+## The Workshop Environment
+:::
+- Environment ready for you in Posit Cloud
+- Pre-configured, exercises ready
+:::

@@ -19,4 +19,10 @@ execute:
 cache: false
 ---
 
-## Placeholder
+## Wrap-up
+::: {.incremental}
+- Dataset JSON is intended for data _exchange_
+- 2 years of feedback, public review, FDA evaluation
+- Open-source tools are available to help companies adopt 
+  - SAS, R, and Python all included
+:::
