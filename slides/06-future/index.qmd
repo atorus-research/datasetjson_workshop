@@ -23,7 +23,7 @@ cache: false
 
 ## Pilot5 - DatasetJSON
 
-![Pilot5DatasetJson](Pilot5DatasetJSON.png)
+![Pilot5DatasetJson](images/Pilot5DatasetJSON.png)
 
 ## Goals
 
@@ -38,6 +38,7 @@ cache: false
 :::{.incremental}
 - Still pending!
 - [Follow the Pilot 5 Repository for more information](https://github.com/RConsortium/submissions-pilot5-datasetjson)
+:::
 
 # FDA Request For Comments (RFC)
 
